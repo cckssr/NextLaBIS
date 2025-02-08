@@ -9,3 +9,17 @@ I am not a professional developer. I don’t have years of programming experienc
 ## About openBIS
 
 [openBIS](https://openbis.ch/) is an open-source data management system for academic and industrial research. It provides structured data organization, access control, and integration with various scientific workflows. NextLaBIS builds on openBIS to offer an enhanced web interface for managing research projects and experimental data.
+
+## Tech Stack
+
+NextLaBIS is built using the following technologies:
+
+- **Next.js**: A React framework for server-side rendering and static site generation.
+- **React**: A JavaScript library for building user interfaces.
+- **OpenBIS**: An open-source data management system for research data.
+- **Tailwind CSS**: A utility-first CSS framework for styling the application.
+- **ESLint**: A linter for Javascript and Typescript.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **Tabler react-icons**: A package with various, free to use icons.
+
+These technologies work together to provide a robust, scalable, and efficient platform for managing scientific data and workflows.
