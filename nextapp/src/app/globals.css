@@ -40,3 +40,22 @@ a {
     color-scheme: dark;
   }
 }
+
+/* CUSTOM Below */
+
+.custom-header {
+  border-bottom: 3px solid #1b1b1a !important;
+}
+.custom-navbar {
+  border-right: 3px solid #1b1b1a !important;
+}
+#header-item {
+  display: block;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-md);
+  font-weight: 500;
+
+  @mixin hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+  }
+}
