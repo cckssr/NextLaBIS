@@ -19,6 +19,7 @@ interface VarcharFormProps {
 const gridSpan = { base: 12, md: 6, lg: "content" };
 
 // TODO: using mantina form maybe?
+//TODO: Tags input and display
 export function VarcharForm({
   code,
   name,
@@ -32,7 +33,6 @@ export function VarcharForm({
   const [formValue, setValue] = useState(pastValue ?? "");
   // condition for checking if component should be large
   const largeCondition = description.length > 100 || name.length > 100;
-
   return (
     <GridCol span={largeCondition ? 12 : gridSpan}>
       <TextInput
@@ -61,7 +61,7 @@ export function VarcharText({
   name,
   pastValue = null,
   description = null,
-}) {
+}: VarcharFormProps) {
   // condition for checking if component should be large
   const largeCondition = description ? description.length > 100 : false;
   const textRef = useRef(null);

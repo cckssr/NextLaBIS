@@ -1,0 +1,176 @@
+{
+  "components": {
+    "Timestamp": {
+      "form": [
+        {
+          "code": "$TIMESTAMP",
+          "name": "Basic Timestamp Picker",
+          "description": "Standard timestamp selection component"
+        },
+        {
+          "code": "$TIMESTAMPPRESET",
+          "name": "Timestamp with Preset Value",
+          "description": "Timestamp picker with a default value",
+          "pastValue": "2023-10-15T12:34:56Z"
+        }
+      ]
+    },
+    "Varchar": {
+      "form": [
+        {
+          "code": "$NAME",
+          "name": "Name (OpenBIS Label)",
+          "description": "Description of the property (OpenBIS Description)",
+          "editable": true
+        },
+        {
+          "code": "$NAME",
+          "name": "Name (pre-filled)",
+          "pastValue": "Example value in Varchar input",
+          "description": "Description of the property",
+          "editable": true
+        },
+        {
+          "code": "$REQUIRED",
+          "name": "Necessary Input",
+          "description": "This field must be filled in before saving (OpenBIS Mandatory = true)",
+          "editable": true,
+          "mandatory": true
+        },
+        {
+          "code": "$REQUIRED",
+          "name": "Necessary Input",
+          "description": "If the field is empty, an error message is displayed",
+          "editable": true,
+          "mandatory": true,
+          "error": "This field is required"
+        },
+        {
+          "code": "$ERROR",
+          "name": "Field with Error",
+          "description": "Currently not supported by OpenBIS",
+          "editable": true,
+          "error": "Input must be longer than 12 characters"
+        },
+        {
+          "code": "$DISABLED",
+          "name": "Disabled Input",
+          "description": "The input is disabled (OpenBIS Editable = false)",
+          "editable": false
+        },
+        {
+          "code": "$LONGNAME",
+          "name": "Long Name with more than 100 characters, currently set as the limit for the grid width. The long name should be displayed fully.",
+          "description": "A very long name is not clamped",
+          "editable": true
+        },
+        {
+          "code": "$LONGDESC",
+          "name": "Very Long Description is clamped at 4 lines, but can be extended on click",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.",
+          "editable": true
+        }
+      ],
+      "text": [
+        {
+          "code": "$NAME",
+          "name": "Name (OpenBIS Label)",
+          "pastValue": "Example value in Varchar text",
+          "description": "The description of the property is rendered as a tooltip"
+        },
+        {
+          "code": "$NODESC",
+          "name": "No Description",
+          "pastValue": "If no description is provided, the tooltip is not displayed"
+        },
+        {
+          "code": "$LONGDESC",
+          "name": "Long Description",
+          "pastValue": "Long descriptions are multiline",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi."
+        }
+      ]
+    },
+    "Boolean": {
+      "form": [
+        {
+          "code": "$NAME",
+          "name": "Name (OpenBIS Label)",
+          "description": "Description of the property (OpenBIS Description)"
+        },
+        {
+          "code": "$DISABLED",
+          "name": "Disabled Checkbox",
+          "description": "The checkbox is disabled",
+          "editable": false
+        },
+        {
+          "code": "$CHECKED",
+          "name": "Pre-checked Value",
+          "description": "The checkbox is pre-checked",
+          "pastValue": true
+        }
+      ],
+      "text": [
+        {
+          "code": "$TRUE",
+          "name": "Boolean True Display",
+          "pastValue": true,
+          "description": "How true values display"
+        },
+        {
+          "code": "$FALSE",
+          "name": "Boolean False Display",
+          "pastValue": false,
+          "description": "How false values display"
+        }
+      ]
+    },
+    "Date": {
+      "form": [
+        {
+          "code": "$DATE",
+          "name": "Basic Date Picker",
+          "description": "Standard date selection component"
+        },
+        {
+          "code": "$DATEPRESET",
+          "name": "Date with Preset Value",
+          "description": "Date picker with a default value",
+          "pastValue": "2023-10-15"
+        }
+      ]
+    },
+    "Integer": {
+      "form": [
+        {
+          "code": "$INT",
+          "name": "Basic Integer Input",
+          "description": "Input for whole numbers"
+        },
+        {
+          "code": "$INTRANGE",
+          "name": "Integer with Range",
+          "description": "Integer with min and max values",
+          "min": 0,
+          "max": 100
+        }
+      ]
+    },
+    "Real": {
+      "form": [
+        {
+          "code": "$REAL",
+          "name": "Basic Decimal Input",
+          "description": "Input for decimal numbers"
+        },
+        {
+          "code": "$PRECISION",
+          "name": "Decimal with Precision",
+          "description": "Decimal with fixed precision",
+          "precision": 2
+        }
+      ]
+    }
+  }
+}
