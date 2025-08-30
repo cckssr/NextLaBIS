@@ -28,7 +28,7 @@ export function DateForm({
   error = null,
 }: DateFormProps) {
   // state for the value of the input field
-  const [formValue, setValue] = useState(
+  const [value, setValue] = useState<Date | null>(
     pastValue ? new Date(pastValue) : null
   );
 
@@ -41,8 +41,8 @@ export function DateForm({
         size="md"
         radius="md"
         label={name}
-        value={formValue}
-        onChange={(value) => setValue(value)}
+        value={value}
+        onChange={setValue}
         disabled={!editable}
         withAsterisk={mandatory}
         description={description}
@@ -50,7 +50,6 @@ export function DateForm({
         error={error}
         placeholder={`code: ${code}`}
         valueFormat="YYYY-MM-DD"
-        clearable
       />
     </GridCol>
   );

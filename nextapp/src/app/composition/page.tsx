@@ -6,7 +6,7 @@ import { BooleanForm, BooleanText } from "@/components/masterdata/boolean";
 
 import placeholderData from "@/../public/placeholder.json";
 import componentsData from "@/../public/components.json";
-import { DateForm } from "@/components/masterdata/date";
+import { DateForm, DateText } from "@/components/masterdata/date";
 import { TimestampForm } from "@/components/masterdata/timestamp";
 
 export default function Testcomponents() {
@@ -81,13 +81,14 @@ export default function Testcomponents() {
             ))}
           </Grid> */}
         </TabsPanel>
+
         <TabsPanel value="Date">
           <Text size="md" mb={"md"}>
             The following components are examples for the OpenBIS{" "}
             <strong>DATE</strong> property data type. First the form inputs.
           </Text>
           <Grid grow={true}>
-            {componentsData.components.Boolean.form.map((component, index) => (
+            {componentsData.components.Date.form.map((component, index) => (
               <DateForm key={`date-form-${index}`} {...component} />
             ))}
           </Grid>
@@ -97,11 +98,11 @@ export default function Testcomponents() {
           <Text size="md" mb="lg">
             Now the text components.
           </Text>
-          {/* <Grid grow={true}>
-            {componentsData.components.Boolean.text.map((component, index) => (
-              <BooleanText key={`boolean-text-${index}`} {...component} />
+          <Grid grow={true}>
+            {componentsData.components.Date.text.map((component, index) => (
+              <DateText key={`date-text-${index}`} {...component} />
             ))}
-          </Grid> */}
+          </Grid>
         </TabsPanel>
 
         <TabsPanel value="Timestamp">
@@ -111,9 +112,11 @@ export default function Testcomponents() {
             inputs.
           </Text>
           <Grid grow={true}>
-            {componentsData.components.Boolean.form.map((component, index) => (
-              <TimestampForm key={`timestamp-form-${index}`} {...component} />
-            ))}
+            {componentsData.components.Timestamp.form.map(
+              (component, index) => (
+                <TimestampForm key={`timestamp-form-${index}`} {...component} />
+              )
+            )}
           </Grid>
 
           <Divider mt="lg" mb="lg" />
@@ -122,7 +125,7 @@ export default function Testcomponents() {
             Now the text components.
           </Text>
           {/* <Grid grow={true}>
-            {componentsData.components.Boolean.text.map((component, index) => (
+            {componentsData.components.Timestamp.text.map((component, index) => (
               <BooleanText key={`boolean-text-${index}`} {...component} />
             ))}
           </Grid> */}

@@ -1,5 +1,5 @@
+import { Title } from "@mantine/core";
+
 export default function Home() {
-  return (
-    
-  )
+  return <Title order={1}>Hello, world!</Title>;
 }

@@ -1,15 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
-import {
-  DateInput,
-  TimeInput,
-  GridCol,
-  Text,
-  Tooltip,
-  Stack,
-  Group,
-  Box,
-} from "@mantine/core";
+import { DateInput, TimeInput } from "@mantine/dates";
+import { GridCol, Text, Tooltip, Stack, Group, Box } from "@mantine/core";
 import { useDescriptionProps } from "./common_functions";
 
 // type information for the props
