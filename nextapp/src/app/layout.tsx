@@ -26,8 +26,8 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider theme={theme}>
-          <AppShellRoot>{children}</AppShellRoot>
+        <MantineProvider>
+          <DefaultAppShell>{children}</DefaultAppShell>
         </MantineProvider>
       </body>
     </html>
