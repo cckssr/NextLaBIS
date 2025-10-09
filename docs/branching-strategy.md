@@ -5,21 +5,22 @@ The repository uses a lightweight Git workflow that keeps `main` stable while en
 ## Branch Types
 
 - **`main`** – Always deployable. Only merge PRs that pass checks and reviews.
+- **`develop`** – Integration branch for ongoing work. Syncs with `main` when ready and serves as the base for feature/bugfix branches.
 - **Feature branches** – Named `feature/<issue-number>-short-description`. Used for new features, enhancements, or sizeable refactors tied to an issue.
 - **Bugfix branches** – Named `bugfix/<issue-number>-short-description`. Used for urgent fixes.
 - **Phase branches (optional)** – For large initiatives spanning multiple PRs within the same phase. Named `phase/<phase-name>` and short lived.
 
 ## Workflow
 
-1. Create a branch from `main` using the appropriate prefix.
+1. Create a branch from `develop` using the appropriate prefix.
 2. Commit work incrementally following the [coding standards](coding-standards.md).
-3. Rebase on top of `main` before opening or updating a PR to maintain a linear history.
+3. Rebase on top of `develop` before opening or updating a PR to maintain a linear history.
 4. Open a pull request referencing the related issue or epic. Ensure automated checks pass.
-5. After approval, squash merge into `main` unless the commit history adds explicit value.
+5. After approval, squash merge into `develop` unless the commit history adds explicit value.
 
 ## Release Tags
 
-- When a phase milestone is achieved, tag `main` with `phase-x.y` to capture the snapshot.
+- When a phase milestone is achieved, tag `develop` with `phase-x.y` to capture the snapshot.
 - Use semantic versioning once releases target production environments.
 
 ## Hotfixes

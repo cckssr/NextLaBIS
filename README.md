@@ -8,8 +8,17 @@ The repository is intentionally open and collaborative. While the maintainer is 
 
 - Deliver a modern UI/UX for openBIS with responsive design, dark-mode friendly palettes, and streamlined navigation.
 - Provide configurable masterdata templates that cover the breadth of openBIS object types.
-- Enable laboratory teams to manage projects, samples, and datasets with intuitive workflows.
-- Maintain a transparent roadmap organised by phases and epics to guide contributors.
+- Enable laboratory teams to manage projects, objects, and datasets with intuitive workflows.
+- Maintain a transparent roadmap organised by phases / epics to guide contributors.
+
+![NextLaBIS Dashboard Mockup](docs/images/Dashboard-25_10.png)
+_Example dashboard mockup showcasing a clean, card-based layout._
+
+![NextLaBIS Project View Mockup](docs/images/Project_overview-25_10.png)
+_Example project view mockup with tabbed navigation and data tables._
+
+![NextLaBIS Object Detail Mockup](docs/images/Object_example-25_10.png)
+_Example object detail mockup featuring metadata and related datasets._
 
 ## Current Status
 

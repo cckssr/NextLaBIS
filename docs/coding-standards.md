@@ -60,3 +60,8 @@ Consistent code enables contributors to collaborate effectively. The following c
 - Include JSDoc/TSDoc for complex functions or hooks.
 
 By adhering to these standards, we ensure the codebase remains maintainable as the project grows.
+
+## OpenBIS Specific Guidelines
+
+- Follow openBIS data models and naming conventions where applicable.
+  - Consistently use only the terms "Object", "Collection", "Space", "Dataset". Avoid old terminology like "Sample", "Experiment", "Project".
