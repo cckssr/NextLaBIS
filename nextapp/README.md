@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextLaBIS Frontend
+
+This directory contains the Next.js application for NextLaBIS. It is scaffolded with the App Router and TypeScript, and uses Mantine as the component system.
+
+## Prerequisites
+
+- Node.js 20 or newer
+- npm 10+
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) while the dev server is running.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` – Start the development server with Turbopack for fast refresh.
+- `npm run build` – Create an optimised production build.
+- `npm run start` – Serve the production build locally.
+- `npm run lint` – Run ESLint with the Next.js recommended rules.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── layout.tsx      # Root layout and metadata
+│   ├── page.tsx        # Home page shell
+│   └── globals.css     # Global styles and Mantine normalise imports
+└── components/
+    └── masterdata/     # Masterdata component prototypes
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Styling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Mantine components are preferred for layout and theming.
+- Use CSS modules (`*.module.css`) for component-specific overrides.
+- Keep shared tokens in `globals.css`.
 
-## Deploy on Vercel
+## Development Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Follow the shared [coding standards](../docs/coding-standards.md).
+- Components under `components/masterdata/` prototype openBIS property types; keep them self-contained and well-documented.
+- Update the relevant documentation when adding new features or changing behaviour.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Testing
+
+Testing infrastructure is being defined. When adding logic, include unit or interaction tests and document any manual verification steps in the PR.
+
+## Further Reading
+
+- [Project README](../README.md)
+- [Contribution guide](../CONTRIBUTING.md)
+- [Tech stack](../docs/tech-stack.md)
