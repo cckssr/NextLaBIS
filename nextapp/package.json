@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check-naming": "node scripts/check-naming.js"
   },
   "dependencies": {
     "@mantine/core": "^7.16.3",
@@ -15,9 +16,9 @@
     "@mantine/notifications": "^7.16.3",
     "@tabler/icons-react": "^3.30.0",
     "dayjs": "^1.11.13",
-    "next": "15.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "next": "^16.0.10",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -25,7 +26,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.1.6",
+    "eslint-config-next": "^16.0.10",
     "typescript": "^5"
   }
 }
