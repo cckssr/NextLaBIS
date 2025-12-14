@@ -4,11 +4,11 @@ The technology choices reflect the goal of building a responsive, component-driv
 
 ## Application Framework
 
-- **Next.js 15** – Provides hybrid rendering (SSG/SSR), file-based routing, and performance optimisations suitable for data-heavy applications.
+- **Next.js 16** - Next.js App Router for file-based routing, server components, and hybrid static & dynamic rendering.
 - **React 19** – Core UI library powering reusable components and client interactions.
 - **TypeScript 5** – Adds static typing and better tooling for a growing contributor base.
 
-## UI and Styling
+## UI and Stylin
 
 - **Mantine 7** – Component library with accessible defaults, theming support, and rapid prototyping capabilities.
 - **@tabler/icons-react** – Icon set used across layout and masterdata components.

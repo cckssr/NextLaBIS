@@ -13,8 +13,24 @@ The repository uses a lightweight Git workflow that keeps `main` stable while en
 ## Workflow
 
 1. Create a branch from `develop` using the appropriate prefix.
+
+   ```shell
+    git checkout develop
+    git pull origin develop
+    git checkout -b feature/123-add-user-authentication
+   ```
+
 2. Commit work incrementally following the [coding standards](coding-standards.md).
 3. Rebase on top of `develop` before opening or updating a PR to maintain a linear history.
+
+   ```shell
+    git fetch origin
+    git checkout develop
+    git pull origin develop
+    git checkout feature/123-add-user-authentication
+    git rebase develop
+   ```
+
 4. Open a pull request referencing the related issue or epic. Ensure automated checks pass.
 5. After approval, squash merge into `develop` unless the commit history adds explicit value.
 
