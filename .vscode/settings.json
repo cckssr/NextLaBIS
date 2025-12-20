@@ -10,10 +10,13 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   "editor.formatOnSave": true,
-  "css.styleSheets": ["nextapp/src/**/*.css"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
-  },
-  "eslint.validate": ["typescript", "typescriptreact"]
+  "todohighlight.keywords": [
+    {
+      "text": "NOTE:",
+      "color": "yellow",
+      "backgroundColor": "blue",
+      "overviewRulerColor": "grey"
+    }
+  ],
+  "css.styleSheets": ["nextapp/src/**/*.css"]
 }
