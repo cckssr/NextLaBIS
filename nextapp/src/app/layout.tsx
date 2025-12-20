@@ -1,32 +1,16 @@
-// Package import
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import React from "react";
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
+import "@mantine/core/styles.css";
+
 import {
   ColorSchemeScript,
   MantineProvider,
   mantineHtmlProps,
 } from "@mantine/core";
 
-// Style import
-import "./globals.css";
-import "@mantine/core/styles.css";
-import "@mantine/dates/styles.css";
-import DefaultAppShell from "@/components/appshell";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "NextLaBIS",
-  description: "Modern web interface for OpenBIS",
+export const metadata = {
+  title: "My app",
+  description: "I have followed setup instructions carefully",
 };
 
 export default function RootLayout({
@@ -40,9 +24,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>
-          <DefaultAppShell>{children}</DefaultAppShell>
-        </MantineProvider>
+        <MantineProvider>{children}</MantineProvider>
       </body>
     </html>
   );

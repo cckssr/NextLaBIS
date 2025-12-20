@@ -1,5 +1,10 @@
-import { Title } from "@mantine/core";
+import Demo from "../components/shell/AppShell";
+import "./styles/globals.css";
 
-export default function Home() {
-  return <Title order={1}>Hello, world!</Title>;
+export default function HomePage() {
+  return (
+    <>
+      <Demo />
+    </>
+  );
 }

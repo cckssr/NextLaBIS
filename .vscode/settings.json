@@ -17,5 +17,6 @@
       "backgroundColor": "blue",
       "overviewRulerColor": "grey"
     }
-  ]
+  ],
+  "css.styleSheets": ["nextapp/src/**/*.css"]
 }
