@@ -1,10 +1,5 @@
-import Demo from "../components/shell/AppShell";
-import "./styles/globals.css";
+import { redirect } from "next/navigation";
 
 export default function HomePage() {
-  return (
-    <>
-      <Demo />
-    </>
-  );
+  redirect("/dashboard");
 }
