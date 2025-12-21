@@ -22,6 +22,18 @@ import {
   Icon,
 } from "@tabler/icons-react";
 
+/**
+ * Props for TopNav component.
+ *
+ * @param currentView - The current view of the application.
+ * @param isNavigationOpen - Whether the navigation sidebar is open.
+ * @param toggleNavigation - Function to toggle the navigation sidebar.
+ * @param navigateToDashboard - Function to navigate to the dashboard view.
+ * @param navigateToInventory - Function to navigate to the inventory view.
+ * @param navigateToSearch - Function to navigate to the search view.
+ * @param navigateToCreateObject - Function to navigate to the create object view.
+ * @param navigateToSettings - Function to navigate to the settings view.
+ */
 interface TopNavProps {
   currentView: { type: string };
   isNavigationOpen: boolean;
@@ -33,6 +45,17 @@ interface TopNavProps {
   navigateToSettings: () => void;
 }
 
+/**
+ * Top navigation bar shown on all application pages.
+ *
+ * Responsibilities:
+ * - Global navigation actions
+ * - Toggle sidebar navigation
+ * - Display user identity
+ *
+ * Server/Client:
+ * - Client Component (interactive)
+ */
 export function TopNav({
   currentView,
   isNavigationOpen,
@@ -60,7 +83,7 @@ export function TopNav({
         </Text>
 
         {/* Navigation buttons */}
-        <ButtonGroup ml="xl" spacing="sm">
+        <Group ml="xl" gap={8}>
           <NavigationButton
             onClick={navigateToDashboard}
             currentView={currentView}
@@ -96,14 +119,14 @@ export function TopNav({
             label="Settings"
             viewType="settings"
           />
-        </ButtonGroup>
+        </Group>
 
         {/* User info */}
         <Group ml="auto" mr="md">
-          <Text size="sm" c="dimmed" visibleFrom="md">
+          <Text size="sm" c="dimmed" visibleFrom="lg">
             Dr. Johnson • Physics Lab
           </Text>
-          <Avatar name="DJ" size="md" color="blue" />
+          <Avatar name="DJ" size="md" />
         </Group>
       </Flex>
     </AppShell.Header>
@@ -118,6 +141,15 @@ interface NavigationButtonProps {
   viewType: string;
 }
 
+/**
+ * Navigation button used inside TopNav.
+ *
+ * Renders:
+ * - Button (icon + label) on desktop
+ * - ActionIcon (icon-only) on mobile
+ *
+ * Active state is derived from currentView.
+ */
 function NavigationButton({
   onClick,
   currentView,
