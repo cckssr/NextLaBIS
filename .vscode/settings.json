@@ -10,13 +10,5 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   "editor.formatOnSave": true,
-  "todohighlight.keywords": [
-    {
-      "text": "NOTE:",
-      "color": "yellow",
-      "backgroundColor": "blue",
-      "overviewRulerColor": "grey"
-    }
-  ],
   "css.styleSheets": ["nextapp/src/**/*.css"]
 }

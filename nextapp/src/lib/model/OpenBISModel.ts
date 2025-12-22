@@ -10,6 +10,8 @@ export type OpenbisEntityKind =
   | "EXPERIMENT"
   | "DATASET";
 
+  // TODO: fully implement OpenBIS types and extensions for each type
+  // FEAT: add zod schemas for validation of json-rpc output
 export interface OpenbisEntityBase {
   kind: OpenbisEntityKind;
   permId: string;
