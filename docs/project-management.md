@@ -24,16 +24,16 @@ NextLaBIS tracks work using GitHub issues organised into phases, epics, and sub-
 
 ## Labels
 
-| Label | Purpose |
-| ----- | ------- |
-| `phase:0-foundations` | Issues contributing to Phase 0 goals. |
-| `phase:1-core-data` | Issues scheduled for Phase 1. |
-| `phase:2-eln-features` | Future backlog items. |
-| `type:epic` | High-level issue describing a significant body of work. |
-| `type:sub-issue` | Executable task linked to an epic. |
-| `type:bug` | Defect or regression. |
-| `status:needs-scoping` | Requires clarification before implementation. |
-| `good first issue` | Beginner-friendly entry points. |
+| Label                  | Purpose                                                 |
+| ---------------------- | ------------------------------------------------------- |
+| `phase:0-foundations`  | Issues contributing to Phase 0 goals.                   |
+| `phase:1-core-data`    | Issues scheduled for Phase 1.                           |
+| `phase:2-eln-features` | Future backlog items.                                   |
+| `type:epic`            | High-level issue describing a significant body of work. |
+| `type:sub-issue`       | Executable task linked to an epic.                      |
+| `type:bug`             | Defect or regression.                                   |
+| `status:needs-scoping` | Requires clarification before implementation.           |
+| `good first issue`     | Beginner-friendly entry points.                         |
 
 ## Linking Issues
 
