@@ -1,5 +1,6 @@
 import { SearchCard } from "@/components/dashboard/SearchCard.server";
-import { Header } from "@/components/dashboard/Header.sever";
+import { Header } from "@/components/dashboard/Header.server";
+import { SpacesOverviewCard } from "@/components/dashboard/SpacesOverviewCard.server";
 import {
   Flex,
   Stack,
@@ -21,11 +22,10 @@ export default function DashboardPage() {
     <Stack>
       <Header />
       <SearchCard />
-
       <Grid mt="md" gutter="md">
         {/* Spaces Card */}
         <GridCol span={8}>
-          <Card withBorder={true} p="lg" shadow="md" radius="lg"></Card>
+          <SpacesOverviewCard />
         </GridCol>
         <GridCol span={4}>
           {/* Recent Activities Card */}
