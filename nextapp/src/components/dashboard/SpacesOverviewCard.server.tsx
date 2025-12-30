@@ -1,5 +1,6 @@
-import { Card, Group, Text, Title } from "@mantine/core";
+import { Card, Group, Text, Title, Stack } from "@mantine/core";
 import { IconFolder } from "@tabler/icons-react";
+import { SpaceCard } from "./SpaceCard.server";
 
 /**
  * Props for SpacesOverviewCard component.
@@ -30,6 +31,21 @@ export function SpacesOverviewCard({
         <Title order={4}>Your Spaces</Title>
       </Group>
       <Text c="dimmed">Overview of your spaces with recent activity</Text>
+      <Stack align="stretch" justify="flex-start" spacing="md" mt="md">
+        {spaces.slice(0, maxSpaceCount).map((space) => (
+          <SpaceCard
+            key={space.code}
+            code={space.code}
+            modificationDate={space.modificationDate}
+            modifiedBy={space.modifiedBy}
+            numberOfProjects={space.numberOfProjects}
+            numberOfCollections={space.numberOfCollections}
+            description={space.description}
+            tags={space.tags}
+            spaceRights={space.spaceRights}
+          />
+        ))}
+      </Stack>
     </Card>
   );
 }

@@ -1,0 +1,33 @@
+/* RightsPill styles CSS for conforming with Mantine components Styles API */
+.rightsPill {
+  border: 1px solid var(--mantine-color-primary-7);
+  background-color: transparent;
+}
+/* FIXME: text is not vertically centered */
+/* Admin role - Red/Error color */
+.admin {
+  border: 1px solid var(--mantine-color-red-6);
+  background-color: var(--mantine-color-red-6);
+  color: var(--mantine-color-white);
+}
+
+/* Power User role - Orange/Warning color */
+.powerUser {
+  border: 1px solid var(--mantine-color-orange-6);
+  background-color: var(--mantine-color-orange-6);
+  color: var(--mantine-color-white);
+}
+
+/* User role - Blue/Info color */
+.user {
+  border: 1px solid var(--mantine-color-blue-6);
+  background-color: var(--mantine-color-blue-6);
+  color: var(--mantine-color-white);
+}
+
+/* Observer role - Gray/Muted color */
+.observer {
+  border: 1px solid var(--mantine-color-gray-5);
+  background-color: var(--mantine-color-gray-5);
+  color: var(--mantine-color-black);
+}

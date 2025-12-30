@@ -1,0 +1,6 @@
+/* TagPill styles CSS for conforming with Mantine components Styles API */
+.tagPill {
+  border: 1px solid var(--mantine-color-primary-7);
+  background-color: transparent;
+  flex-shrink: 0;
+}
