@@ -1,21 +1,8 @@
-import { SearchCard } from "@/components/dashboard/SearchCard.server";
+import { ActivitiesOverviewCard } from "@/components/dashboard/ActivitiesOverviewCard.server";
 import { Header } from "@/components/dashboard/Header.server";
+import { SearchCard } from "@/components/dashboard/SearchCard.server";
 import { SpacesOverviewCard } from "@/components/dashboard/SpacesOverviewCard.server";
-import {
-  Flex,
-  Stack,
-  Group,
-  Space,
-  Text,
-  Button,
-  Card,
-  Title,
-  TextInput,
-  Grid,
-  GridCol,
-  CardSection,
-} from "@mantine/core";
-import { IconPlus, IconSearch } from "@tabler/icons-react";
+import { Grid, GridCol, Stack } from "@mantine/core";
 
 const MOCK_SPACES = [
   {
@@ -79,7 +66,7 @@ export default function DashboardPage() {
         </GridCol>
         <GridCol span={4}>
           {/* Recent Activities Card */}
-          <Card withBorder={true} p="lg" shadow="md" radius="lg"></Card>
+          <ActivitiesOverviewCard />
         </GridCol>
       </Grid>
     </Stack>

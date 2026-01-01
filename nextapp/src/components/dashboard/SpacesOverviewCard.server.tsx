@@ -17,8 +17,6 @@ interface SpacesCardProps {
  * SpacesOverviewCard component displays an overview of recent user spaces.
  * The overview card shows a list of spaces with recent activity.
  * Each space card is designed statically and then rendered with data within this component.
- *
- *
  */
 export function SpacesOverviewCard({
   maxSpaceCount = 4,

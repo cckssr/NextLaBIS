@@ -13,6 +13,7 @@ import {
   IconFlask,
   IconFolder,
   IconUser,
+  IconActivity,
 } from "@tabler/icons-react";
 import styles from "@/app/styles/tagPill.module.css";
 import TagPill from "../shared/TagPill/TagPill";
@@ -51,7 +52,7 @@ export function SpaceCard({
   const gridSpan = { md: "content", sm: 4, xs: 6 };
   return (
     <Card withBorder={true} p="lg" shadow="md" radius="lg">
-      <Flex gap="sm" wrap="nowrap" style={{ overflow: "hidden" }} w="100vw">
+      <Flex gap="sm" pr="md" wrap="nowrap" style={{ overflow: "hidden" }}>
         <Title order={4} mr="lg">
           {formattedCode}
         </Title>
