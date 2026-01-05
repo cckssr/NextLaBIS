@@ -1,0 +1,6 @@
+{
+  "name": "nextlabis",
+  "version": "0.1.0",
+  "description": "Schema-driven web frontend for openBIS ELN/LIMS",
+  "private": true
+}

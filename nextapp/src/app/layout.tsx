@@ -1,36 +1,34 @@
-// Package import
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import React from "react";
-
-// Style import
-import "./globals.css";
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
 import "@mantine/core/styles.css";
+import { theme } from "./styles/theme";
+import AppShellRoot from "../components/shell/AppShellRoot.client";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import {
+  ColorSchemeScript,
+  MantineProvider,
+  mantineHtmlProps,
+} from "@mantine/core";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "NextLaBIS",
-  description: "Modern web interface for OpenBIS",
+export const metadata = {
+  title: "My app",
+  description: "I have followed setup instructions carefully",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html lang="en" {...mantineHtmlProps}>
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body>
+        <MantineProvider theme={theme}>
+          <AppShellRoot>{children}</AppShellRoot>
+        </MantineProvider>
       </body>
     </html>
   );

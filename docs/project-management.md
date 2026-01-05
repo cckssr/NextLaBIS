@@ -1,39 +1,91 @@
 # Project Management
 
-NextLaBIS tracks work using GitHub issues organised into phases, epics, and sub-issues. This document explains how to navigate and contribute to the roadmap.
+NextLaBIS tracks work using GitHub issues organized by **features** and **development phases**. This document explains how to navigate and contribute to the roadmap.
 
 ## Terminology
 
-- **Phase** – A time-bound milestone representing a major objective (e.g., "Phase 0 – Foundations"). Phases provide context for prioritisation.
-- **Epic** – A large body of work within a phase. Epics describe features or initiatives and are tracked as GitHub issues with the `type:epic` label.
-- **Sub-issue** – A granular task derived from an epic. Sub-issues carry the implementation details and should be small enough to complete within a single PR.
+- **Feature** – A user-facing capability (e.g., "Dashboard Overview", "Object View"). Each feature has its own GitHub issue with subtasks.
+- **Phase** – A development stage for each feature:
+  - **Phase 0 (Visual-First)**: Build UI with mock data, define prop interfaces, document in Storybook
+  - **Phase 1 (API Integration)**: Replace mock data with real openBIS API, implement backend integration
+- **Epic** – A large initiative spanning multiple features (e.g., "Dashboard & Related Views").
+- **Sub-issue** – A granular task within a feature (e.g., "Implement SpacesOverviewCard component").
 
-## Current Phases
+## Issue Organization
 
-1. **Phase 0 – Foundations** (in progress)
-   - Goals: establish the Next.js project, Mantine theming, masterdata component scaffolding, and documentation baseline.
-   - Representative epics: `#1 App Shell`, `#2 Masterdata component library`, `#3 Documentation & developer experience`.
-2. **Phase 1 – Core Data Interactions** (upcoming)
-   - Goals: implement authentication flows, integrate with openBIS APIs, build project/sample browsing experiences.
-   - Planned epics: `Authentication & session management`, `Project hierarchy explorer`, `Dataset visualisation`.
-3. **Phase 2 – Advanced ELN Features** (backlog)
-   - Goals: offer template builders, workflow automation, and reporting dashboards.
-   - Planned epics: `Template designer`, `Workflow orchestration`, `Analytics & reporting`.
+### Feature Issue Template
 
-> _Note_: Issue numbers above are illustrative until created. Update this document as phases evolve.
+```markdown
+# Feature: Dashboard Overview
+
+## Phase 0: Visual-First (In Progress)
+
+- [ ] Define prop interfaces
+- [ ] Create mock data structure
+- [ ] Build SpacesOverviewCard component
+- [ ] Add responsive design
+- [ ] Add Storybook documentation
+- [ ] Code review & merge
+
+## Phase 1: API Integration (Future)
+
+- [ ] Implement openBIS.getSpaces()
+- [ ] Create API response mapper
+- [ ] Replace mock data
+- [ ] Test with real openBIS
+
+## Definition of Done (Phase 0)
+
+- [ ] Reusable component (prop interface)
+- [ ] Storybook stories added
+- [ ] Responsive (mobile, tablet, desktop)
+- [ ] TypeScript strict
+- [ ] All CI checks pass
+```
+
+### Current Features (Phase 0)
+
+1. **Dashboard Overview** (Phase 0: mock data + UI)
+
+   - Spaces overview card
+   - Activities overview card
+   - Search functionality
+
+2. **Object View** (Phase 0: mock data + UI)
+
+   - Object properties display
+   - Property editing interface
+   - Related objects/datasets
+
+3. **Masterdata Components** (Phase 0: complete)
+   - Property renderers (Boolean, Integer, Varchar, etc.)
+   - Shared UI primitives (RightsPill, TagPill)
+
+### Planned Features (Phase 1+)
+
+- Project/Collection hierarchy explorer
+- Dataset browser
+- Sample/Object creation wizard
+- Advanced search & filtering
 
 ## Labels
 
-| Label | Purpose |
-| ----- | ------- |
-| `phase:0-foundations` | Issues contributing to Phase 0 goals. |
-| `phase:1-core-data` | Issues scheduled for Phase 1. |
-| `phase:2-eln-features` | Future backlog items. |
-| `type:epic` | High-level issue describing a significant body of work. |
-| `type:sub-issue` | Executable task linked to an epic. |
-| `type:bug` | Defect or regression. |
-| `status:needs-scoping` | Requires clarification before implementation. |
-| `good first issue` | Beginner-friendly entry points. |
+| Label                     | Purpose                          |
+| ------------------------- | -------------------------------- |
+| `phase:0-visual-first`    | Phase 0 work (UI with mock data) |
+| `phase:1-api-integration` | Phase 1 work (real API)          |
+| `feature:dashboard`       | Related to dashboard             |
+| `feature:object-view`     | Related to object views          |
+| `feature:masterdata`      | Related to property renderers    |
+| `type:epic`               | High-level feature/initiative    |
+| `type:sub-issue`          | Executable task                  |
+| `type:bug`                | Defect or regression             |
+| `type:refactor`           | Code organization/cleanup        |
+| `type:docs`               | Documentation                    |
+| `status:in-progress`      | Currently being worked on        |
+| `status:ready-for-review` | Ready for PR review              |
+| `status:blocked`          | Waiting on dependencies          |
+| `good first issue`        | Beginner-friendly                |
 
 ## Linking Issues
 
