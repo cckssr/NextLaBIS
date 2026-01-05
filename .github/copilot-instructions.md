@@ -185,6 +185,7 @@ export function BooleanForm({
 - **Return types**: Explicit on functions, inferred on components
 - **Imports**: Use `@/` path alias for src imports (`@/components/...`, not `../../../`)
 - **Comments**: Explain intent, not obvious code (e.g., "// GridCol span scales down on mobile")
+- **Docstrings**: For complex functions/types, use JSDoc style
 
 ### ESLint & Linting
 
@@ -245,8 +246,13 @@ These same checks run in GitHub Actions on pull requests to `main` or `develop`.
 ## When in Doubt
 
 1. **Check existing patterns**: Look at `src/components/masterdata/*.tsx` – they're reference implementations
-2. **Read docs**: `docs/architecture.md`, `docs/coding-standards.md`, `docs/tech-stack.md`
-3. **Verify phase**: Is this Phase 0 work or Phase 1+? (Check GitHub issues / project-management.md)
+2. **Read docs**:
+   - `docs/architecture.md` – Folder structure, naming conventions, schema-driven patterns
+   - `docs/visual-first-workflow.md` – Mock data strategy, Phase 0 → Phase 1 integration
+   - `docs/storybook-guide.md` – Component documentation & regression testing
+   - `docs/coding-standards.md` – Code quality, TypeScript, accessibility
+   - `docs/tech-stack.md` – Dependencies, tooling roadmap
+3. **Verify approach**: Are you building with mock data (Phase 0) or integrating real API (Phase 1)?
 4. **Test Mantine first**: 99% of UI needs are solved by Mantine. Don't custom-code layouts.
 5. **Use TypeScript**: Always define prop interfaces; let inference handle the rest.
 
@@ -255,9 +261,13 @@ These same checks run in GitHub Actions on pull requests to `main` or `develop`.
 ## Project Management & Development Workflow
 
 - **Phases**: Phase 0 (Foundations) → Phase 1 (Core Data) → Phase 2 (Advanced ELN)
-- **Issues**: Tracked as epics → sub-issues. Labels: `phase:0-foundations`, `type:epic`, `type:sub-issue`
-- **Commits**: Imperative mood (e.g., "Add masterdata integer component")
-- **Testing**: Not yet required; prepare test structure in Phase 1
+- **Development Approach**: Visual-first with mock data (Phase 0), real API integration (Phase 1)
+- **Issues**: Tracked as epics → sub-issues. Labels: `phase:0-visual-first`, `phase:1-api-integration`, `type:epic`, `type:sub-issue`
+- **Branches**: Feature branches per view/feature (e.g., `feature/dashboard-overview`), squash before merge
+- **Commits**: Frequent during development, squashed/rebased before PR
+- **Testing**: Storybook documentation (Phase 0+), no unit tests yet (Phase 1+)
+
+See `docs/git-workflow.md` for detailed branch, commit, and PR strategies.
 
 ---
 
