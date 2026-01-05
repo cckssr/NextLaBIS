@@ -15,20 +15,27 @@ Current situation:
 
 ## Branch Strategy
 
-### Branch Naming Convention
+### Main Branches (Protected)
+
+- **`main`**: Production-ready, stable releases only. Tagged with version numbers (v0.1.0, v0.2.0, etc.)
+- **`develop`**: Integration branch. Base for all feature development. Where Phase 0 features accumulate.
+
+### Feature Branches (Temporary)
+
+Always branch from and PR against **`develop`** (not `main`):
 
 ```shell
-feature/<feature_name>     # New feature (visual-first + mock data)
-refactor/<feature_name>    # Code cleanup, extraction
-fix/<feature_name>         # Bug fixes
-docs/<topic>               # Documentation only
-phase1/<feature_name>      # Real API integration (Phase 1)
+feature/<feature_name>     # New feature (visual-first + mock data) → PR to develop
+refactor/<feature_name>    # Code cleanup, extraction → PR to develop
+fix/<feature_name>         # Bug fixes → PR to develop
+docs/<topic>               # Documentation only → PR to develop
+phase1/<feature_name>      # Real API integration (Phase 1) → PR to develop
 ```
 
 ### Examples
 
 ```bash
-# Phase 0: Visual-first work
+# Phase 0: Visual-first work (all branch from develop)
 feature/dashboard-overview
 feature/object-view
 feature/property-renderers
@@ -43,13 +50,17 @@ refactor/extract-shared-components
 refactor/naming-consistency
 ```
 
-### Branch Workflow
+### Daily Workflow
 
 ```bash
-# Create feature branch
+# 1. Start from develop (latest)
+git checkout develop
+git pull origin develop
+
+# 2. Create feature branch FROM develop
 git checkout -b feature/dashboard-overview
 
-# Make changes, commit frequently (messy is OK)
+# 3. Make changes, commit frequently (messy is OK during exploration)
 git add src/components/dashboard/SpacesOverviewCard.server.tsx
 git commit -m "Add SpacesOverviewCard component"
 
@@ -61,14 +72,30 @@ git commit -m "Add Storybook stories for SpacesOverviewCard"
 
 # ... more commits while exploring ...
 
-# Before submitting PR: Clean up commits
-git rebase -i main
+# 4. Before submitting PR: Clean up commits
+git rebase -i origin/develop
 
-# Force push to your branch (safe because it's your branch)
+# 5. Force push to your branch (safe because it's your branch)
 git push origin feature/dashboard-overview --force
 
-# Create PR for review
-# Squash commits in PR if necessary, or merge as clean history
+# 6. Create PR against develop (not main)
+# GitHub: Base branch = develop, Compare = feature/dashboard-overview
+```
+
+### Merging to `main` (Release)
+
+Only when Phase 0 is complete and tested:
+
+```bash
+# On GitHub: Create PR from develop → main (no squash, preserve history)
+# Title: "Release v0.1.0: Phase 0 Complete"
+# After approval:
+
+git checkout main
+git pull origin main
+git merge develop --no-ff
+git tag -a v0.1.0 -m "Phase 0: Visual-First Foundations"
+git push origin main --tags
 ```
 
 ---
@@ -89,15 +116,16 @@ git commit -m "Add MOCK_SPACES with realistic test data"
 
 ### Before PR: Squash or Reorder
 
-Use interactive rebase to clean up:
+Use interactive rebase to clean up against develop:
 
 ```bash
-git rebase -i main
+git rebase -i origin/develop
 ```
 
 Options:
 
 - **Squash related commits**: Combine "Add component" + "Add stories" → "Add SpacesOverviewCard with documentation"
+- **Keep logical chunks**: Separate "Add component" from "Extract RightsPill to shared"
 - **Keep logical chunks**: Separate "Add component" from "Extract RightsPill to shared"
 
 ### After Merge: Clean History

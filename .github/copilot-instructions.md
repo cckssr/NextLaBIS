@@ -21,6 +21,24 @@ NextLaBIS is a schema-driven web frontend for openBIS ELN/LIMS, built with Next.
 
 ---
 
+## AI Agent Constraints (Critical)
+
+**Documentation Language**
+
+- All documentation must be written in **English only**, regardless of the language used in requests or prompts
+- Exception: Code comments may reflect variable/function names in any language; documentation (READMEs, guides, instructions) must be English
+
+**Documentation File Creation Policy**
+
+- **Only create new documentation files if:**
+  - Explicitly requested by the user, OR
+  - Absolutely necessary for the project (e.g., architectural gaps that block development)
+- **Never** auto-generate summary documents, changelogs, or similar artifacts
+- **Prefer** updating existing documentation over creating new files
+- Keep documentation minimal and focused; avoid redundancy with existing docs
+
+---
+
 ## Architecture at a Glance
 
 ### Data Flow (Non-Negotiable)
@@ -228,6 +246,24 @@ npm run build         # Full build (catches all errors)
 - Default: `kebab-case` or `snake_case` for non-component files
 
 These same checks run in GitHub Actions on pull requests to `main` or `develop`.
+
+### Pull Request Strategy
+
+**All feature PRs target `develop` (not `main`)**:
+
+1. Branch from `develop`: `git checkout -b feature/your-feature`
+2. Commit frequently during exploration (messy is OK)
+3. Before PR: Clean up with `git rebase -i origin/develop`
+4. Push: `git push origin feature/your-feature`
+5. Create PR: Base branch = **`develop`**, Compare = `feature/your-feature`
+6. After merge: Commits squashed into develop
+
+**Only `main` receives stable releases** (after Phase 0 complete):
+
+- `develop` → `main` (tagged v0.1.0, v0.2.0, etc.)
+- Direct commits to `main` prohibited
+
+See `docs/git-workflow.md` for details.
 
 ---
 
