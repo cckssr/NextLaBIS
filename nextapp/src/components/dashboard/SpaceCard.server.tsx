@@ -13,9 +13,7 @@ import {
   IconFlask,
   IconFolder,
   IconUser,
-  IconActivity,
 } from "@tabler/icons-react";
-import styles from "@/app/styles/tagPill.module.css";
 import TagPill from "../shared/TagPill/TagPill";
 import { OpenBISRole } from "@/types/openbis";
 import RightsPill from "../shared/RightsPill/RightsPill";

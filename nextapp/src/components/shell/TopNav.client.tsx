@@ -8,9 +8,7 @@ import {
   Avatar,
   Text,
   Burger,
-  Grid,
   Flex,
-  ButtonGroup,
 } from "@mantine/core";
 import {
   IconDashboard,

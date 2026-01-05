@@ -1,5 +1,5 @@
 "use client";
-import { AppShell, Burger } from "@mantine/core";
+import { AppShell } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { TopNav } from "./TopNav.client";
 import { Navbar } from "./SideNav.client";
