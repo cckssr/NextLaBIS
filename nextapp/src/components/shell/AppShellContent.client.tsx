@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Suspense } from "react";
 import { TopNav } from "./TopNav.client";
 import { Navbar } from "./SideNav.client";
-import { BreadcrumbsResolver } from "./BreadcrumbsResolver.client";
+import { Breadcrumbs } from "./Breadcrumbs.client";
 
 /**
  * Props for AppShellContent component.
@@ -64,7 +64,7 @@ export default function AppShellContent({ children }: AppShellContentProps) {
 
       <AppShell.Main maw={1200} mx="auto">
         <Suspense fallback={null}>
-          <BreadcrumbsResolver />
+          <Breadcrumbs />
         </Suspense>
         {children}
       </AppShell.Main>
