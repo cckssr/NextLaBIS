@@ -111,9 +111,14 @@ function buildBreadcrumbs(pathname: string): Crumb[] | null {
  */
 function Trail({ crumbs }: { crumbs: Crumb[] }) {
   return (
-    <MantineBreadcrumbs separator="—">
+    <MantineBreadcrumbs separator="/">
       {crumbs.map((c) => (
-        <Anchor key={`${c.kind}:${c.id}`} href={c.href} underline="hover">
+        <Anchor
+          key={`${c.kind}:${c.id}`}
+          href={c.href}
+          underline="hover"
+          c="primary.8"
+        >
           {c.label}
         </Anchor>
       ))}
