@@ -1,23 +1,39 @@
-import { Button, Flex, Stack, Text, Title } from "@mantine/core";
-import { IconPlus } from "@tabler/icons-react";
+"use server";
+import { Button, Flex, Group, Stack, Text, Title } from "@mantine/core";
+import { IconPlus, IconSettings } from "@tabler/icons-react";
 
-export const Header = () => (
-  <Flex align="center">
-    <Stack justify="flex-start" align="flex-start">
-      <Title order={1}>OpenBIS Dashboard</Title>
-      <Text size="md" c="dimmed">
-        Welcome back! Manage your research data and laboratory information.
-      </Text>
-    </Stack>
-    <Button
-      variant="filled"
-      size="md"
-      ml="auto"
-      my="auto"
-      leftSection={<IconPlus />}
-      visibleFrom="md"
-    >
-      Create New Space
-    </Button>
-  </Flex>
-);
+interface HeaderProps {
+  spaceName: string;
+  spaceDescription?: string;
+}
+
+export async function Header({ spaceName, spaceDescription }: HeaderProps) {
+  return (
+    <Flex align="center">
+      <Stack justify="flex-start" align="flex-start">
+        <Title order={2}>{spaceName}</Title>
+        <Text size="md" c="dimmed">
+          {spaceDescription || ""}
+        </Text>
+      </Stack>
+      <Group justify="flex-end" ml="auto">
+        <Button // TODO: Link to edit space details page
+          variant="filled"
+          size="md"
+          leftSection={<IconSettings />}
+          visibleFrom="sm"
+        >
+          Settings
+        </Button>
+        <Button // TODO: Link to create new project page within the space
+          variant="filled"
+          size="md"
+          leftSection={<IconPlus />}
+          visibleFrom="sm"
+        >
+          Create New Project
+        </Button>
+      </Group>
+    </Flex>
+  );
+}
