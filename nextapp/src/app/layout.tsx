@@ -2,7 +2,7 @@
 // All packages except `@mantine/hooks` require styles imports
 import "@mantine/core/styles.css";
 import { theme } from "./styles/theme";
-import AppShellRoot from "../components/shell/AppShellRoot.client";
+import AppShellLayout from "../components/shell/AppShellLayout.server";
 
 import {
   ColorSchemeScript,
@@ -27,7 +27,7 @@ export default function RootLayout({
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <AppShellRoot>{children}</AppShellRoot>
+          <AppShellLayout>{children}</AppShellLayout>
         </MantineProvider>
       </body>
     </html>

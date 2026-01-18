@@ -48,7 +48,7 @@ export function SpaceCard({
 }: SpaceCardProps) {
   const formattedCode =
     code.charAt(0).toUpperCase() + code.slice(1).toLowerCase(); // TODO:: Replace with proper formatting logic
-  const gridSpan = { md: "content", sm: 4, xs: 6 };
+  const gridSpan = { md: "auto", sm: 6, xs: 12 };
   return (
     <Link
       href={`/spaces/${encodeURIComponent(code)}`}
@@ -69,7 +69,7 @@ export function SpaceCard({
         <Text c="dimmed" lineClamp={2}>
           {description}
         </Text>
-        <Grid mt="xs" gap={0}>
+        <Grid mt="xs" gutter={0}>
           <GridCol span={gridSpan}>
             <Group gap={0} align="left">
               <IconFlask size={16} stroke="dimmed" />
