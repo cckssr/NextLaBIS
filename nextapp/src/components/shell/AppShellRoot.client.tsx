@@ -1,6 +1,7 @@
 "use client";
 import { AppShell } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { useRouter } from "next/navigation";
 import { TopNav } from "./TopNav.client";
 import { Navbar } from "./SideNav.client";
 
@@ -24,7 +25,12 @@ interface AppShellRootProps {
  * - Client Component (interactive)
  */
 export default function AppShellRoot({ children }: AppShellRootProps) {
+  const router = useRouter();
   const [navigationOpen, { toggle: burgerToggle }] = useDisclosure();
+
+  const handleNavigateToDashboard = () => {
+    router.push("/dashboard");
+  };
 
   return (
     <AppShell
@@ -40,7 +46,7 @@ export default function AppShellRoot({ children }: AppShellRootProps) {
         currentView={{ type: "dashboard" }}
         isNavigationOpen={navigationOpen}
         toggleNavigation={burgerToggle}
-        navigateToDashboard={() => {}}
+        navigateToDashboard={handleNavigateToDashboard}
         navigateToInventory={() => {}}
         navigateToSearch={() => {}}
         navigateToCreateObject={() => {}}
