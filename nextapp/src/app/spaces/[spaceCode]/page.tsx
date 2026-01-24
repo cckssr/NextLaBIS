@@ -1,19 +1,36 @@
-import { Header } from "@/components/spaces/Header.server";
 import { Stack } from "@mantine/core";
+import { Header } from "@/components/spaces/Header.server";
+import { MetadataPanel } from "@/components/spaces/MetadataPanel.server";
+import { ProjectsTable } from "@/components/spaces/ProjectsTable.client";
+import { getSpaceOverview } from "@/lib/spaces/getSpaceOverview";
 
 export interface SpaceOverviewPageProps {
   params: { spaceCode: string };
 }
+
 export default async function SpaceOverviewPage({
   params,
 }: SpaceOverviewPageProps) {
-  // TODO: convert spaceCode to spaceName if latter empty, include transformation of _ to space
   const { spaceCode } = await params;
-  const spaceDescription = "An example space description to be replaced later."; // TODO: Fetch space description from backend
+
+  const spaceOverview = await getSpaceOverview(spaceCode);
 
   return (
     <Stack>
-      <Header spaceName={spaceCode} spaceDescription={spaceDescription} />
+      <Header
+        spaceName={spaceOverview.space.code}
+        spaceDescription={spaceOverview.space.description ?? undefined}
+      />
+      <MetadataPanel
+        registratedBy={
+          spaceOverview.space.registratedBy.firstName ||
+          spaceOverview.space.registratedBy.userId
+        }
+        modificationDate={spaceOverview.space.modificationDate}
+        registrationDate={spaceOverview.space.registrationDate}
+        numberOfProjects={spaceOverview.projects.length}
+      />
+      <ProjectsTable projects={spaceOverview.projects} />
     </Stack>
   );
 }
