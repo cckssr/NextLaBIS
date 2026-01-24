@@ -19,6 +19,8 @@ import { OpenBISRole } from "@/types/openbis";
 import RightsPill from "../shared/RightsPill/RightsPill";
 import Link from "next/link";
 
+import { formatRelativeTime } from "@/lib/utils/datetimeFunctions";
+
 /**
  * Props for SpaceCard component.
  * TODO: Replace with Space model type
@@ -110,22 +112,4 @@ export function SpaceCard({
       </Card>
     </Link>
   );
-}
-
-/**
- * Formats a date to a relative time string (e.g., "2 days ago").
- *
- * @param date - The date to format.
- * @returns A string representing the relative time.
- */
-function formatRelativeTime(date: Date): string {
-  const now = new Date();
-  const diffInMs = date.getTime() - now.getTime();
-  const diffInDays = Math.round(diffInMs / (1000 * 60 * 60 * 24));
-  const diffInHours = Math.round(diffInMs / (1000 * 60 * 60));
-
-  if (Math.abs(diffInDays) < 1) {
-    return `${Math.floor(Math.abs(diffInHours))} hours ago`;
-  }
-  return `${Math.floor(Math.abs(diffInDays))} days ago`;
 }
