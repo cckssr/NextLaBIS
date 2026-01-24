@@ -11,15 +11,27 @@ export type OpenbisEntityKind =
 
 export type OpenbisDatasetKind = "Physical" | "Link";
 
+/**
+ * openBIS timestamp-based permId
+ * Format: YYYYMMDDHHMMSSmmm-#
+ * Example: 20241119170647917-13437
+ */
+export const OPENBIS_TIMESTAMP_PERMID_REGEX = /^\d{17}-\d+$/;
+// TODO:: validate regex correctness with zod (strict)
+
+export type OpenbisPermId = string & {
+  readonly __brand: "OpenbisTimestampPermId";
+};
+
 // TODO: fully implement OpenBIS types and extensions for each type
 // FEAT: add zod schemas for validation of json-rpc output
 export interface OpenbisEntityBase {
   kind: OpenbisEntityKind;
-  permId: string;
+  permId: OpenbisPermId;
   code: string;
-  registrationDate: number; // epoch ms
-  modificationDate: number; // epoch ms
-  registratedBy: string;
+  registrationDate: Date;
+  modificationDate: Date;
+  registratedBy: OpenbisUser;
   frozen?: boolean;
   description?: string | null;
 }
@@ -32,7 +44,7 @@ export interface OpenbisSpace extends OpenbisEntityBase {
 
 export interface OpenbisProject extends OpenbisEntityBase {
   kind: "PROJECT";
-  modifiedBy: string;
+  modifiedBy: OpenbisUser;
   leader?: string | null;
   frozenForCollections?: boolean;
   frozenForObjects?: boolean;
@@ -40,7 +52,7 @@ export interface OpenbisProject extends OpenbisEntityBase {
 
 export interface OpenbisCollection extends OpenbisEntityBase {
   kind: "COLLECTION";
-  modifiedBy: string;
+  modifiedBy: OpenbisUser;
   projectIdentifier: string;
   collectionType: string;
   tags?: string[];
@@ -50,7 +62,7 @@ export interface OpenbisCollection extends OpenbisEntityBase {
 
 export interface OpenbisObject extends OpenbisEntityBase {
   kind: "OBJECT";
-  modifiedBy: string;
+  modifiedBy: OpenbisUser;
   projectIdentifier: string;
   collectionIdentifier: string;
   objectType: string;
@@ -68,10 +80,10 @@ export interface OpenbisObject extends OpenbisEntityBase {
 export interface OpenbisDataset extends OpenbisEntityBase {
   kind: "DATASET";
   logicalKind: OpenbisDatasetKind;
-  modifiedBy: string;
-  accessDate: number; // epoch ms
+  modifiedBy: OpenbisUser;
+  accessDate: Date;
   dataProducedBy: string;
-  dataProductionDate: number; // epoch ms
+  dataProductionDate: Date;
   datastoreCode: string;
   measured: boolean;
   postRegistrationProcessingDone: boolean;
@@ -87,4 +99,14 @@ export interface OpenbisDataset extends OpenbisEntityBase {
   frozenForChildren?: boolean;
   frozenForComponents?: boolean;
   frozenForContainers?: boolean;
+}
+
+export interface OpenbisUser {
+  userPermId: string; // NOT like OpenbisPermId, different format
+  userId: string; // login name
+  registrationDate: Date;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  homeSpace?: OpenbisSpace;
 }
