@@ -1,8 +1,10 @@
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
-import "@mantine/core/styles.css";
+import "@mantine/core/styles.css" assert { type: "css" };
+import "@mantine/dates/styles.css" assert { type: "css" };
+import "mantine-react-table/styles.css" assert { type: "css" };
 import { theme } from "./styles/theme";
-import AppShellRoot from "../components/shell/AppShellRoot.client";
+import AppShellLayout from "@/components/shell/AppShellLayout.server";
 
 import {
   ColorSchemeScript,
@@ -11,8 +13,8 @@ import {
 } from "@mantine/core";
 
 export const metadata = {
-  title: "My app",
-  description: "I have followed setup instructions carefully",
+  title: "NextLaBIS",
+  description: "A modern ELN/LIMS interface for OpenBIS",
 };
 
 export default function RootLayout({
@@ -27,7 +29,7 @@ export default function RootLayout({
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <AppShellRoot>{children}</AppShellRoot>
+          <AppShellLayout>{children}</AppShellLayout>
         </MantineProvider>
       </body>
     </html>

@@ -2,21 +2,20 @@
 "use client";
 import { useState, useRef } from "react";
 import { TextInput, GridCol, Text, Tooltip, Stack } from "@mantine/core";
-import { useDescriptionProps } from "./common_functions";
 
 // type information for the props
 interface VarcharFormProps {
   code: string;
   name: string;
-  description: string;
-  pastValue?: string;
+  description?: string;
+  pastValue?: string | null;
   editable?: boolean;
   mandatory?: boolean;
-  error?: string;
+  error?: string | null;
 }
 
 // set grid span for the component on different screen sizes
-const gridSpan = { base: 12, md: 6, lg: "content" };
+const gridSpan = { base: 12, md: 6, lg: 4 };
 
 // TODO: using mantina form maybe?
 //TODO: Tags input and display
@@ -26,13 +25,13 @@ export function VarcharForm({
   description,
   pastValue = null,
   editable = true,
-  mandatory = false,
   error = null,
 }: VarcharFormProps) {
   // state for the value of the input field
   const [formValue, setValue] = useState(pastValue ?? "");
   // condition for checking if component should be large
-  const largeCondition = description.length > 100 || name.length > 100;
+  const largeCondition =
+    (description && description.length > 100) || name.length > 100;
   return (
     <GridCol span={largeCondition ? 12 : gridSpan}>
       <TextInput
@@ -44,11 +43,7 @@ export function VarcharForm({
           setValue(event.currentTarget.value);
         }}
         disabled={!editable}
-        withAsterisk={mandatory}
         description={description}
-        // handle long descriptions with line clamp
-        // TODO: remove if description is not long
-        descriptionProps={useDescriptionProps()}
         error={error}
         placeholder={"code: " + code}
       />
@@ -57,10 +52,9 @@ export function VarcharForm({
 }
 
 export function VarcharText({
-  code,
   name,
-  pastValue = null,
-  description = null,
+  pastValue,
+  description,
 }: VarcharFormProps) {
   // condition for checking if component should be large
   const largeCondition = description ? description.length > 100 : false;

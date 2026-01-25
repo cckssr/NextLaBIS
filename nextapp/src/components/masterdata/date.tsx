@@ -8,15 +8,15 @@ import { useDescriptionProps } from "./common_functions";
 interface DateFormProps {
   code: string;
   name: string;
-  description: string;
-  pastValue?: string;
+  description: string | null;
+  pastValue?: string | null;
   editable?: boolean;
   mandatory?: boolean;
-  error?: string;
+  error?: string | null;
 }
 
 // set grid span for the component on different screen sizes
-const gridSpan = { base: 12, md: 6, lg: "content" };
+const gridSpan = { base: 12, md: 6, lg: 4 };
 
 export function DateForm({
   code,
@@ -29,11 +29,12 @@ export function DateForm({
 }: DateFormProps) {
   // state for the value of the input field
   const [value, setValue] = useState<Date | null>(
-    pastValue ? new Date(pastValue) : null
+    pastValue ? new Date(pastValue) : null,
   );
 
   // condition for checking if component should be large
-  const largeCondition = description.length > 100 || name.length > 100;
+  const largeCondition =
+    description && (description.length > 100 || name.length > 100);
 
   return (
     <GridCol span={largeCondition ? 12 : gridSpan}>
@@ -56,11 +57,10 @@ export function DateForm({
 }
 
 export function DateText({
-  code,
   name,
   pastValue = null,
   description = null,
-}: DateFormProps) {
+}: Omit<DateFormProps, "code">) {
   // condition for checking if component should be large
   const largeCondition = description ? description.length > 100 : false;
   const textRef = useRef(null);

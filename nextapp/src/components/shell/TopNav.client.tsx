@@ -65,7 +65,7 @@ export function TopNav({
   navigateToSettings,
 }: TopNavProps) {
   return (
-    <AppShell.Header padding="xs">
+    <AppShell.Header p="xs">
       <Flex justify="flex-start" align="center" h="100%">
         <Burger
           opened={isNavigationOpen}

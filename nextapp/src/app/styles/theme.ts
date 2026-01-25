@@ -53,4 +53,12 @@ export const theme = createTheme({
   },
 
   defaultRadius: "lg",
+
+  components: {
+    Button: {
+      defaultProps: {
+        color: "primary.7",
+      },
+    },
+  },
 });

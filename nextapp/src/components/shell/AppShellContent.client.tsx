@@ -2,18 +2,18 @@
 import { AppShell } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/navigation";
+import { Suspense } from "react";
 import { TopNav } from "./TopNav.client";
 import { Navbar } from "./SideNav.client";
+import { Breadcrumbs } from "./Breadcrumbs.client";
 
 /**
  * Props for AppShellContent component.
  *
  * @property {React.ReactNode} children - The main content of the application
- * @property {React.ReactElement | null} breadcrumbs - Optional breadcrumbs element
  */
 interface AppShellContentProps {
   children: React.ReactNode;
-  breadcrumbs?: React.ReactElement | null;
 }
 
 /**
@@ -23,7 +23,7 @@ interface AppShellContentProps {
  * - Manages sidebar navigation state
  * - Handles navigation button interactions
  * - Renders header, sidebar, breadcrumbs, and main content
- * - Receives breadcrumbs from server-side parent component
+ * - Resolves breadcrumbs client-side using BreadcrumbsResolver
  *
  * Server/Client:
  * - Client Component (interactive state management)
@@ -31,10 +31,7 @@ interface AppShellContentProps {
  * @param {AppShellContentProps} props - Component props
  * @returns {React.ReactElement} Rendered shell content
  */
-export default function AppShellContent({
-  children,
-  breadcrumbs,
-}: AppShellContentProps) {
+export default function AppShellContent({ children }: AppShellContentProps) {
   const router = useRouter();
   const [navigationOpen, { toggle: burgerToggle }] = useDisclosure();
 
@@ -65,9 +62,10 @@ export default function AppShellContent({
 
       <Navbar />
 
-      {breadcrumbs}
-
-      <AppShell.Main maw={1200} mx="auto" mt="md">
+      <AppShell.Main maw={1200} mx="auto">
+        <Suspense fallback={null}>
+          <Breadcrumbs />
+        </Suspense>
         {children}
       </AppShell.Main>
     </AppShell>
