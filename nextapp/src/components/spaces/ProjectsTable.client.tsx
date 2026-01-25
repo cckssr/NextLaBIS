@@ -75,6 +75,7 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
           </Button>
         </Group>
       </Flex>
+      {/* FEAT: Try advanced MantineReactTable */}
       {/* Table */}
       <SortableTable
         data={tableData}
