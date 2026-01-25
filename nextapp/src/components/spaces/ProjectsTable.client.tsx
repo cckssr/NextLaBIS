@@ -86,6 +86,8 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
         rowKey="code"
         searchValue={search}
         highlightOnHover={true}
+        withRowBorders={false}
+        mt="md"
       />
     </Card>
   );
