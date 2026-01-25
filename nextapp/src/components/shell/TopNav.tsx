@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Group, Button, Avatar, Text, Burger, Box } from "@mantine/core";
 import { IconPackage } from "@tabler/icons-react";
 

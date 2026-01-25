@@ -10,7 +10,7 @@ import { SpaceCard } from "./SpaceCard.server";
  */
 interface SpacesCardProps {
   maxSpaceCount?: number;
-  spaces: Array; // TODO:: Replace Array with actual Space model type, e.g., Space[]
+  spaces: Array<any>; // TODO:: Replace Array with actual Space model type, e.g., Space[]
 }
 
 /**
@@ -29,7 +29,7 @@ export function SpacesOverviewCard({
         <Title order={4}>Your Spaces</Title>
       </Group>
       <Text c="dimmed">Overview of your spaces with recent activity</Text>
-      <Stack align="stretch" justify="flex-start" spacing="md" mt="md">
+      <Stack align="stretch" justify="flex-start" gap="md" mt="md">
         {spaces.slice(0, maxSpaceCount).map((space) => (
           <SpaceCard
             key={space.code}

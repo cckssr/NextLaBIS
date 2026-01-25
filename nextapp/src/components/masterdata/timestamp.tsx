@@ -2,21 +2,20 @@
 import { useState, useRef } from "react";
 import { DateInput, TimeInput } from "@mantine/dates";
 import { GridCol, Text, Tooltip, Stack, Group, Box } from "@mantine/core";
-import { useDescriptionProps } from "./common_functions";
 
 // type information for the props
 interface TimestampFormProps {
   code: string;
   name: string;
-  description: string;
-  pastValue?: string; // ISO format date string
+  description?: string | null; // ISO format date string
+  pastValue?: string | null; // ISO format date string
   editable?: boolean;
   mandatory?: boolean;
-  error?: string;
+  error?: string | null;
 }
 
 // set grid span for the component on different screen sizes
-const gridSpan = { base: 12, md: 6, lg: "content" };
+const gridSpan = { base: 12, md: 6, lg: 4 };
 
 export function TimestampForm({
   code,
@@ -38,11 +37,12 @@ export function TimestampForm({
           .getMinutes()
           .toString()
           .padStart(2, "0")}`
-      : ""
+      : "",
   );
 
   // condition for checking if component should be large
-  const largeCondition = description.length > 100 || name.length > 100;
+  const largeCondition =
+    (description && description.length > 100) || name.length > 100;
 
   return (
     <GridCol span={largeCondition ? 12 : gridSpan}>
@@ -50,22 +50,12 @@ export function TimestampForm({
         <Text fw={500} size="sm">
           {name}
           {mandatory && (
-            <Text span c="red" inheritFontFamily>
+            <Text span c="red">
               *
             </Text>
           )}
         </Text>
-        <Text
-          size="xs"
-          c="dimmed"
-          mb={5}
-          sx={(theme) => ({
-            lineClamp: 2,
-            "&:hover": {
-              lineClamp: "unset",
-            },
-          })}
-        >
+        <Text size="xs" c="dimmed" mb={5} lineClamp={2}>
           {description}
         </Text>
         <Group grow>
@@ -84,7 +74,7 @@ export function TimestampForm({
             size="md"
             radius="md"
             value={timeValue}
-            onChange={(val) => setTimeValue(val)}
+            onChange={(event) => setTimeValue(event.currentTarget.value)}
             disabled={!editable}
             error={error}
             placeholder="Select time"
@@ -100,11 +90,10 @@ export function TimestampForm({
 }
 
 export function TimestampText({
-  code,
   name,
   pastValue = null,
   description = null,
-}: TimestampFormProps) {
+}: Omit<TimestampFormProps, "code">) {
   // condition for checking if component should be large
   const largeCondition = description ? description.length > 100 : false;
   const textRef = useRef(null);
