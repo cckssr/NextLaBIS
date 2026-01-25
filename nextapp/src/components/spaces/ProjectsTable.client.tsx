@@ -34,7 +34,11 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
     numberOfCollections: project.numberOfCollections,
     numberOfObjects: project.numberOfObjects,
     registratedBy: formatUserName(project.registratedBy),
-    modificationDate: project.modificationDate.toLocaleDateString(),
+    modificationDate: project.modificationDate.toLocaleDateString("de-DE", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }),
   }));
 
   return (

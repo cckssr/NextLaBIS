@@ -11,8 +11,8 @@ import {
 } from "@mantine/core";
 
 export const metadata = {
-  title: "My app",
-  description: "I have followed setup instructions carefully",
+  title: "NextLaBIS",
+  description: "A modern ELN/LIMS interface for OpenBIS",
 };
 
 export default function RootLayout({
