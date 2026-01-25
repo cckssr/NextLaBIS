@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Card,
   Flex,
@@ -7,7 +8,6 @@ import {
   Stack,
   Text,
   Title,
-  Table,
   TextInput,
   Button,
 } from "@mantine/core";
@@ -19,22 +19,23 @@ import {
 } from "@tabler/icons-react";
 import { SpaceOverview } from "@/lib/spaces/model";
 import { formatUserName } from "@/lib/utils/userFunctions";
+import { SortableTable } from "../shared/SortableTable/Table.client";
 
 export interface ProjectsTableProps {
   projects: SpaceOverview["projects"];
 }
 
 export function ProjectsTable({ projects }: ProjectsTableProps) {
-  const rows = projects.map((element) => (
-    <Table.Tr key={element.code}>
-      <Table.Td>{element.code}</Table.Td>
-      <Table.Td>{element.description || ""}</Table.Td>
-      <Table.Td>{element.numberOfCollections}</Table.Td>
-      <Table.Td>{element.numberOfObjects}</Table.Td>
-      <Table.Td>{formatUserName(element.registratedBy)}</Table.Td>
-      <Table.Td>{element.modificationDate.toLocaleDateString()}</Table.Td>
-    </Table.Tr>
-  ));
+  const [search, setSearch] = useState("");
+
+  const tableData = projects.map((project) => ({
+    code: project.code,
+    description: project.description || "",
+    numberOfCollections: project.numberOfCollections,
+    numberOfObjects: project.numberOfObjects,
+    registratedBy: formatUserName(project.registratedBy),
+    modificationDate: project.modificationDate.toLocaleDateString(),
+  }));
 
   return (
     <Card withBorder={true} p="lg" shadow="md" radius="lg">
@@ -53,6 +54,8 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
           <TextInput
             placeholder="Search projects..."
             leftSection={<IconSearch size={16} stroke={1.5} />}
+            value={search}
+            onChange={(e) => setSearch(e.currentTarget.value)}
           />
           <Button
             variant="outline"
@@ -69,21 +72,21 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
         </Group>
       </Flex>
       {/* Table */}
-      <Table.ScrollContainer minWidth={500} mt="md">
-        <Table highlightOnHover stickyHeader withRowBorders withTableBorder>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th>Code</Table.Th>
-              <Table.Th>Description</Table.Th>
-              <Table.Th>Collections</Table.Th>
-              <Table.Th>Objects</Table.Th>
-              <Table.Th>Registrated By</Table.Th>
-              <Table.Th>Last Modified</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
-          <Table.Tbody>{rows}</Table.Tbody>
-        </Table>
-      </Table.ScrollContainer>
+      <SortableTable
+        data={tableData}
+        columns={[
+          { key: "code", label: "Code" },
+          { key: "description", label: "Description" },
+          { key: "numberOfCollections", label: "Collections" },
+          { key: "numberOfObjects", label: "Objects" },
+          { key: "registratedBy", label: "Registrated By" },
+          { key: "modificationDate", label: "Last Modified" },
+        ]}
+        showSearch={false}
+        rowKey="code"
+        searchValue={search}
+        highlightOnHover={true}
+      />
     </Card>
   );
 }
