@@ -13,11 +13,10 @@ import { SpaceOverview } from "./model";
  * @returns Complete space overview or null if not found
  */
 export function getSpaceOverviewMock(spaceCode: string): SpaceOverview | null {
-  // TODO: In Phase 1, fetch multiple mock objects based on spaceCode
-  // For now, return the single mock space if code matches
-  if (spaceCode === spaceOverviewMock.space.code) {
-    return spaceOverviewMock;
-  }
+  // Search through mock data array for matching space code
+  const spaceOverview = spaceOverviewMock.find(
+    (overview) => overview.space.code === spaceCode,
+  );
 
-  return null;
+  return spaceOverview || null;
 }
