@@ -1,0 +1,172 @@
+HTTP/1.1 200 OK
+Date: Tue, 27 Jan 2026 14:42:48 GMT
+Server: Jetty(9.4.44.v20210927)
+X-Frame-Options: SAMEORIGIN
+Cache-Control: max-age=3600
+Content-Type: application/json-rpc
+Vary: Accept-Encoding,User-Agent
+Content-Encoding: gzip
+Content-Length: 841
+Connection: close
+
+{
+  "jsonrpc": "2.0",
+  "id": "1",
+  "result": {
+    "@type": "as.dto.common.search.SearchResult",
+    "@id": 1,
+    "objects": [
+      {
+        "@type": "as.dto.experiment.Experiment",
+        "@id": 2,
+        "fetchOptions": {
+          "@type": "as.dto.experiment.fetchoptions.ExperimentFetchOptions",
+          "@id": 3,
+          "count": null,
+          "from": null,
+          "cacheMode": "NO_CACHE",
+          "type": {
+            "@type": "as.dto.experiment.fetchoptions.ExperimentTypeFetchOptions",
+            "@id": 4,
+            "count": null,
+            "from": null,
+            "cacheMode": "NO_CACHE",
+            "propertyAssignments": null,
+            "validationPlugin": null,
+            "sort": null,
+            "sortBy": null
+          },
+          "project": {
+            "@type": "as.dto.project.fetchoptions.ProjectFetchOptions",
+            "@id": 5,
+            "count": null,
+            "from": null,
+            "cacheMode": "NO_CACHE",
+            "experiments": null,
+            "samples": null,
+            "history": null,
+            "space": null,
+            "registrator": null,
+            "modifier": null,
+            "leader": null,
+            "attachments": null,
+            "sort": null,
+            "sortBy": null
+          },
+          "dataSets": null,
+          "samples": null,
+          "history": null,
+          "properties": {
+            "@type": "as.dto.property.fetchoptions.PropertyFetchOptions",
+            "@id": 6,
+            "count": null,
+            "from": null,
+            "cacheMode": "NO_CACHE",
+            "sortBy": null
+          },
+          "materialProperties": null,
+          "sampleProperties": null,
+          "tags": null,
+          "registrator": null,
+          "modifier": null,
+          "attachments": null,
+          "sort": null,
+          "sortBy": null
+        },
+        "permId": {
+          "@type": "as.dto.experiment.id.ExperimentPermId",
+          "@id": 7,
+          "permId": "20240607165704097-11236"
+        },
+        "identifier": {
+          "@type": "as.dto.experiment.id.ExperimentIdentifier",
+          "@id": 8,
+          "identifier": "/BEISPIELE/GRUNDPRAKTIKA/GRUNDPRAKTIKA_EXP_1"
+        },
+        "code": "GRUNDPRAKTIKA_EXP_1",
+        "frozen": false,
+        "frozenForDataSets": false,
+        "frozenForSamples": false,
+        "registrationDate": 1717772224179,
+        "modificationDate": 1717950680186,
+        "type": {
+          "@type": "as.dto.experiment.ExperimentType",
+          "@id": 9,
+          "fetchOptions": 4,
+          "permId": {
+            "@type": "as.dto.entitytype.id.EntityTypePermId",
+            "@id": 10,
+            "permId": "GP_THEMENKREIS",
+            "entityKind": "EXPERIMENT"
+          },
+          "code": "GP_THEMENKREIS",
+          "description": null,
+          "modificationDate": 1713262776639,
+          "propertyAssignments": null,
+          "validationPlugin": null
+        },
+        "project": {
+          "@type": "as.dto.project.Project",
+          "@id": 11,
+          "fetchOptions": {
+            "@type": "as.dto.project.fetchoptions.ProjectFetchOptions",
+            "@id": 12,
+            "count": null,
+            "from": null,
+            "cacheMode": "NO_CACHE",
+            "experiments": null,
+            "samples": null,
+            "history": null,
+            "space": null,
+            "registrator": null,
+            "modifier": null,
+            "leader": null,
+            "attachments": null,
+            "sort": null,
+            "sortBy": null
+          },
+          "permId": {
+            "@type": "as.dto.project.id.ProjectPermId",
+            "@id": 13,
+            "permId": "20230724183132672-3738"
+          },
+          "identifier": {
+            "@type": "as.dto.project.id.ProjectIdentifier",
+            "@id": 14,
+            "identifier": "/BEISPIELE/GRUNDPRAKTIKA"
+          },
+          "code": "GRUNDPRAKTIKA",
+          "description": "<p>Hier finden sich verschiedene Themenkreise aus den Physikalischen Grundpraktika</p>",
+          "frozen": false,
+          "frozenForExperiments": false,
+          "frozenForSamples": false,
+          "registrationDate": 1690216292672,
+          "modificationDate": 1766076350543,
+          "experiments": null,
+          "samples": null,
+          "history": null,
+          "space": null,
+          "registrator": null,
+          "modifier": null,
+          "leader": null,
+          "attachments": null
+        },
+        "dataSets": null,
+        "samples": null,
+        "history": null,
+        "properties": {
+          "$NAME": "eLas He-Ne Laser",
+          "EXPERIMENT.ROOM": "EW155",
+          "$DEFAULT_OBJECT_TYPE": "GP_STANDARDVERSUCH"
+        },
+        "materialProperties": null,
+        "sampleProperties": null,
+        "tags": null,
+        "registrator": null,
+        "modifier": null,
+        "attachments": null
+      }
+    ],
+    "totalCount": 1
+  }
+}

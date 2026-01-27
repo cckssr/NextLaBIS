@@ -1,0 +1,178 @@
+POST https://openbis.physik.tu-berlin.de/openbis/openbis/rmi-application-server-v3.json HTTP/1.1
+Content-Type: application/json
+
+{
+    "method": "searchSamples",
+    "params": [
+        "cedric.kessler-260127102416326x77962A1B06125385432AE8B8F484C3E6",
+        {
+        "@id": 0,
+        "@type": "as.dto.sample.search.SampleSearchCriteria",
+        "operator": "AND",
+        "negated": false,
+        "criteria": [
+            {
+            "@id": 1,
+            "criteria": [
+                {
+                "@id": 2,
+                "criteria": [
+                    {
+                    "@id": 3,
+                    "fieldName": "perm id",
+                    "fieldType": "ATTRIBUTE",
+                    "fieldValue": {
+                        "@id": 4,
+                        "value": "20240607165704097-11236",
+                        "@type": "as.dto.common.search.StringEqualToValue"
+                    },
+                    "useWildcards": false,
+                    "@type": "as.dto.common.search.PermIdSearchCriteria"
+                    }
+                ],
+                "operator": "AND",
+                "negated": false,
+                "@type": "as.dto.experiment.search.ExperimentSearchCriteria"
+                }
+            ],
+            "relation": "SAMPLE",
+            "operator": "AND",
+            "negated": false,
+            "@type": "as.dto.sample.search.SampleSearchCriteria"
+            },
+            {
+            "@id": 5,
+            "criteria": [],
+            "relation": "SAMPLE",
+            "operator": "AND",
+            "negated": false,
+            "@type": "as.dto.sample.search.SampleSearchCriteria"
+            }
+        ]
+        },
+        {
+        "@id": 0,
+        "type": {
+            "@id": 1,
+            "@type": "as.dto.sample.fetchoptions.SampleTypeFetchOptions",
+            "sort": null,
+            "propertyAssignments": null,
+            "validationPlugin": null,
+            "semanticAnnotations": null
+        },
+        "space": {
+            "@id": 2,
+            "@type": "as.dto.space.fetchoptions.SpaceFetchOptions",
+            "registrator": null,
+            "samples": null,
+            "projects": null,
+            "sort": null
+        },
+        "registrator": {
+            "@id": 3,
+            "@type": "as.dto.person.fetchoptions.PersonFetchOptions",
+            "space": null,
+            "registrator": null,
+            "roleAssignments": null,
+            "webAppSettings": null,
+            "allWebAppSettings": false,
+            "sort": null
+        },
+        "modifier": {
+            "@id": 4,
+            "@type": "as.dto.person.fetchoptions.PersonFetchOptions",
+            "space": null,
+            "registrator": null,
+            "roleAssignments": null,
+            "webAppSettings": null,
+            "allWebAppSettings": false,
+            "sort": null
+        },
+        "properties": {
+            "@id": 5,
+            "@type": "as.dto.property.fetchoptions.PropertyFetchOptions"
+        },
+        "parents": {
+            "@id": 6,
+            "type": {
+            "@id": 7,
+            "@type": "as.dto.sample.fetchoptions.SampleTypeFetchOptions",
+            "sort": null,
+            "propertyAssignments": null,
+            "validationPlugin": null,
+            "semanticAnnotations": null
+            },
+            "properties": {
+                "@id": 8,
+                "@type": "as.dto.property.fetchoptions.PropertyFetchOptions"
+            },
+            "@type": "as.dto.sample.fetchoptions.SampleFetchOptions",
+            "project": null,
+            "space": null,
+            "experiment": null,
+            "materialProperties": null,
+            "sampleProperties": null,
+            "parents": null,
+            "children": null,
+            "container": null,
+            "components": null,
+            "dataSets": null,
+            "history": null,
+            "tags": null,
+            "registrator": null,
+            "modifier": null,
+            "attachments": null,
+            "sort": null
+        },
+        "children": {
+            "@id": 9,
+            "type": {
+                "@id": 10,
+                "@type": "as.dto.sample.fetchoptions.SampleTypeFetchOptions",
+                "sort": null,
+                "propertyAssignments": null,
+                "validationPlugin": null,
+                "semanticAnnotations": null
+            },
+            "properties": {
+            "@id": 11,
+            "@type": "as.dto.property.fetchoptions.PropertyFetchOptions"
+            },
+            "@type": "as.dto.sample.fetchoptions.SampleFetchOptions",
+            "project": null,
+            "space": null,
+            "experiment": null,
+            "materialProperties": null,
+            "sampleProperties": null,
+            "parents": null,
+            "children": null,
+            "container": null,
+            "components": null,
+            "dataSets": null,
+            "history": null,
+            "tags": null,
+            "registrator": null,
+            "modifier": null,
+            "attachments": null,
+            "sort": null
+        },
+        "cacheMode": "RELOAD_AND_CACHE",
+        "from": 0,
+        "count": 10,
+        "@type": "as.dto.sample.fetchoptions.SampleFetchOptions",
+        "project": null,
+        "experiment": null,
+        "materialProperties": null,
+        "sampleProperties": null,
+        "container": null,
+        "components": null,
+        "dataSets": null,
+        "history": null,
+        "tags": null,
+        "attachments": null,
+        "sort": null
+        }
+    ],
+    "id": "1",
+    "jsonrpc": "2.0"
+}

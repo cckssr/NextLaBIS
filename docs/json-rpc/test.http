@@ -1,0 +1,170 @@
+POST https://openbis.physik.tu-berlin.de/openbis/openbis/rmi-application-server-v3.json HTTP/1.1
+Content-Type: application/json
+# Cookie: openbis=cedric.kessler-260127102416326x77962A1B06125385432AE8B8F484C3E6
+
+{
+  "method": "searchExperiments",
+  "params": [
+    "cedric.kessler-260127102416326x77962A1B06125385432AE8B8F484C3E6",
+    {
+      "@id": 0,
+      "@type": "as.dto.experiment.search.ExperimentSearchCriteria",
+      "operator": "AND",
+      "negated": false,
+      "criteria": [
+        {
+          "@type": "as.dto.common.search.PermIdSearchCriteria",
+          "@id": 1,
+          "fieldName": "perm id",
+          "fieldType": "ATTRIBUTE",
+          "fieldValue": {
+            "@id": 2,
+            "value": "20240607165704097-11236",
+            "@type": "as.dto.common.search.StringEqualToValue"
+          },
+          "useWildcards": false
+        }
+      ]
+    },
+    {
+      "@id": 0,
+      "properties": {
+        "@id": 1,
+        "@type": "as.dto.property.fetchoptions.PropertyFetchOptions"
+      },
+      "type": {
+        "@id": 2,
+        "@type": "as.dto.experiment.fetchoptions.ExperimentTypeFetchOptions",
+        "sort": null,
+        "propertyAssignments": null,
+        "validationPlugin": null
+      },
+      "project": {
+        "@id": 3,
+        "@type": "as.dto.project.fetchoptions.ProjectFetchOptions",
+        "experiments": null,
+        "samples": null,
+        "space": null,
+        "registrator": null,
+        "modifier": null,
+        "leader": null,
+        "attachments": null,
+        "history": null,
+        "sort": null
+      },
+      "@type": "as.dto.experiment.fetchoptions.ExperimentFetchOptions",
+      "dataSets": null,
+      "samples": null,
+      "history": null,
+      "materialProperties": null,
+      "sampleProperties": null,
+      "tags": null,
+      "registrator": null,
+      "modifier": null,
+      "attachments": null,
+      "sort": null
+    }
+  ],
+  "id": "1",
+  "jsonrpc": "2.0"
+}
+
+###
+
+POST https://openbis.physik.tu-berlin.de/openbis/openbis/rmi-application-server-v3.json HTTP/1.1
+Content-Type: application/json
+
+{
+  "method": "getSessionInformation",
+  "params": [
+    "cedric.kessler-260127102416326x77962A1B06125385432AE8B8F484C3E6",
+    {
+        "@id": 0,
+        "criteria": [
+            {
+            "@id": 1,
+            "fieldName": "perm id",
+            "fieldType": "ATTRIBUTE",
+            "fieldValue": {
+                "@id": 2,
+                "value": "20240607165704097-11236",
+                "@type": "as.dto.common.search.StringEqualToValue"
+            },
+            "useWildcards": false,
+            "@type": "as.dto.common.search.PermIdSearchCriteria"
+            }
+        ],
+        "operator": "AND",
+        "negated": false,
+        "@type": "as.dto.experiment.search.ExperimentSearchCriteria"
+    },
+    {
+      "@id": 0,
+      "properties": {
+        "@id": 1,
+        "@type": "as.dto.property.fetchoptions.PropertyFetchOptions"
+      },
+      "type": {
+        "@id": 2,
+        "@type": "as.dto.experiment.fetchoptions.ExperimentTypeFetchOptions",
+        "sort": null,
+        "propertyAssignments": null,
+        "validationPlugin": null
+      },
+      "project": {
+        "@id": 3,
+        "@type": "as.dto.project.fetchoptions.ProjectFetchOptions",
+        "experiments": null,
+        "samples": null,
+        "space": null,
+        "registrator": null,
+        "modifier": null,
+        "leader": null,
+        "attachments": null,
+        "history": null,
+        "sort": null
+      }
+    }
+    ],
+  "id": "2",
+  "jsonrpc": "2.0"
+}
+
+###
+
+POST https://openbis.physik.tu-berlin.de/openbis/openbis/rmi-application-server-v3.json HTTP/1.1
+Content-Type: application/json
+
+{
+  "method": "getSessionInformation",
+  "params": [
+    "cedric.kessler-260127102416326x77962A1B06125385432AE8B8F484C3E6"
+    ],
+  "id": "2",
+  "jsonrpc": "2.0"
+}
+
+###
+
+POST https://openbis.physik.tu-berlin.de/openbis/openbis/rmi-application-server-v3.json HTTP/1.1
+Content-Type: application/json
+
+{
+  "method": "searchPropertyTypes",
+  "params": [
+    "cedric.kessler-260127102416326x77962A1B06125385432AE8B8F484C3E6",
+    {
+      "@id": 0,
+      "@type": "as.dto.property.search.PropertyTypeSearchCriteria",
+      "operator": "AND",
+      "negated": false,
+      "criteria": []
+    },
+    {
+      "@id": 0,
+      "@type": "as.dto.property.fetchoptions.PropertyTypeFetchOptions"
+    }
+    ],
+  "id": "2",
+  "jsonrpc": "2.0"
+}

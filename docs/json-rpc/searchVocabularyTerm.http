@@ -1,0 +1,28 @@
+POST https://openbis.physik.tu-berlin.de/openbis/openbis/rmi-application-server-v3.json HTTP/1.1
+Content-Type: application/json
+
+{
+    "method": "searchVocabularies",
+    "params": [
+        "cedric.kessler-260127102416326x77962A1B06125385432AE8B8F484C3E6",
+        {
+            "@id": 0,
+            "@type": "as.dto.vocabulary.search.VocabularySearchCriteria",
+            "operator": "AND",
+            "negated": false,
+            "criteria": []
+        },
+        {
+            "@id": 0,
+            "@type": "as.dto.vocabulary.fetchoptions.VocabularyFetchOptions",
+            "operator": "AND",
+            "negated": false,
+            "terms": {
+                "@id": 1,
+                "@type": "as.dto.vocabulary.fetchoptions.VocabularyTermFetchOptions"
+            }
+        }
+    ],
+    "id": "1",
+    "jsonrpc": "2.0"
+}
