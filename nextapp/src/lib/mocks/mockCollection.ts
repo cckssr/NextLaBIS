@@ -1,20 +1,29 @@
+/**
+ * Comprehensive mock data for OpenBIS Collections within Projects.
+ * Each collection contains multiple objects with properties.
+ * Follows hierarchy: Space → Project → Collection → Object
+ *
+ * NOTE: numberOfObjects values are defined here but in Phase 1 will be
+ * calculated from actual object data, matching API behavior.
+ */
 import { CollectionOverview } from "@/lib/collections/model";
 import { OpenbisPermId } from "../model/OpenBISModel";
 import { commonUsers } from "./commonUsers";
+import { projectOverviewMock } from "./mockProject";
+
+// Extract QD_CHAR_2024 project from mockProject
+const qdCharProject = projectOverviewMock.projects.find(
+  (p) => p.code === "QD_CHAR_2024",
+);
+if (!qdCharProject) {
+  throw new Error(
+    "Invalid mock data: QD_CHAR_2024 project not found in mockProject. Ensure mockProject is initialized first.",
+  );
+}
 
 // Collection Overview for project QD_CHAR_2024 in SPACE_ONE
 export const collectionOverviewMock: CollectionOverview = {
-  project: {
-    kind: "PROJECT",
-    code: "QD_CHAR_2024",
-    permId: "/SPACE_ONE/QD_CHAR_2024" as OpenbisPermId,
-    description:
-      "Optical and electronic characterization of semiconductor quantum dots.",
-    registratedBy: commonUsers.johnDoe,
-    modifiedBy: commonUsers.janeDoe,
-    registrationDate: new Date("2024-01-10T09:00:00Z"),
-    modificationDate: new Date("2024-12-15T08:30:00Z"),
-  },
+  project: qdCharProject,
   collections: [
     {
       kind: "COLLECTION",
