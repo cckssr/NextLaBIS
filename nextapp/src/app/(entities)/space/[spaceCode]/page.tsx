@@ -4,10 +4,18 @@ import { MetadataPanel } from "@/components/spaces/MetadataPanel.server";
 import { ProjectsTable } from "@/components/spaces/ProjectsTable.client";
 import { getSpaceOverview } from "@/lib/spaces/getSpaceOverview";
 
+/**
+ * Props for the SpaceOverviewPage component.
+ *
+ * @param params - The route parameters containing the spaceCode.
+ */
 export interface SpaceOverviewPageProps {
-  params: { spaceCode: string };
+  params: Promise<{ spaceCode: string }>;
 }
 
+/**
+ * Overview page for a specific space.
+ */
 export default async function SpaceOverviewPage({
   params,
 }: SpaceOverviewPageProps) {
