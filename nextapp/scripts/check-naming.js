@@ -5,8 +5,10 @@ const RULES = {
   components: {
     // PascalCase components with optional suffixes (.server, .client, .stories, .module)
     // Also allows camelCase for utility/data files and CSS modules
-    pattern: /^([A-Z][a-zA-Z0-9]*(\.(server|client|stories|module))?|[a-z][a-zA-Z0-9]*(\.(module))?)\.(tsx?|css)$/,
-    description: "Component files must use PascalCase, utility files can use camelCase",
+    pattern:
+      /^([A-Z][a-zA-Z0-9]*(\.(server|client|stories|module))?|[a-z][a-zA-Z0-9]*(\.(module))?)\.(tsx?|css)$/,
+    description:
+      "Component files must use PascalCase, utility files can use camelCase",
   },
   lib: {
     // camelCase or PascalCase for lib files
@@ -18,7 +20,8 @@ const RULES = {
     description: "Utility files must use snake_case or camelCase",
   },
   default: {
-    pattern: /^[a-z][a-z0-9_-]*(\.(server|client|stories|module))?\.(tsx?|jsx?|css)$/,
+    pattern:
+      /^[a-z][a-z0-9_-]*(\.(server|client|stories|module))?\.(tsx?|jsx?|css)$/,
     description: "Files must be lowercase with hyphens or underscores",
   },
 };
