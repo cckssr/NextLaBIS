@@ -1,4 +1,5 @@
 import { OpenbisPermId } from "@/lib/model/OpenBISModel";
+import { Stack, Title, Text } from "@mantine/core";
 
 /**
  * Props for the ProjectOverviewPage component.
@@ -15,4 +16,11 @@ export default async function ProjectOverviewPage({
   params,
 }: ProjectOverviewPageProps) {
   const { projectPermId } = await params;
+
+  return (
+    <Stack>
+      <Title order={2}>Project: {projectPermId}</Title>
+      <Text c="dimmed">Project details will be displayed here.</Text>
+    </Stack>
+  );
 }

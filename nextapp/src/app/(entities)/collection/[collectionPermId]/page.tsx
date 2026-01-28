@@ -1,4 +1,5 @@
 import { OpenbisPermId } from "@/lib/model/OpenBISModel";
+import { Stack, Title, Text } from "@mantine/core";
 
 /**
  * Props for the CollectionPage component.
@@ -15,4 +16,11 @@ export default async function CollectionOverviewPage({
   params,
 }: CollectionOverviewPageProps) {
   const { collectionPermId } = await params;
+
+  return (
+    <Stack>
+      <Title order={2}>Collection: {collectionPermId}</Title>
+      <Text c="dimmed">Collection details will be displayed here.</Text>
+    </Stack>
+  );
 }
