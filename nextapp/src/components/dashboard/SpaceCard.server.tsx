@@ -50,7 +50,7 @@ export function SpaceCard({
 }: SpaceCardProps) {
   const formattedCode =
     code.charAt(0).toUpperCase() + code.slice(1).toLowerCase(); // TODO:: Replace with proper formatting logic
-  const gridSpan = { md: "auto", sm: 6, xs: 12 };
+  const gridSpan = { md: "content" as const, sm: 6, xs: 12 };
   return (
     <Link
       href={`/spaces/${encodeURIComponent(code)}`}

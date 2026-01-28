@@ -3,8 +3,9 @@ import { Header } from "@/components/dashboard/Header.server";
 import { SearchCard } from "@/components/dashboard/SearchCard.server";
 import { SpacesOverviewCard } from "@/components/dashboard/SpacesOverviewCard.server";
 import { Grid, GridCol, Stack } from "@mantine/core";
+import { SpaceDisplayData } from "@/types/openbis";
 
-const MOCK_SPACES = [
+const MOCK_SPACES: SpaceDisplayData[] = [
   {
     code: "SPACE_ONE",
     modificationDate: new Date("2025-12-10"),
