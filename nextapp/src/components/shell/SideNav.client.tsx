@@ -1,6 +1,5 @@
 import { AppShell } from "@mantine/core";
 
-interface NavbarProps {}
 /**
  * Side navigation bar shown on all application pages.
  *
@@ -10,6 +9,6 @@ interface NavbarProps {}
  * Server/Client:
  * - Client Component (interactive)
  */
-export function Navbar({}: NavbarProps) {
+export function Navbar() {
   return <AppShell.Navbar>Navbar</AppShell.Navbar>;
 }

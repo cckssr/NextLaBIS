@@ -1,23 +1,23 @@
 # Copilot Instructions – NextLaBIS
 
-NextLaBIS is a schema-driven web frontend for openBIS ELN/LIMS, built with Next.js App Router, React Server Components, and Mantine. This document guides AI agents in being productive immediately.
+NextLaBIS is a **schema-driven web frontend for openBIS ELN/LIMS**, built with Next.js App Router, React Server Components, and Mantine 7. This document guides AI agents in being immediately productive.
 
 ---
 
 ## Project Context & Phase
 
 - **Project**: NextLaBIS – Web UI for openBIS Electronic Lab Notebook / Laboratory Information Management System
-- **Current Phase**: **Phase 0 – Foundations** (UI scaffolding, masterdata components, documentation only)
-- **Stack**: Next.js 16, React 19, TypeScript 5, Mantine 7, @tabler/icons-react
+- **Current Phase**: **Phase 0 – Foundations** (visual-first, mock-data-driven UI development)
+- **Stack**: Next.js 16 (with Turbopack), React 19, TypeScript 5, Mantine 7, @tabler/icons-react, mantine-react-table
 - **Key Architecture**: Server-first data flow + schema-driven property renderers
-- **Location**: All work happens in `nextapp/` folder
+- **Location**: All code in `nextapp/` folder; configuration files in root (`docs/`, `.github/`)
 
-**Phase 0 Reality Check** – Do NOT import or reference modules that don't exist yet:
+**Phase 0 Constraints** – Do NOT implement these (Phase 1+):
 
-- ❌ No openBIS API client (`lib/openbis/server.ts`)
-- ❌ No authentication helpers
-- ❌ No database integration
-- ✅ Only UI scaffolding and property renderer components
+- ❌ openBIS API client (`lib/openbis/` — reserved but empty)
+- ❌ Authentication or session management
+- ❌ `/app/api/*` route handlers
+- ✅ UI scaffolding, mock data, property renderers, dashboard views
 
 ---
 
@@ -56,14 +56,21 @@ Client Component (only for user interaction)
 
 ### Folder Responsibilities
 
-| Folder                       | Rules                                                                                                                | Examples                                     |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| `src/app/`                   | Routes, layouts, pages. Server Components by default. NO low-level logic.                                            | `dashboard/page.tsx`, `layout.tsx`           |
-| `src/app/api/`               | API endpoints (Phase 1). Currently empty.                                                                            | `/api/spaces/[id]` (future)                  |
-| `src/components/dashboard/`  | Dashboard UI cards. Server Components with `.server.tsx` suffix.                                                     | `Header.server.tsx`, `SearchCard.server.tsx` |
-| `src/components/masterdata/` | Property-type renderers (schema-driven). Uses `BooleanForm`, `IntegerForm`, etc. Names match openBIS property kinds. | `boolean.tsx`, `varchar.tsx`, `real.tsx`     |
-| `src/components/shell/`      | App shell layout and navigation. Client Components with `.client.tsx` suffix.                                        | `AppShellRoot.client.tsx`                    |
-| `src/lib/`                   | Reserved for future: openBIS client, hooks, utilities. Currently empty.                                              | (Phase 1+)                                   |
+| Folder                       | Rules & Current Use                                                                                               | Examples                                               |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `src/app/`                   | Pages, layouts, routes. **Server Components by default** (no `"use client"`). Fetch data, pass props to children. | `(misc)/dashboard/page.tsx`, `layout.tsx`              |
+| `src/app/api/`               | API endpoints. **Empty in Phase 0**. Phase 1: openBIS API proxies.                                                | (Reserved for Phase 1+)                                |
+| `src/app/(entities)/`        | Dynamic routes for openBIS entities: `space/[spaceCode]`, `project/[projectPermId]`, etc. Server Components.      | `space/[spaceCode]/page.tsx`                           |
+| `src/app/(misc)/`            | Dashboard, search, inventory, user settings. Grouped routes for non-entity pages.                                 | `dashboard/page.tsx`, `search/page.tsx`                |
+| `src/components/dashboard/`  | Dashboard overview cards. **Server Components** (`.server.tsx` suffix). Accept data via props.                    | `SpacesOverviewCard.server.tsx`                        |
+| `src/components/spaces/`     | Space-specific UI (tables, metadata panels). Mix of Server Components (`.server.tsx`) and Client Components.      | `ProjectsTable.client.tsx`, `MetadataPanel.server.tsx` |
+| `src/components/masterdata/` | **Property-type renderers** (schema-driven). Map openBIS property kinds → form components. Use `"use client"`.    | `boolean.tsx`, `varchar.tsx`, `integer.tsx`            |
+| `src/components/shell/`      | App shell layout, nav, breadcrumbs. **Client Components** (`.client.tsx`). Manages state, routing.                | `AppShellRoot.client.tsx`, `TopNav.client.tsx`         |
+| `src/components/shared/`     | Reusable UI patterns (tables, pills, selectors). Used across components.                                          | `AdvancedTable/`, `TagPill/`, `RightsPill/`            |
+| `src/lib/spaces/`            | Data fetching logic & mock providers. **Server-side only**. Transforms mock data to component props.              | `getSpaceOverview.ts`, `mockProvider.ts`               |
+| `src/lib/mocks/`             | Mock data fixtures for Phase 0 development. Replace in Phase 1.                                                   | `mockSpace.ts`                                         |
+| `src/lib/utils/`             | Utility functions (dates, user formatting). Language agnostic, reusable.                                          | `datetimeFunctions.ts`, `userFunctions.ts`             |
+| `src/types/`                 | Global TypeScript types and interfaces.                                                                           | `openbis.ts` (shared types)                            |
 
 ### Schema-Driven Pattern (Core Concept)
 
@@ -77,10 +84,131 @@ PropertyKind (e.g., "BOOLEAN", "INTEGER", "VARCHAR")
 
 **Current Pattern** (`src/components/masterdata/boolean.tsx`):
 
-- Interface: `FormProps` with `code`, `name`, `description`, `editable`, `mandatory`, `error`
-- Uses `GridCol` with responsive spans: `{ base: 12, sm: 6, lg: "content" }`
-- Mantine `Checkbox`, `TextInput`, etc.
-- `"use client"` only when state needed (e.g., `useState` in boolean editor)
+```tsx
+"use client";
+interface FormProps {
+  name: string;
+  description: string;
+  pastValue?: boolean;
+  editable?: boolean;
+  mandatory?: boolean;
+}
+
+export function BooleanForm({
+  name,
+  description,
+  pastValue = false,
+  editable = true,
+}: FormProps) {
+  const [checked, setChecked] = useState(pastValue);
+  const gridSpan = { base: 12, sm: 6, lg: 4 };
+
+  return (
+    <GridCol span={gridSpan}>
+      <Checkbox
+        label={name}
+        checked={checked}
+        onChange={(e) => setChecked(e.currentTarget.checked)}
+        disabled={!editable}
+        description={description}
+      />
+    </GridCol>
+  );
+}
+```
+
+**Key characteristics**:
+
+- Use `"use client"` (state needed for interactivity)
+- Accept `FormProps` interface with property metadata
+- Responsive `GridCol` with mobile-first spans: `{ base: 12, sm: 6, lg: 4 }`
+- Use Mantine form components only
+
+---
+
+## Dynamic Routing & Data Fetching (Phase 0 Pattern)
+
+### Route Structure
+
+**Entity Routes** (dynamic):
+
+```
+src/app/(entities)/space/[spaceCode]/page.tsx
+src/app/(entities)/project/[projectPermId]/page.tsx
+src/app/(entities)/collection/[collectionPermId]/page.tsx
+src/app/(entities)/dataset/[datasetPermId]/page.tsx
+src/app/(entities)/object/[objectPermId]/page.tsx
+```
+
+**Misc Routes** (grouped, static):
+
+```
+src/app/(misc)/dashboard/page.tsx
+src/app/(misc)/search/page.tsx
+src/app/(misc)/inventory/page.tsx
+src/app/(misc)/create/page.tsx
+src/app/(misc)/settings/page.tsx
+src/app/(misc)/user/page.tsx
+```
+
+### Server Component with Dynamic Parameters
+
+Use async Server Components to handle dynamic parameters:
+
+```tsx
+// src/app/(entities)/space/[spaceCode]/page.tsx
+export interface SpaceOverviewPageProps {
+  params: Promise<{ spaceCode: string }>;
+}
+
+export default async function SpaceOverviewPage({
+  params,
+}: SpaceOverviewPageProps) {
+  const { spaceCode } = await params;
+  const spaceOverview = await getSpaceOverview(spaceCode);
+
+  return (
+    <Stack>
+      <Header spaceName={spaceOverview.space.code} />
+      <MetadataPanel {...spaceOverview.space} />
+      <ProjectsTable projects={spaceOverview.projects} />
+    </Stack>
+  );
+}
+```
+
+**Key**: Always `await params` (Next.js 16 change). Pass data to child components via props.
+
+### Mock Data in Server Functions
+
+Store mock data in `src/lib/spaces/` (or similar) alongside data-fetching functions:
+
+```tsx
+// src/lib/spaces/mockProvider.ts
+export function getSpaceOverviewMock(spaceCode: string): SpaceOverview | null {
+  const mockData = {
+    /* ... */
+  };
+  return mockData;
+}
+
+// src/lib/spaces/getSpaceOverview.ts
+export async function getSpaceOverview(
+  spaceCode: string,
+): Promise<SpaceOverview> {
+  // Phase 0: mock
+  const spaceOverview = getSpaceOverviewMock(spaceCode);
+  if (!spaceOverview) throw new Error(`Space not found: ${spaceCode}`);
+  return spaceOverview;
+
+  // Phase 1: replace with API call
+  // const response = await fetch(`/api/spaces/${spaceCode}`);
+  // if (!response.ok) throw new Error(`Space not found: ${spaceCode}`);
+  // return response.json();
+}
+```
+
+**Transition to Phase 1**: Update `getSpaceOverview()` function only; components remain unchanged.
 
 ---
 
@@ -126,57 +254,100 @@ import styles from "./MyComponent.module.css";
 
 ## Component Patterns & Real Examples
 
-### Server Component (Dashboard Page)
+### Server Component (Dynamic Route Page)
 
 ```tsx
-// src/app/dashboard/page.tsx – Server Component, no "use client"
-import { Header } from "@/components/dashboard/Header.server";
-import { Grid, GridCol, Stack } from "@mantine/core";
+// src/app/(entities)/space/[spaceCode]/page.tsx
+export interface SpaceOverviewPageProps {
+  params: Promise<{ spaceCode: string }>;
+}
 
+export default async function SpaceOverviewPage({
+  params,
+}: SpaceOverviewPageProps) {
+  const { spaceCode } = await params;
+  const spaceOverview = await getSpaceOverview(spaceCode);
+
+  return (
+    <Stack>
+      <Header spaceName={spaceOverview.space.code} />
+      <MetadataPanel registrationDate={spaceOverview.space.registrationDate} />
+      <ProjectsTable projects={spaceOverview.projects} />
+    </Stack>
+  );
+}
+```
+
+**Key**: No `"use client"`, async function, pass data via props to child components.
+
+### Dashboard Server Component with Mock Data
+
+```tsx
+// src/app/(misc)/dashboard/page.tsx
 export default function DashboardPage() {
-  // No state, no interactivity
-  const mockData = [
+  const MOCK_SPACES = [
     /* ... */
   ];
+
   return (
     <Grid>
       <GridCol span={{ base: 12, lg: 8 }}>
         <Header title="Dashboard" />
+      </GridCol>
+      <GridCol span={{ base: 12, lg: 4 }}>
+        <SpacesOverviewCard spaces={MOCK_SPACES} />
       </GridCol>
     </Grid>
   );
 }
 ```
 
+### Client Component for User Interaction
+
+```tsx
+// src/components/spaces/ProjectsTable.client.tsx
+"use client";
+import { MantineReactTable, type MRT_ColumnDef } from "mantine-react-table";
+import { Project } from "@/types/openbis";
+
+interface ProjectsTableProps {
+  projects: Project[];
+}
+
+export function ProjectsTable({ projects }: ProjectsTableProps) {
+  const columns: MRT_ColumnDef<Project>[] = [
+    { accessorKey: "code", header: "Code" },
+    { accessorKey: "description", header: "Description" },
+  ];
+
+  return <MantineReactTable columns={columns} data={projects} />;
+}
+```
+
 ### Masterdata Property Component (Client + State)
 
 ```tsx
-// src/components/masterdata/boolean.tsx – Client Component
+// src/components/masterdata/boolean.tsx
 "use client";
 import { Checkbox, GridCol } from "@mantine/core";
 import { useState } from "react";
 
 interface FormProps {
-  code: string;
   name: string;
   description: string;
   pastValue?: boolean;
   editable?: boolean;
   mandatory?: boolean;
-  error?: string;
 }
 
 export function BooleanForm({
-  code,
   name,
   description,
   pastValue = false,
   editable = true,
-  mandatory = false,
-  error = null,
 }: FormProps) {
   const [checked, setChecked] = useState(pastValue);
-  const gridSpan = { base: 12, sm: 6, lg: "content" };
+  const gridSpan = { base: 12, sm: 6, lg: 4 };
 
   return (
     <GridCol span={gridSpan}>
@@ -185,9 +356,7 @@ export function BooleanForm({
         checked={checked}
         onChange={(e) => setChecked(e.currentTarget.checked)}
         disabled={!editable}
-        withAsterisk={mandatory}
         description={description}
-        error={error}
       />
     </GridCol>
   );

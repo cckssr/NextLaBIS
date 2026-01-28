@@ -90,84 +90,6 @@ const userColumns: ColumnDef[] = [
   { key: "company", label: "Company", sortable: true },
 ];
 
-const products = [
-  {
-    productId: 1,
-    productName: "Laptop",
-    category: "Electronics",
-    price: "999.99",
-  },
-  {
-    productId: 2,
-    productName: "Mouse",
-    category: "Accessories",
-    price: "29.99",
-  },
-  {
-    productId: 3,
-    productName: "Keyboard",
-    category: "Accessories",
-    price: "79.99",
-  },
-  {
-    productId: 4,
-    productName: "Monitor",
-    category: "Electronics",
-    price: "349.99",
-  },
-  {
-    productId: 5,
-    productName: "USB Cable",
-    category: "Accessories",
-    price: "9.99",
-  },
-];
-
-const productColumns: ColumnDef[] = [
-  { key: "productName", label: "Product Name", sortable: true },
-  { key: "category", label: "Category", sortable: true },
-  { key: "price", label: "Price", sortable: true },
-];
-
-const projects = [
-  {
-    code: "PROJ001",
-    title: "Web Redesign",
-    status: "In Progress",
-    team: "Frontend Team",
-  },
-  {
-    code: "PROJ002",
-    title: "API Integration",
-    status: "Planning",
-    team: "Backend Team",
-  },
-  {
-    code: "PROJ003",
-    title: "Database Migration",
-    status: "Completed",
-    team: "DevOps Team",
-  },
-  {
-    code: "PROJ004",
-    title: "Performance Optimization",
-    status: "In Progress",
-    team: "Backend Team",
-  },
-  {
-    code: "PROJ005",
-    title: "Mobile App Prototype",
-    status: "Planning",
-    team: "Mobile Team",
-  },
-];
-
-const projectColumns: ColumnDef[] = [
-  { key: "title", label: "Project Title", sortable: true },
-  { key: "status", label: "Status", sortable: true },
-  { key: "team", label: "Team", sortable: true },
-];
-
 // ============================================================================
 // Stories
 // ============================================================================
@@ -202,7 +124,7 @@ export const NoSearch: Story = {
  * This demonstrates how to control the search input placement independently.
  */
 export const CustomSearchPosition: Story = {
-  render: (args) => {
+  render: () => {
     const [search, setSearch] = useState("");
 
     // You would need to filter the data based on search state here
@@ -217,7 +139,6 @@ export const CustomSearchPosition: Story = {
           onChange={(e) => setSearch(e.currentTarget.value)}
         />
         <SortableTable
-          {...args}
           showSearch={false}
           data={users}
           columns={userColumns}
@@ -233,7 +154,7 @@ export const CustomSearchPosition: Story = {
  * The search input is rendered inside the table's ScrollArea.
  */
 export const CustomSearchComponent: Story = {
-  render: (args) => {
+  render: () => {
     const [search, setSearch] = useState("");
 
     const customSearchInput = (
@@ -249,7 +170,6 @@ export const CustomSearchComponent: Story = {
 
     return (
       <SortableTable
-        {...args}
         data={users}
         columns={userColumns}
         searchInput={customSearchInput}

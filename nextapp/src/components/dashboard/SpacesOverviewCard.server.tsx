@@ -1,6 +1,7 @@
 import { Card, Group, Text, Title, Stack } from "@mantine/core";
 import { IconFolder } from "@tabler/icons-react";
 import { SpaceCard } from "./SpaceCard.server";
+import { SpaceDisplayData } from "@/types/openbis";
 
 /**
  * Props for SpacesOverviewCard component.
@@ -10,7 +11,7 @@ import { SpaceCard } from "./SpaceCard.server";
  */
 interface SpacesCardProps {
   maxSpaceCount?: number;
-  spaces: Array<any>; // TODO:: Replace Array with actual Space model type, e.g., Space[]
+  spaces: SpaceDisplayData[];
 }
 
 /**

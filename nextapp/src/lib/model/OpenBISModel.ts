@@ -36,6 +36,7 @@ export interface OpenbisEntityBase {
   description?: string | null;
 }
 
+// FIXME: The Space does NOT use the normal timestamp-based permId, but a simple string code as id.
 export interface OpenbisSpace extends OpenbisEntityBase {
   kind: "SPACE";
   frozenForProjects?: boolean;

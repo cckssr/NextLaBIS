@@ -5,6 +5,7 @@ import {
   MantineReactTable,
   useMantineReactTable,
   type MRT_ColumnDef,
+  type MRT_TableState,
 } from "mantine-react-table";
 
 /**
@@ -15,34 +16,31 @@ import {
  * @param columns - Column definitions for the table
  * @param searchPlaceholder - Placeholder text for the global search input
  * @param onRowAction - Function to render row action menu items
- * @param onRowActionClick - Optional callback when a row action is clicked
  * @param enableFiltering - Enable column filtering (default: true)
  * @param enableColumnOrdering - Enable column ordering (default: true)
  */
-export interface AdvancedTableProps<T extends Record<string, any>> {
+export interface AdvancedTableProps<T extends Record<string, unknown>> {
   data: T[];
   columns: MRT_ColumnDef<T>[];
   searchPlaceholder?: string;
   onRowAction?: () => ReactNode;
-  onRowActionClick?: (row: T) => void;
   enableFiltering?: boolean;
   enableColumnOrdering?: boolean;
   enableRowSelection?: boolean;
   enableRowActions?: boolean;
   enableColumnPinning?: boolean;
-  initialState?: any;
+  initialState?: Partial<MRT_TableState<T>>;
 }
 
 /**
  * Generic, feature-rich table component built with MantineReactTable
  * Supports filtering, sorting, column ordering, row selection, row actions, and more
  */
-function AdvancedTable<T extends Record<string, any>>({
+function AdvancedTable<T extends Record<string, unknown>>({
   data,
   columns,
   searchPlaceholder = "Search",
   onRowAction,
-  onRowActionClick,
   enableFiltering = true,
   enableColumnOrdering = true,
   enableRowSelection = true,
