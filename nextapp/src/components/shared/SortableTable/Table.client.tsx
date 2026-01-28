@@ -69,12 +69,14 @@ interface SortableTableProps<
  * @property {boolean} reversed - Whether the sort direction is reversed (descending)
  * @property {boolean} sorted - Whether this column is currently sorted
  * @property {() => void} onSort - Callback fired when the user clicks to sort by this column
+ * @property {React.CSSProperties} [style] - Optional inline styles for the header cell
  */
 interface ThProps {
   children: React.ReactNode;
   reversed: boolean;
   sorted: boolean;
   onSort: () => void;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -86,14 +88,14 @@ interface ThProps {
  * @param {ThProps} props - The component props
  * @returns {JSX.Element} A Mantine Table.Th element with sort controls
  */
-function Th({ children, reversed, sorted, onSort }: ThProps) {
+function Th({ children, reversed, sorted, onSort, style }: ThProps) {
   const Icon = sorted
     ? reversed
       ? IconChevronUp
       : IconChevronDown
     : IconSelector;
   return (
-    <Table.Th className={classes.th}>
+    <Table.Th className={classes.th} style={style}>
       <UnstyledButton onClick={onSort} className={classes.control}>
         <Group justify="space-between" wrap="nowrap">
           <Text fw={500} fz="sm">

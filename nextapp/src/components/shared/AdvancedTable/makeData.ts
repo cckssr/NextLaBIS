@@ -1,4 +1,16 @@
-import { type Employee } from "./TS";
+/**
+ * Employee data type for AdvancedTable demo
+ */
+export interface Employee {
+  firstName: string;
+  lastName: string;
+  email: string;
+  salary: number;
+  jobTitle: string;
+  startDate: string;
+  signatureCatchPhrase: string;
+  avatar: string;
+}
 
 export const data: Employee[] = [
   {
