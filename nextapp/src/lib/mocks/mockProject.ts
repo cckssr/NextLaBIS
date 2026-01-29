@@ -21,6 +21,7 @@ if (!spaceOne || spaceOne.code !== "SPACE_ONE") {
 }
 
 // Helper function to calculate total objects across collections
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const calculateTotalObjects = (
   collections: Array<{ numberOfObjects: number }>,
 ) => {
