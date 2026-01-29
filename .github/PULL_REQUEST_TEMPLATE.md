@@ -5,13 +5,15 @@
 ## Changes
 
 <!-- List the main changes made in this PR -->
-- 
-- 
-- 
+
+-
+-
+-
 
 ## Type of Change
 
 <!-- Mark the relevant option with an "x" -->
+
 - [ ] `feat` - New feature
 - [ ] `fix` - Bug fix
 - [ ] `docs` - Documentation only
@@ -26,7 +28,7 @@
 <!-- Which part of the codebase does this affect? -->
 <!-- Examples: dashboard, entities, shell, components, lib, scripts, config, docs -->
 
-**Scope:** 
+**Scope:**
 
 ## Screenshots (if applicable)
 
@@ -35,6 +37,7 @@
 ## Breaking Changes
 
 <!-- List any breaking changes, or write "None" -->
+
 None
 
 ## Checklist
@@ -51,7 +54,7 @@ None
 
 ---
 
-<!-- 
+<!--
 SQUASH COMMIT FORMAT (for maintainer):
 <type>(<scope>): <summary> (#PR_NUMBER)
 
