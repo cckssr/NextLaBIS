@@ -1,0 +1,209 @@
+/**
+ * Comprehensive mock data for OpenBIS Collections within Projects.
+ * Each collection contains multiple objects with properties.
+ * Follows hierarchy: Space → Project → Collection → Object
+ *
+ * NOTE: numberOfObjects values are defined here but in Phase 1 will be
+ * calculated from actual object data, matching API behavior.
+ */
+import { CollectionOverview } from "@/lib/collections/model";
+import { OpenbisPermId } from "../model/OpenBISModel";
+import { commonUsers } from "./commonUsers";
+import { projectOverviewMock } from "./mockProject";
+
+// Extract QD_CHAR_2024 project from mockProject
+const qdCharProject = projectOverviewMock.projects.find(
+  (p) => p.code === "QD_CHAR_2024",
+);
+if (!qdCharProject) {
+  throw new Error(
+    "Invalid mock data: QD_CHAR_2024 project not found in mockProject. Ensure mockProject is initialized first.",
+  );
+}
+
+// Collection Overview for project QD_CHAR_2024 in SPACE_ONE
+export const collectionOverviewMock: CollectionOverview = {
+  project: qdCharProject,
+  collections: [
+    {
+      kind: "COLLECTION",
+      code: "QD_BATCH_001",
+      permId: "20240115093000123-4501" as OpenbisPermId,
+      description:
+        "First batch of CdSe quantum dots with core-shell structures.",
+      registratedBy: commonUsers.johnDoe,
+      modifiedBy: commonUsers.bobSmith,
+      registrationDate: new Date("2024-01-15T09:30:00Z"),
+      modificationDate: new Date("2024-12-10T14:20:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "SYNTHETIC_SAMPLE_BATCH",
+      tags: ["CdSe", "core-shell", "2024-Q1"],
+      numberOfObjects: 24,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_BATCH_002",
+      permId: "20240202145500456-4502" as OpenbisPermId,
+      description:
+        "Second batch with PbS quantum dots under various temperature conditions.",
+      registratedBy: commonUsers.aliceWilson,
+      modifiedBy: commonUsers.janeDoe,
+      registrationDate: new Date("2024-02-02T14:55:00Z"),
+      modificationDate: new Date("2024-12-08T11:45:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "SYNTHETIC_SAMPLE_BATCH",
+      tags: ["PbS", "temperature-study", "2024-Q1"],
+      numberOfObjects: 32,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_HETEROSTRUCTURE",
+      permId: "20240310102230789-4503" as OpenbisPermId,
+      description:
+        "Heterostructure quantum dot assemblies with varying composition ratios.",
+      registratedBy: commonUsers.charlesLi,
+      modifiedBy: commonUsers.aliceWilson,
+      registrationDate: new Date("2024-03-10T10:22:00Z"),
+      modificationDate: new Date("2024-12-12T16:10:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "SYNTHETIC_SAMPLE_BATCH",
+      tags: ["heterostructure", "composition-study", "high-priority"],
+      numberOfObjects: 18,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_STABILITY_TEST",
+      permId: "20240420164530234-4504" as OpenbisPermId,
+      description:
+        "Stability and degradation studies of quantum dots under various storage conditions.",
+      registratedBy: commonUsers.mariaGarcia,
+      modifiedBy: commonUsers.davidBrown,
+      registrationDate: new Date("2024-04-20T16:45:00Z"),
+      modificationDate: new Date("2024-11-25T09:30:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "STABILITY_TEST",
+      tags: ["stability", "degradation", "long-term-study"],
+      numberOfObjects: 28,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_OPTICAL_PROPS",
+      permId: "20240515081245567-4505" as OpenbisPermId,
+      description:
+        "Detailed optical properties characterization using absorption and fluorescence spectroscopy.",
+      registratedBy: commonUsers.sophiaDavis,
+      modifiedBy: commonUsers.charlesLi,
+      registrationDate: new Date("2024-05-15T08:12:00Z"),
+      modificationDate: new Date("2024-12-01T13:55:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "CHARACTERIZATION_DATA",
+      tags: ["spectroscopy", "optical", "fluorescence"],
+      numberOfObjects: 45,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_ELECTRONIC_CHAR",
+      permId: "20240625133021890-4506" as OpenbisPermId,
+      description:
+        "Electronic characterization including I-V curves and transistor measurements.",
+      registratedBy: commonUsers.johnDoe,
+      modifiedBy: commonUsers.sophiaDavis,
+      registrationDate: new Date("2024-06-25T13:30:00Z"),
+      modificationDate: new Date("2024-12-14T10:20:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "CHARACTERIZATION_DATA",
+      tags: ["electronics", "I-V-curves", "transistor"],
+      numberOfObjects: 36,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_MORPHOLOGY",
+      permId: "20240703095815123-4507" as OpenbisPermId,
+      description:
+        "Electron microscopy and morphological analysis of quantum dot structures.",
+      registratedBy: commonUsers.bobSmith,
+      modifiedBy: commonUsers.janeDoe,
+      registrationDate: new Date("2024-07-03T09:58:00Z"),
+      modificationDate: new Date("2024-12-09T15:40:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "MICROSCOPY_DATA",
+      tags: ["TEM", "SEM", "morphology", "imaging"],
+      numberOfObjects: 52,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_THERMAL_ANALYSIS",
+      permId: "20240812152643456-4508" as OpenbisPermId,
+      description:
+        "Thermal properties analysis including DSC and TGA measurements.",
+      registratedBy: commonUsers.aliceWilson,
+      modifiedBy: commonUsers.mariaGarcia,
+      registrationDate: new Date("2024-08-12T15:26:00Z"),
+      modificationDate: new Date("2024-11-30T12:15:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "CHARACTERIZATION_DATA",
+      tags: ["DSC", "TGA", "thermal", "analysis"],
+      numberOfObjects: 22,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_CONTROL_SAMPLES",
+      permId: "20240520110034789-4509" as OpenbisPermId,
+      description:
+        "Reference and control samples for quality assurance and standardization.",
+      registratedBy: commonUsers.davidBrown,
+      modifiedBy: commonUsers.johnDoe,
+      registrationDate: new Date("2024-05-20T11:00:00Z"),
+      modificationDate: new Date("2024-12-11T08:50:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "QUALITY_CONTROL",
+      tags: ["QC", "reference", "standard"],
+      numberOfObjects: 12,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_PHOTOLUMINESCENCE",
+      permId: "20240918165530234-4510" as OpenbisPermId,
+      description:
+        "Detailed photoluminescence quantum yield and lifetime measurements.",
+      registratedBy: commonUsers.sophiaDavis,
+      modifiedBy: commonUsers.aliceWilson,
+      registrationDate: new Date("2024-09-18T16:55:00Z"),
+      modificationDate: new Date("2024-12-13T14:30:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "CHARACTERIZATION_DATA",
+      tags: ["photoluminescence", "quantum-yield", "lifetime"],
+      numberOfObjects: 41,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_BATCH_COMPARISON",
+      permId: "20241001093215567-4511" as OpenbisPermId,
+      description:
+        "Cross-batch comparison and statistical analysis of all characterized samples.",
+      registratedBy: commonUsers.charlesLi,
+      modifiedBy: commonUsers.janeDoe,
+      registrationDate: new Date("2024-10-01T09:32:00Z"),
+      modificationDate: new Date("2024-12-15T16:45:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "ANALYSIS_RESULTS",
+      tags: ["comparison", "statistics", "analysis"],
+      numberOfObjects: 15,
+    },
+    {
+      kind: "COLLECTION",
+      code: "QD_ARCHIVED_DATA",
+      permId: "20240605142820890-4512" as OpenbisPermId,
+      description:
+        "Previously archived measurement data from earlier experiments (2023-2024).",
+      registratedBy: commonUsers.mariaGarcia,
+      modifiedBy: commonUsers.sophiaDavis,
+      registrationDate: new Date("2024-06-05T14:28:00Z"),
+      modificationDate: new Date("2024-12-01T10:15:00Z"),
+      projectIdentifier: "/SPACE_ONE/QD_CHAR_2024",
+      collectionType: "ARCHIVED_DATA",
+      tags: ["archived", "historical", "2023-data"],
+      numberOfObjects: 67,
+    },
+  ],
+};
