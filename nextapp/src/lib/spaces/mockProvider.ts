@@ -20,3 +20,14 @@ export function getSpaceOverviewMock(spaceCode: string): SpaceOverview | null {
 
   return spaceOverview || null;
 }
+
+/**
+ * Get all space overviews
+ * Phase 0: Returns mock data from mockSpace.ts
+ * Phase 1: Will fetch from openBIS API
+ *
+ * @returns Array of all space overviews
+ */
+export function getAllSpaceOverviewsMock(): SpaceOverview[] {
+  return spaceOverviewMock;
+}
