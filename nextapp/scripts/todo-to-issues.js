@@ -56,23 +56,21 @@ const CONFIG = {
 const COMMENT_PATTERNS = [
   // Single-line: // TODO: text or // TODO(#123): text
   {
-    regex: /^(\s*)\/\/\s*(TODO|FIXME|FEAT)(?:\(#(\d+)\))?:\s*(.+)$/,
+    regex: /^(\s*)\/\/\s*(TODO|FIXME|FEAT)(?:\(#(\d+)\))?:?\s*(.+)$/,
     type: "single",
   },
   // JSX comment: {/* TODO: text */}
   {
-    regex: /^(\s*)\{\/\*\s*(TODO|FIXME|FEAT)(?:\(#(\d+)\))?:\s*(.+?)\s*\*\/\}$/,
+    regex:
+      /^(\s*)\{\/\*\s*(TODO|FIXME|FEAT)(?:\(#(\d+)\))?:?\s*(.+?)\s*\*\/\}$/,
     type: "jsx",
   },
   // Block comment single line: /* TODO: text */
   {
-    regex: /^(\s*)\/\*\s*(TODO|FIXME|FEAT)(?:\(#(\d+)\))?:\s*(.+?)\s*\*\/$/,
+    regex: /^(\s*)\/\*\s*(TODO|FIXME|FEAT)(?:\(#(\d+)\))?:?\s*(.+?)\s*\*\/$/,
     type: "block",
   },
 ];
-
-// Multi-line comment pattern for /** ... */ blocks
-const MULTILINE_BLOCK_PATTERN = /\/\*\*[\s\S]*?\*\//g;
 
 // Phase detection patterns
 const PHASE_PATTERNS = [
@@ -335,7 +333,7 @@ async function scanDirectory(dir) {
 }
 
 /**
- * Scan a single file for TODO comments (single-line and multi-line)
+ * Scan a single file for TODO comments
  */
 function scanFile(filePath) {
   const todos = [];
@@ -343,7 +341,6 @@ function scanFile(filePath) {
   const lines = content.split("\n");
   const relativePath = path.relative(CONFIG.srcDir, filePath);
 
-  // First pass: single-line comments
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const lineNumber = i + 1;
@@ -367,37 +364,6 @@ function scanFile(filePath) {
         });
         break;
       }
-    }
-  }
-
-  // Second pass: multi-line block comments (/** ... */)
-  let match;
-  const multilineRegex = /\/\*\*[\s\S]*?\*\//g;
-  while ((match = multilineRegex.exec(content)) !== null) {
-    const commentBlock = match[0];
-    const beforeComment = content.substring(0, match.index);
-    const lineNumber = beforeComment.split("\n").length;
-
-    // Look for TODO/FIXME/FEAT within the block comment
-    // Match pattern: * TODO: text (with colon, stop at next * or end of comment)
-    const todoMatch = commentBlock.match(
-      /\*\s*(TODO|FIXME|FEAT)(?:\(#(\d+)\))?:\s*([^\n*]+)(?=\s*\*[\s/]|$)/i,
-    );
-    if (todoMatch) {
-      const [, type, existingIssue, text] = todoMatch;
-
-      todos.push({
-        file: relativePath,
-        fullPath: filePath,
-        line: lineNumber,
-        type: type.toUpperCase(),
-        text: text.trim(),
-        indent: "",
-        originalLine: commentBlock,
-        issueNumber: existingIssue ? parseInt(existingIssue, 10) : null,
-        commentType: "multiline",
-        context: getContext(lines, lineNumber - 1),
-      });
     }
   }
 
@@ -448,9 +414,6 @@ function buildIssueData(todo) {
   const phase = detectPhaseText(todo.text);
   const priority = PRIORITY_MAP[todo.type] || "Medium";
 
-  // Build GitHub link to file
-  const gitHubFileLink = `https://github.com/${CONFIG.owner}/${CONFIG.repo}/blob/develop/nextapp/src/${todo.file}#L${todo.line}`;
-
   return {
     // Identification
     sourceLocation: `${todo.file}:${todo.line}`,
@@ -471,7 +434,7 @@ ${todo.text}
 
 ## Source Location
 
-**File:** [\`${todo.file}\`](${gitHubFileLink})
+**File:** \`${todo.file}\`
 **Line:** ${todo.line}
 
 ## Current Code Context
@@ -613,37 +576,27 @@ async function createGitHubIssue(issue) {
  * Update file with issue number in the TODO comment
  */
 function updateFileWithIssueNumber(issue, issueNumber) {
-  let content = fs.readFileSync(issue.fullPath, "utf8");
+  const content = fs.readFileSync(issue.fullPath, "utf8");
   const lines = content.split("\n");
   const [, lineStr] = issue.sourceLocation.split(":");
   const lineIndex = parseInt(lineStr, 10) - 1;
 
-  if (issue.commentType === "multiline") {
-    // For multi-line block comments, find and update the TODO line within the block
-    const todoPattern = new RegExp(
-      `(\\*\\s*${issue.sourceType})(?:\\(#\\d+\\))?:\\s*`,
-      "i",
-    );
-    content = content.replace(todoPattern, `$1(#${issueNumber}): `);
-  } else {
-    // For single-line comments
-    let updatedLine;
-    const originalLine = lines[lineIndex];
+  let updatedLine;
+  const originalLine = lines[lineIndex];
 
-    // Replace TYPE: with TYPE(#123):
-    updatedLine = originalLine.replace(
-      new RegExp(`(${issue.sourceType})(?:\\(#\\d+\\))?:\\s*`),
-      `$1(#${issueNumber}): `,
-    );
+  // Replace TYPE: with TYPE(#123):
+  updatedLine = originalLine.replace(
+    new RegExp(`(${issue.sourceType}):?\\s*`),
+    `$1(#${issueNumber}): `,
+  );
 
-    lines[lineIndex] = updatedLine;
-    content = lines.join("\n");
-  }
-
-  fs.writeFileSync(issue.fullPath, content, "utf8");
+  lines[lineIndex] = updatedLine;
+  fs.writeFileSync(issue.fullPath, lines.join("\n"), "utf8");
 
   if (CONFIG.verbose) {
     console.log(`   📝 Updated: ${issue.sourceLocation}`);
+    console.log(`   Old: ${originalLine.trim()}`);
+    console.log(`   New: ${updatedLine.trim()}`);
   }
 }
 
