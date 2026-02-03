@@ -16,7 +16,34 @@
       "text": "NOTE:",
       "color": "yellow",
       "backgroundColor": "blue",
-      "overviewRulerColor": "grey"
+      "overviewRulerColor": "none"
+    },
+    {
+      "text": "FEAT(#xx)",
+      "regex": {
+        "pattern": "FEAT\\(#\\d+\\):|FEAT:"
+      },
+      "color": "black",
+      "backgroundColor": "darkorange",
+      "overviewRulerColor": "None"
+    },
+    {
+      "text": "FIXME(#xx)",
+      "regex": {
+        "pattern": "FIXME\\(#\\d+\\):|FIXME:"
+      },
+      "color": "white",
+      "backgroundColor": "red",
+      "overviewRulerColor": "darkorange"
+    },
+    {
+      "text": "TODO(#xx)",
+      "regex": {
+        "pattern": "TODO\\(#\\d+\\):|TODO:"
+      },
+      "backgroundColor": "yellow",
+      "color": "black",
+      "overviewRulerColor": "None"
     }
   ],
   "css.styleSheets": ["nextapp/src/**/*.css"]
