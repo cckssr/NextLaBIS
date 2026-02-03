@@ -2,12 +2,16 @@
   "name": "nextapp",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --config eslint.config.mjs .",
-    "check-naming": "node scripts/check-naming.js"
+    "check-naming": "node scripts/check-naming.js",
+    "sync-todos": "node scripts/todo-to-issues.js",
+    "sync-todos:dry-run": "node scripts/todo-to-issues.js --dry-run",
+    "sync-todos:create": "node scripts/todo-to-issues.js --create"
   },
   "dependencies": {
     "@mantine/core": "^9.1.0",
