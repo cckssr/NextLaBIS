@@ -12,7 +12,7 @@ import { SpaceOverview } from "./model";
 export async function getSpaceOverview(
   spaceCode: string,
 ): Promise<SpaceOverview> {
-  // TODO: In Phase 1, replace with real openBIS API call
+  // TODO(#47): In Phase 1, replace with real openBIS API call
   // const response = await fetch(`/api/spaces/${spaceCode}`);
   // if (!response.ok) throw new Error(`Space not found: ${spaceCode}`);
   // return response.json();

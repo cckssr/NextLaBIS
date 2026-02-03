@@ -11,20 +11,39 @@ export type OpenbisEntityKind =
 
 export type OpenbisDatasetKind = "Physical" | "Link";
 
+export type OpenbisPropertyDataType =
+  | "INTEGER"
+  | "VARCHAR"
+  | "MULTILINE_VARCHAR"
+  | "REAL"
+  | "TIMESTAMP"
+  | "BOOLEAN"
+  | "CONTROLLEDVOCABULARY"
+  | "MATERIAL"
+  | "HYPERLINK"
+  | "XML"
+  | "OBJECT"
+  | "DATE"
+  | "JSON"
+  | "ARRAY_INTEGER"
+  | "ARRAY_REAL"
+  | "ARRAY_STRING"
+  | "ARRAY_TIMESTAMP";
+
 /**
  * openBIS timestamp-based permId
  * Format: YYYYMMDDHHMMSSmmm-#
  * Example: 20241119170647917-13437
  */
 export const OPENBIS_TIMESTAMP_PERMID_REGEX = /^\d{17}-\d+$/;
-// TODO:: validate regex correctness with zod (strict)
+// TODO(#42): : validate regex correctness with zod (strict)
 
 export type OpenbisPermId = string & {
   readonly __brand: "OpenbisTimestampPermId";
 };
 
-// TODO: fully implement OpenBIS types and extensions for each type
-// FEAT: add zod schemas for validation of json-rpc output
+// TODO(#43): fully implement OpenBIS types and extensions for each type
+// FEAT(#44): add zod schemas for validation of json-rpc output
 export interface OpenbisEntityBase {
   kind: OpenbisEntityKind;
   permId: OpenbisPermId;
@@ -36,7 +55,7 @@ export interface OpenbisEntityBase {
   description?: string | null;
 }
 
-// FIXME: The Space does NOT use the normal timestamp-based permId, but a simple string code as id.
+// FIXME(#45): The Space does NOT use the normal timestamp-based permId, but a simple string code as id.
 export interface OpenbisSpace extends OpenbisEntityBase {
   kind: "SPACE";
   frozenForProjects?: boolean;
@@ -110,4 +129,20 @@ export interface OpenbisUser {
   lastName?: string;
   email?: string;
   homeSpace?: OpenbisSpace;
+}
+
+// TODO(#46): add semantic annotation, new properties, etc.
+export interface OpenbisPropertyType {
+  code: string;
+  managedInternally: boolean;
+  dataType: OpenbisPropertyDataType;
+  registratedBy: OpenbisUser;
+  registrationDate: Date;
+  label?: string;
+  description?: string;
+  vocabulary?: string;
+  objectType?: string;
+  scheme?: string;
+  transformation?: string;
+  metadata?: Record<string, unknown>;
 }

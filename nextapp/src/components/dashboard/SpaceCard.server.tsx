@@ -23,7 +23,7 @@ import { formatRelativeTime } from "@/lib/utils/datetimeFunctions";
 
 /**
  * Props for SpaceCard component.
- * TODO: Replace with Space model type
+ * TODO(#48): Replace with Space model type
  */
 interface SpaceCardProps {
   code: string;
@@ -57,13 +57,13 @@ export function SpaceCard({
       style={{ textDecoration: "none", display: "block" }}
     >
       <Card withBorder={true} p="lg" shadow="md" radius="lg">
-        {/* TODO: Add hover effect with SSR still enabled */}
+        {/* TODO(#36): Add hover effect with SSR still enabled */}
         <Flex gap="sm" pr="md" wrap="nowrap" style={{ overflow: "hidden" }}>
           <Title order={4} mr="lg">
             {formattedCode}
           </Title>
           <RightsPill role={spaceRights} />
-          {/* FIXME: too many tags break layout / overflow */}
+          {/* FIXME(#37): too many tags break layout / overflow */}
           {tags.map((tag, i) => (
             <TagPill key={i} label={tag} />
           ))}

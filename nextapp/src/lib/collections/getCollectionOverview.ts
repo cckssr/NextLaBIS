@@ -13,7 +13,7 @@ import { OpenbisPermId } from "../model/OpenBISModel";
 export async function getCollectionOverview(
   collectionPermId: OpenbisPermId,
 ): Promise<CollectionOverview> {
-  // TODO: In Phase 1, replace with real openBIS API call
+  // TODO(#41): In Phase 1, replace with real openBIS API call
   // const response = await fetch(`/api/collections/${collectionPermId}`);
   // if (!response.ok) throw new Error(`Collection not found: ${collectionPermId}`);
   // return response.json();

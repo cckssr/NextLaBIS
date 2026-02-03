@@ -6,7 +6,7 @@ import { SpaceDisplayData } from "@/types/openbis";
 /**
  * Props for SpacesOverviewCard component.
  *
- * TODO: maxSpaceCount should be calculated based on window size of the Dashboard
+ * TODO(#49): maxSpaceCount should be calculated based on window size of the Dashboard
  * @param maxSpaceCount - Maximum number of spaces to display in the card.
  */
 interface SpacesCardProps {

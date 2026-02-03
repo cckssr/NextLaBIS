@@ -22,9 +22,10 @@ export function formatRelativeTime(date: Date): string {
  * Formats a date to a shorter ISO datetime string:
  * YYYY-MM-DD HH:MM:SS
  *
- * @param date - The date to format.
+ * @param date - The date to format. Can be a Date object or ISO string.
  * @returns A string representing the locale datetime.
  */
-export function formatLocaleDateTime(date: Date): string {
-  return date.toISOString().split("T").join(" ").slice(0, 19);
+export function formatLocaleDateTime(date: Date | string): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  return d.toISOString().split("T").join(" ").slice(0, 19);
 }
