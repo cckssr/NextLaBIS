@@ -65,7 +65,7 @@ export default function AppShellContent({ children }: AppShellContentProps) {
       <AppShell.Main
         maw={1200}
         ml={navigationOpen ? "md" : "auto"}
-        mr={navigationOpen ? "auto" : "auto"}
+        mr="auto"
       >
         <Suspense fallback={null}>
           <Breadcrumbs />
