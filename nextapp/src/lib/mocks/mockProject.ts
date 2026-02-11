@@ -20,14 +20,6 @@ if (!spaceOne || spaceOne.code !== "SPACE_ONE") {
   );
 }
 
-// Helper function to calculate total objects across collections
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const calculateTotalObjects = (
-  collections: Array<{ numberOfObjects: number }>,
-) => {
-  return collections.reduce((sum, col) => sum + col.numberOfObjects, 0);
-};
-
 /**
  * Project Overview for SPACE_ONE - Quantum mechanics and optics facility
  * Contains multiple research projects with diverse collections
