@@ -50,8 +50,28 @@ Consistent code enables contributors to collaborate effectively. The following c
 ## Git & Commits
 
 - Follow the [branching strategy](branching-strategy.md).
-- Write commit messages in the imperative mood (e.g., `Add masterdata integer component`).
 - Commit frequently to capture logical steps. Avoid committing generated files.
+- Use Conventional Commits format for all commit messages:
+
+```text
+<type>(<scope>): <short summary>
+
+Types:  feat | fix | docs | style | refactor | perf | test | chore
+Scope:  domain label value — auth | navigation | entities | files |
+        properties | types | users | search | grids | shell | infra
+```
+
+Examples:
+
+```text
+feat(entities): add ObjectPropertiesPanel component with mock data
+fix(shell): correct navbar collapse on mobile breakpoint
+refactor(grids): extract column config to shared helper
+docs(infra): update CI check instructions in copilot-instructions
+```
+
+- PR titles and squash commits follow `type(scope): summary (#PR)`.
+- Keep the summary under 72 characters; add a body for non-obvious changes.
 
 ## Documentation & Comments
 
@@ -61,7 +81,29 @@ Consistent code enables contributors to collaborate effectively. The following c
 
 By adhering to these standards, we ensure the codebase remains maintainable as the project grows.
 
-## OpenBIS Specific Guidelines
+## Phase-Aware Development
 
-- Follow openBIS data models and naming conventions where applicable.
-  - Consistently use only the terms "Object", "Collection", "Space", "Dataset". Avoid old terminology like "Sample", "Experiment", "Project".
+Code must respect the current development phase. Phase constraints are enforced by CI and code review.
+
+| Phase | Allowed | Forbidden |
+| --- | --- | --- |
+| **Phase 0** (current) | UI components, mock data, Storybook stories | openBIS API calls, auth, `/app/api/*` routes |
+| **Phase 1** | API integration, real data fetching, route handlers | Direct DOM manipulation, non-Mantine UI libs |
+| **Phase 2** | Advanced ELN features, rich text, file upload | Skipping Phase 1 patterns |
+
+- Tag every new file mentally with its phase: is it UI-only (Phase 0) or does it touch real data (Phase 1+)?
+- Mock data lives in `src/lib/<domain>/mockProvider.ts`. Never import mock providers from Phase 1 code.
+- Phase 1 integration means replacing the `mockProvider` call in `get<Entity>.ts` only — components are unchanged.
+
+## openBIS Terminology
+
+Use current openBIS terminology exclusively. Old API names exist only in type definitions.
+
+| Use | Avoid |
+| --- | --- |
+| Object | Sample |
+| Collection | Experiment |
+| Space | (unchanged) |
+| Dataset | (unchanged) |
+
+These terms appear in: component names, prop names, route segments, issue titles, and comments.

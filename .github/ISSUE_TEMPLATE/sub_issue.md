@@ -1,26 +1,35 @@
 ---
-name: Sub-issue
-about: Track a focused task that contributes to an epic
-labels: ["type:sub-issue", "status:needs-scoping"]
+name: Sub-issue / Task
+about: A focused implementation task that contributes to a feature or epic
+labels: ["type:task", "status:backlog"]
 ---
 
 ## Summary
 
-<!-- Brief description of the task. -->
+<!-- One sentence: what exactly needs to be done? -->
 
-## Parent Epic
+**Parent:** #<!-- feature or epic issue number -->
+**Phase:** <!-- phase:0-foundations | phase:1-api | phase:2-eln -->
+**Domain:** <!-- domain:auth | domain:entities | domain:navigation | ... -->
 
-<!-- Link to the epic issue. -->
+## Context
+
+<!-- Why is this task needed? Link to parent feature/epic for background. -->
+
+## Implementation Plan
+
+<!-- Outline the approach: which files to touch, which components to create/modify. -->
+
+- [ ]
+- [ ]
+- [ ]
 
 ## Acceptance Criteria
 
-- [ ] 
-- [ ] 
+- [ ] Feature works as described
+- [ ] CI passes (`npm run check-naming`, `npm run lint`, `npx tsc --noEmit`, `npm run build`)
+- [ ] Self-reviewed before PR
 
-## Implementation Notes
+## Testing Notes
 
-<!-- Outline approach, components to touch, or open questions. -->
-
-## Testing Strategy
-
-<!-- Describe how the change will be verified (unit tests, screenshots, etc.). -->
+<!-- Describe how to manually verify (component to open, interaction to test, screenshot). -->

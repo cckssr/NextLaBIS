@@ -465,13 +465,17 @@ See `docs/git-workflow.md` for details.
 
 ## Project Management & Development Workflow
 
-- **Phases**: Phase 0 (Foundations) → Phase 1 (Core Data) → Phase 2 (Advanced ELN)
-- **Development Approach**: Visual-first with mock data (Phase 0), real API integration (Phase 1)
-- **Issues**: Tracked as epics → sub-issues. Labels: `phase:0-visual-first`, `phase:1-api-integration`, `type:epic`, `type:sub-issue`
-- **Branches**: Feature branches per view/feature (e.g., `feature/dashboard-overview`), squash before merge
-- **Commits**: Frequent during development, squashed/rebased before PR
-- **Testing**: Storybook documentation (Phase 0+), no unit tests yet (Phase 1+)
+- **Phases**: Phase 0 (Foundations) → Phase 1 (API Integration) → Phase 2 (Advanced ELN)
+- **Development approach**: Visual-first with mock data (Phase 0), real API integration (Phase 1+)
+- **Issue hierarchy**: Epic → Feature → Task. Every issue needs `type:*`, `phase:*`, and `domain:*` labels.
+- **Issue templates**: Use the correct template — `epic.md`, `feature_request.md`, `sub_issue.md`, or `bug_report.md`
+- **Phase labels**: `phase:0-foundations`, `phase:1-api`, `phase:2-eln`, `phase:backlog`
+- **Domain labels**: `domain:auth`, `domain:navigation`, `domain:entities`, `domain:files`, `domain:properties`, `domain:types`, `domain:users`, `domain:search`, `domain:grids`, `domain:import-export`, `domain:eln`, `domain:admin`, `domain:shell`, `domain:infra`
+- **Branches**: `feature/<domain>-<short-name>` branched from `develop`, squash-merged via PR
+- **Commits**: Conventional Commits — `feat(entities): add ObjectPanel component (#42)`
+- **Testing**: Storybook stories (Phase 0+), unit tests with React Testing Library (Phase 1+)
 
+See `docs/project-management.md` for the full label registry, GitHub Projects setup, and workflow.
 See `docs/git-workflow.md` for detailed branch, commit, and PR strategies.
 
 ---
