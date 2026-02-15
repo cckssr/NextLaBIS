@@ -15,10 +15,10 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] Display current session information (user, roles, login time)
 - [ ] Personal Access Token (PAT) management
   - [ ] Create PATs with name, validity period, session expiry
-  - [ ] List all PATs
-  - [ ] Edit PAT settings
+  - [ ] List all PATs (admin)
+  - [ ] Edit PAT settings (admin)
   - [ ] Revoke/delete PATs
-  - [ ] View PAT last access information
+  - [ ] View PAT last access information (admin)
 - [ ] Active sessions overview (admin)
 
 ---
@@ -30,9 +30,9 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] Tab-based or sidebar navigation with major sections:
   - [ ] Lab Notebook (ELN)
   - [ ] Inventory / LIMS
-  - [ ] Database browser (Admin)
-  - [ ] Types management
-  - [ ] Users management
+  - [ ] Database browser (admin)
+  - [ ] Types management (admin)
+  - [ ] Users management (admin)
   - [ ] Tools / Utilities
 - [ ] Breadcrumb navigation showing current hierarchy path
 - [ ] Back/forward browser history support
@@ -67,11 +67,11 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] List all spaces
 - [ ] Create space (code, description)
 - [ ] Edit space (description)
-- [ ] Delete space (with confirmation)
-- [ ] View space details (projects, samples, metadata)
-- [ ] Freeze space (make immutable)
+- [ ] Delete space (with confirmation) (power user)
+- [ ] View space details (projects, objects, metadata)
+- [ ] Freeze space (make immutable) (admin)
   - [ ] Freeze for projects
-  - [ ] Freeze for samples
+  - [ ] Freeze for objects
 - [ ] Search spaces
 
 ### 3.2 Projects
@@ -79,59 +79,59 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] List projects (within space or globally)
 - [ ] Create project (code, description, space assignment)
 - [ ] Edit project (description, space reassignment)
-- [ ] Delete project (with confirmation)
-- [ ] View project details (experiments, samples, metadata)
-- [ ] Move project between spaces
+- [ ] Delete project (with confirmation) (power user)
+- [ ] View project details (collections, objects, metadata)
+- [ ] Move project between spaces (rights check)
 - [ ] Search projects
 
-### 3.3 Experiments / Collections
+### 3.3 Collections (old: Experiments)
 
-- [ ] List experiments (within project or globally)
-- [ ] Create experiment (code, type, project assignment)
-- [ ] Edit experiment properties
-- [ ] Delete experiment (trackable, goes to trash)
-- [ ] View experiment details (samples, datasets, properties)
-- [ ] Move experiment between projects
-- [ ] Freeze experiment
-  - [ ] Freeze for samples
+- [ ] List collections (within project or globally)
+- [ ] Create collection (code, type, project assignment)
+- [ ] Edit collection properties
+- [ ] Delete collection (trackable, goes to trash)
+- [ ] View collection details (objects, datasets, properties)
+- [ ] Move collection between projects
+- [ ] Freeze collection (admin)
+  - [ ] Freeze for objects
   - [ ] Freeze for datasets
-- [ ] Search experiments by type, properties, project, space
-- [ ] Pagination through experiment collections
+- [ ] Search collections by type, properties, project, space
+- [ ] Pagination through collection tables
 
-### 3.4 Samples / Objects
+### 3.4 Objects / Samples
 
-- [ ] List samples (within experiment, project, space, or globally)
-- [ ] Create sample (code, type, space/project/experiment assignment)
-- [ ] Edit sample properties
-- [ ] Delete sample (trackable, goes to trash)
-- [ ] View sample details (properties, datasets, parents, children, components)
-- [ ] Move sample between spaces/projects/experiments
+- [ ] List objects (within collection, project, space, or globally)
+- [ ] Create object (code, type, space/project/collection assignment)
+- [ ] Edit object properties
+- [ ] Delete object (trackable, goes to trash)
+- [ ] View object details (properties, datasets, parents, children, components)
+- [ ] Move object between spaces/projects/collections
 - [ ] Manage parent-child relationships
   - [ ] Add/remove parents
   - [ ] Add/remove children
   - [ ] View parent hierarchy
   - [ ] View child hierarchy
 - [ ] Manage container-component relationships
-  - [ ] Assign sample to container
-  - [ ] Add components to sample
+  - [ ] Assign object to container
+  - [ ] Add components to object
   - [ ] Remove components
 - [ ] Relationship annotations (quality, metadata on links)
-- [ ] Freeze sample
+- [ ] Freeze object (admin)
   - [ ] Freeze for components
   - [ ] Freeze for children
   - [ ] Freeze for parents
   - [ ] Freeze for datasets
-- [ ] Search samples by type, properties, relationships, space, project
-- [ ] Batch sample operations
-- [ ] Pagination through sample tables
-- [ ] Sample form with sections and dynamic property layout
-- [ ] Auto-save support on sample forms
+- [ ] Search objects by type, properties, relationships, space, project
+- [ ] Batch object operations
+- [ ] Pagination through object tables
+- [ ] Object form with sections and dynamic property layout
+- [ ] Auto-save support on object forms
 - [ ] Show in project overview toggle
 
 ### 3.5 Datasets
 
-- [ ] List datasets (within sample, experiment, or globally)
-- [ ] Create dataset (code, type, sample/experiment assignment)
+- [ ] List datasets (within object, collection, or globally)
+- [ ] Create dataset (code, type, object/collection assignment)
 - [ ] Edit dataset properties
 - [ ] Delete dataset (trackable, goes to trash)
 - [ ] View dataset details (properties, files, metadata)
@@ -150,19 +150,17 @@ This document is a comprehensive checklist of every feature the new openBIS web 
   - [ ] Freeze for parents
   - [ ] Freeze for components
   - [ ] Freeze for containers
-- [ ] Search datasets by type, properties, sample, experiment
+- [ ] Search datasets by type, properties, object, collection
 - [ ] View dataset registration/modification metadata
 
 ### 3.6 Materials (Legacy)
 
-- [ ] List materials
-- [ ] Create material (code, type)
-- [ ] Edit material properties
-- [ ] Delete material
-- [ ] Search materials
-- [ ] Material property references in other entities
-
----
+- ~~[ ] List materials~~
+- ~~[ ] Create material (code, type)~~
+- ~~[ ] Edit material properties~~
+- ~~[ ] Delete material~~
+- ~~[ ] Search materials~~
+- ~~[ ] Material property references in other entities~~
 
 ## 4. FILE MANAGEMENT
 
@@ -225,8 +223,8 @@ This document is a comprehensive checklist of every feature the new openBIS web 
     - [ ] REAL (decimal)
     - [ ] TIMESTAMP (date/time)
     - [ ] CONTROLLEDVOCABULARY (dropdown)
-    - [ ] MATERIAL (material reference)
-    - [ ] SAMPLE (sample reference)
+    - [ ] MATERIAL (material reference, legacy)
+    - [ ] OBJECT (OBJECT reference)
     - [ ] HYPERLINK (URL)
     - [ ] XML
     - [ ] JSON
@@ -257,7 +255,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] Boolean toggles/switches
 - [ ] Numeric inputs (integer and decimal)
 - [ ] Hyperlink fields
-- [ ] Sample picker/reference fields
+- [ ] Object picker/reference fields
 - [ ] Material picker/reference fields
 - [ ] JSON editor
 - [ ] XML editor
@@ -267,24 +265,24 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 
 ## 6. TYPE MANAGEMENT
 
-### 6.1 Sample Types (Object Types)
+### 6.1 Object Types (Object Types)
 
-- [ ] List all sample types
-- [ ] Create sample type (code, description, validation plugin, auto-generated codes)
-- [ ] Edit sample type
-- [ ] Delete sample type
+- [ ] List all object types
+- [ ] Create object type (code, description, validation plugin, auto-generated codes)
+- [ ] Edit object type
+- [ ] Delete object type
 - [ ] Manage assigned properties (add, remove, reorder, configure)
 - [ ] Manage sections (group properties into visual sections)
 - [ ] Preview form layout
-- [ ] Semantic annotations on sample type
+- [ ] Semantic annotations on object type
 - [ ] Assign to type group
 
-### 6.2 Experiment Types (Collection Types)
+### 6.2 Collection Types (Collection Types)
 
-- [ ] List all experiment types
-- [ ] Create experiment type
-- [ ] Edit experiment type
-- [ ] Delete experiment type
+- [ ] List all collection types
+- [ ] Create collection type
+- [ ] Edit collection type
+- [ ] Delete collection type
 - [ ] Manage assigned properties
 - [ ] Semantic annotations
 
@@ -296,13 +294,13 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] Delete dataset type
 - [ ] Manage assigned properties
 
-### 6.4 Material Types
+~~### 6.4 Material Types~~
 
-- [ ] List all material types
-- [ ] Create material type
-- [ ] Edit material type
-- [ ] Delete material type
-- [ ] Manage assigned properties
+- [ ] ~~List all material types~~
+- [ ] ~~Create material type~~
+- [ ] ~~Edit material type~~
+- [ ] ~~Delete material type~~
+- [ ] ~~Manage assigned properties~~
 
 ### 6.5 Type Groups
 
@@ -385,7 +383,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 
 ### 8.2 Advanced Search
 
-- [ ] Search by entity type (space, project, experiment, sample, dataset)
+- [ ] Search by entity type (space, project, collection, object, dataset)
 - [ ] Search by code / permId / identifier
 - [ ] Search by property values (any property, specific property)
 - [ ] Search by string properties
@@ -393,13 +391,13 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] Search by boolean properties
 - [ ] Search by date properties (with date range)
 - [ ] Search by controlled vocabulary property
-- [ ] Search by sample property (reference)
+- [ ] Search by object property (reference)
 - [ ] Search by registration date range
 - [ ] Search by modification date range
 - [ ] Search by registrator/modifier
 - [ ] Search by parent/child relationships
 - [ ] Search by container/component relationships
-- [ ] Search by experiment/project/space
+- [ ] Search by collection/project/space
 - [ ] Search by tag
 - [ ] Combine criteria with AND/OR operators
 - [ ] Negate criteria (NOT)
@@ -516,7 +514,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] View change history for any entity
 - [ ] Property change history (old value -> new value)
 - [ ] Relationship change history (parents, children, container)
-- [ ] Space/project/experiment assignment history
+- [ ] Space/project/collection assignment history
 - [ ] User attribution for each change
 - [ ] Timestamp for each change
 - [ ] Version comparison
@@ -608,11 +606,11 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] Storage browser (hierarchical storage visualization)
 - [ ] Define storage units (freezers, racks, shelves, boxes)
 - [ ] Grid-based storage layout visualization (rack positions, box positions)
-- [ ] Assign samples to storage positions
-- [ ] Drag-and-drop sample placement in storage grid
-- [ ] View sample at position (click to navigate)
+- [ ] Assign objects to storage positions
+- [ ] Drag-and-drop object placement in storage grid
+- [ ] View object at position (click to navigate)
 - [ ] Storage position validation (detect conflicts/duplicates)
-- [ ] Multiple storage property groups per sample
+- [ ] Multiple storage property groups per object
 - [ ] Box management within storage units
 - [ ] User assignment to storage positions
 - [ ] Print storage labels
@@ -624,8 +622,8 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 ### 16.1 Lab Notebook Interface
 
 - [ ] Dedicated lab notebook browsing mode
-- [ ] Space > Project > Experiment hierarchy for organizing notebooks
-- [ ] Rich text editor for experiment notes (CKEditor or equivalent)
+- [ ] Space > Project > Collection hierarchy for organizing notebooks
+- [ ] Rich text editor for collection notes (CKEditor or equivalent)
   - [ ] Text formatting (bold, italic, headers, lists)
   - [ ] Greek character insertion (scientific notation)
   - [ ] Image embedding
@@ -642,13 +640,13 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 
 - [ ] Template types for entity creation
 - [ ] ELN master data initialization
-- [ ] Pre-defined sample type configurations for common lab workflows
+- [ ] Pre-defined object type configurations for common lab workflows
 
 ### 16.3 Drawing Board / Sketches
 
 - [ ] Canvas-based drawing tool
 - [ ] Create and save sketches/diagrams
-- [ ] Attach drawings to experiments/samples
+- [ ] Attach drawings to collections/objects
 
 ### 16.4 Free-Form Tables
 
@@ -713,7 +711,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 
 ### 19.2 Screening / Plate Management
 
-- [ ] Plate listing (all plates, per experiment)
+- [ ] Plate listing (all plates, per collection)
 - [ ] Plate layout visualization (grid of wells)
 - [ ] Well detail view
 - [ ] Plate-well-material mapping
@@ -729,7 +727,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
   - [ ] Load feature vectors for wells
   - [ ] Feature vector visualization
   - [ ] Feature dataset references
-- [ ] Experiment-level image metadata
+- [ ] Collection-level image metadata
 
 ### 19.3 Data Visualization
 
@@ -778,7 +776,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 ## 23. TAGS / METAPROJECTS
 
 - [ ] Create tags
-- [ ] Assign tags to entities (samples, datasets, experiments)
+- [ ] Assign tags to entities (objects, datasets, collections)
 - [ ] Remove tags from entities
 - [ ] Browse/filter entities by tag
 - [ ] Delete tags
@@ -904,7 +902,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] Image analysis pipeline
 - [ ] Feature extraction from images
 - [ ] Image processing services
-- [ ] Imaging-specific sample/dataset handling
+- [ ] Imaging-specific object/dataset handling
 
 ### 29.3 Nanonis (SPM) Imaging Plugin
 
@@ -967,8 +965,8 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 
 ## 32. MOVE OPERATIONS
 
-- [ ] Move sample between spaces/projects/experiments
-- [ ] Move experiment between projects
+- [ ] Move object between spaces/projects/collections
+- [ ] Move collection between projects
 - [ ] Move project between spaces
 - [ ] Cross-hierarchy relocation
 - [ ] Parent reference update on move
@@ -990,7 +988,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 ## 34. PRINT FUNCTIONALITY
 
 - [ ] Print entity details
-- [ ] Print sample lists
+- [ ] Print object lists
 - [ ] Print storage labels
 - [ ] Print barcodes/QR codes
 - [ ] Print-friendly formatting
@@ -1021,7 +1019,7 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 
 ## 37. ATTACHMENT MANAGEMENT (LEGACY)
 
-- [ ] Upload attachments to entities (experiments, samples, projects)
+- [ ] Upload attachments to entities (collections, objects, projects)
 - [ ] Download attachments
 - [ ] View attachment list
 - [ ] Delete attachments
@@ -1034,6 +1032,15 @@ This document is a comprehensive checklist of every feature the new openBIS web 
 - [ ] Track modifications by object kind (entity type)
 - [ ] Last modification timestamp per kind
 - [ ] Use for cache invalidation / incremental loading
+
+---
+
+## 39. ADVANCED FEATURES
+
+- [ ] TipTap / modern rich text editor with collaboration
+  - [ ] Real-time collaborative editing
+  - [ ] Saving / history checkpoints / enabling
+- [ ] Quick data visualizations (charts, graphs)
 
 ---
 

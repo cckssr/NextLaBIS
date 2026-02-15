@@ -1,38 +1,42 @@
 ---
 name: Bug Report
 about: Report a defect or regression in NextLaBIS
-labels: ["type:bug", "status:needs-scoping"]
+labels: ["type:bug", "status:backlog"]
 ---
 
 ## Summary
 
-<!-- A clear and concise description of the bug. -->
+<!-- A clear, one-line description of the bug. -->
+
+**Domain:** <!-- domain:auth | domain:entities | domain:navigation | ... -->
+**Priority:** <!-- priority:critical | priority:high | priority:medium | priority:low -->
+**Phase found in:** <!-- phase:0-foundations | phase:1-api | phase:2-eln -->
 
 ## Steps to Reproduce
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Expected Behaviour
 
-<!-- Describe what you expected to happen. -->
+<!-- What should happen? -->
 
 ## Actual Behaviour
 
-<!-- Describe what actually happened. Include screenshots, logs, or videos if possible. -->
+<!-- What actually happens? Include screenshots, console errors, or videos if possible. -->
 
 ## Environment
 
 - Browser:
 - OS:
 - Branch/Commit:
-- Additional context:
+- openBIS version (if Phase 1+):
 
 ## Impact
 
-<!-- How severe is the bug? Does it block a phase/epic or user workflow? -->
+<!-- Does this block a feature, epic, or user workflow? Reference the parent issue if applicable. -->
 
-## Proposed Fix (Optional)
+## Proposed Fix
 
-<!-- Share ideas for resolving the issue or ask for guidance. -->
+<!-- Optional: share ideas or point to the relevant code. -->
