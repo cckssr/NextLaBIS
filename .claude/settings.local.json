@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(gh issue list:*)"
+      "Bash(gh issue list:*)",
+      "Bash(gh issue *)",
+      "Bash(gh api *)",
+      "Bash(python3)",
+      "Bash(python3 -m scripts.aggregate_benchmark /tmp/github-manager-workspace/iteration-1 --skill-name github-manager)",
+      "Bash(python3 '/Users/cedric.kessler/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/6c1eb5e6-8952-475b-a58d-4c55109ca2c4/b26abad8-7a35-4e13-80a4-6cb9135b3d52/skills/skill-creator/eval-viewer/generate_review.py' --help)",
+      "Bash(nohup python3 *)",
+      "Read(//tmp/**)"
     ]
   }
 }
