@@ -28,13 +28,6 @@ Implement advanced features including a modern rich text editor with real-time c
 - Custom visualisation plugin framework
 - Offline collaborative editing (CRDT-based)
 
-## Feature Breakdown
-
-- [ ] TipTap / modern rich text editor with collaboration
-- [ ] Real-time collaborative editing
-- [ ] Saving / history checkpoints / enabling
-- [ ] Quick data visualisations (charts, graphs)
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

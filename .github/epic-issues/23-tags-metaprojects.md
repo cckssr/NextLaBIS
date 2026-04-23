@@ -28,15 +28,6 @@ Implement a tagging system allowing users to create tags, assign them to entitie
 - Tag-based access control
 - Tag hierarchies or categories
 
-## Feature Breakdown
-
-- [ ] Create tags
-- [ ] Assign tags to entities (objects, datasets, collections)
-- [ ] Remove tags from entities
-- [ ] Browse/filter entities by tag
-- [ ] Delete tags
-- [ ] Search by tag
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

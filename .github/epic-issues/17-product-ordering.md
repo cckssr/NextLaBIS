@@ -28,15 +28,6 @@ Implement a product ordering system for LIMS workflows, allowing users to browse
 - Integration with external procurement systems
 - Approval workflows for orders
 
-## Feature Breakdown
-
-- [ ] Product catalog browsing
-- [ ] Create new product entries
-- [ ] Product fields: name, catalog number, provider/vendor, price, currency, quantity
-- [ ] Submit orders/requests
-- [ ] Order tracking
-- [ ] Auto-generate product codes
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

@@ -31,16 +31,6 @@ Implement consistent theming (light/dark mode), keyboard navigation, screen read
 - Custom theme builder / branding per instance
 - Internationalisation (i18n) — separate concern
 
-## Feature Breakdown
-
-- [ ] Material Design / consistent component library
-- [ ] Light mode
-- [ ] Dark mode
-- [ ] Keyboard navigation support
-- [ ] Screen reader support (ARIA labels)
-- [ ] Focus management
-- [ ] High contrast mode
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

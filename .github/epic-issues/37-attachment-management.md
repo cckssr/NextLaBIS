@@ -29,14 +29,6 @@ Implement legacy attachment support for uploading, downloading, viewing, deletin
 - Migration from attachments to datasets
 - Attachment preview (covered by §4 File Preview)
 
-## Feature Breakdown
-
-- [ ] Upload attachments to entities (collections, objects, projects)
-- [ ] Download attachments
-- [ ] View attachment list
-- [ ] Delete attachments
-- [ ] Attachment versioning
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

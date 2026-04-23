@@ -30,21 +30,6 @@ Implement the openBIS query system allowing users to create, save, and execute S
 - Query scheduling / automated execution
 - Query sharing between users
 
-## Feature Breakdown
-
-- [ ] List all saved queries
-- [ ] Create query (name, description, SQL, database selection)
-- [ ] Edit query
-- [ ] Delete query
-- [ ] SQL editor with syntax highlighting
-- [ ] Define query parameters (name, type, description)
-- [ ] Execute query with parameter input form
-- [ ] Display results in data grid
-- [ ] Paginate query results
-- [ ] Sort query results by column
-- [ ] Export query results (CSV, TSV)
-- [ ] Direct SQL execution (admin only)
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

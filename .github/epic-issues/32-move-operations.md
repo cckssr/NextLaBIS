@@ -31,16 +31,6 @@ Implement entity move operations allowing users to relocate objects, collections
 - Undo move operations
 - Move history / audit trail (covered by §12)
 
-## Feature Breakdown
-
-- [ ] Move object between spaces/projects/collections
-- [ ] Move collection between projects
-- [ ] Move project between spaces
-- [ ] Cross-hierarchy relocation
-- [ ] Parent reference update on move
-- [ ] Move confirmation dialog
-- [ ] Bulk move operations
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

@@ -29,14 +29,6 @@ Implement parent-child relationship tree views with expandable/collapsible hiera
 - Graph-based visualisation (network diagram)
 - Relationship strength / weight visualisation
 
-## Feature Breakdown
-
-- [ ] Parent-child relationship tree view
-- [ ] Expandable/collapsible hierarchy
-- [ ] Hierarchy filter by entity type
-- [ ] Hierarchy depth control
-- [ ] Navigate to any entity in hierarchy
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed
