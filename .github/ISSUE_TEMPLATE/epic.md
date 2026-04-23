@@ -4,7 +4,7 @@ about: A large initiative spanning multiple features (maps to a checklist sectio
 labels: ["type:epic", "status:backlog"]
 ---
 
-## Overview
+# Overview
 
 <!-- What is this epic? Which section of the feature checklist does it cover?
      Reference: docs/NEW_UI_FEATURE_CHECKLIST.md §[section number] -->
