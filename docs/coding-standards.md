@@ -85,11 +85,11 @@ By adhering to these standards, we ensure the codebase remains maintainable as t
 
 Code must respect the current development phase. Phase constraints are enforced by CI and code review.
 
-| Phase | Allowed | Forbidden |
-| --- | --- | --- |
-| **Phase 0** (current) | UI components, mock data, Storybook stories | openBIS API calls, auth, `/app/api/*` routes |
-| **Phase 1** | API integration, real data fetching, route handlers | Direct DOM manipulation, non-Mantine UI libs |
-| **Phase 2** | Advanced ELN features, rich text, file upload | Skipping Phase 1 patterns |
+| Phase                 | Allowed                                             | Forbidden                                    |
+| --------------------- | --------------------------------------------------- | -------------------------------------------- |
+| **Phase 0** (current) | UI components, mock data, Storybook stories         | openBIS API calls, auth, `/app/api/*` routes |
+| **Phase 1**           | API integration, real data fetching, route handlers | Direct DOM manipulation, non-Mantine UI libs |
+| **Phase 2**           | Advanced ELN features, rich text, file upload       | Skipping Phase 1 patterns                    |
 
 - Tag every new file mentally with its phase: is it UI-only (Phase 0) or does it touch real data (Phase 1+)?
 - Mock data lives in `src/lib/<domain>/mockProvider.ts`. Never import mock providers from Phase 1 code.
@@ -99,11 +99,11 @@ Code must respect the current development phase. Phase constraints are enforced 
 
 Use current openBIS terminology exclusively. Old API names exist only in type definitions.
 
-| Use | Avoid |
-| --- | --- |
-| Object | Sample |
-| Collection | Experiment |
-| Space | (unchanged) |
-| Dataset | (unchanged) |
+| Use        | Avoid       |
+| ---------- | ----------- |
+| Object     | Sample      |
+| Collection | Experiment  |
+| Space      | (unchanged) |
+| Dataset    | (unchanged) |
 
 These terms appear in: component names, prop names, route segments, issue titles, and comments.

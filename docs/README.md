@@ -24,14 +24,12 @@ Welcome to the NextLaBIS documentation. This folder contains guides for develope
    - Component patterns
    - Naming conventions
 2. **Building a feature**: [visual-first-workflow.md](./visual-first-workflow.md)
-
    - Define prop interfaces
    - Create mock data
    - Build components with Mantine
    - Document in Storybook
 
 3. **Contributing code**: [git-workflow.md](./git-workflow.md)
-
    - Branch strategy
    - Commit hygiene
    - PR workflow
@@ -44,12 +42,10 @@ Welcome to the NextLaBIS documentation. This folder contains guides for develope
 ### 🎨 Designers
 
 1. **Component library**:
-
    - View Storybook (`npm run storybook`) for all component states
    - Reference: [storybook-guide.md](./storybook-guide.md)
 
 2. **System overview**: [tech-stack.md](./tech-stack.md)
-
    - Mantine 7 components
    - Color theme
    - Responsive breakpoints
@@ -62,13 +58,11 @@ Welcome to the NextLaBIS documentation. This folder contains guides for develope
 ### 🗂️ Project Managers
 
 1. **Roadmap & tracking**: [project-management.md](./project-management.md)
-
    - How issues are organized
    - Feature vs. phase structure
    - Labels and status tracking
 
 2. **Development approach**: [visual-first-workflow.md](./visual-first-workflow.md)
-
    - Phase 0 (mock data) → Phase 1 (real API)
    - Why components don't waste
 
