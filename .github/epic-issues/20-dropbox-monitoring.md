@@ -29,14 +29,6 @@ Provide a monitoring dashboard for openBIS dropbox data ingestion, showing incom
 - Dropbox configuration / plugin management
 - Automated alerting / notifications for failures
 
-## Feature Breakdown
-
-- [ ] Monitor incoming data directories (dropboxes)
-- [ ] Dashboard overview of dropbox status
-- [ ] Detailed import logs
-- [ ] Error tracking and reporting
-- [ ] View processing status per dropbox
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

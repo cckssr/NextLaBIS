@@ -32,20 +32,6 @@ Implement a visual storage management system for LIMS workflows, allowing users 
 - Barcode scanning for storage placement (covered by §16.6)
 - Storage capacity analytics / reporting
 
-## Feature Breakdown
-
-- [ ] Storage browser (hierarchical storage visualization)
-- [ ] Define storage units (freezers, racks, shelves, boxes)
-- [ ] Grid-based storage layout visualization (rack positions, box positions)
-- [ ] Assign objects to storage positions
-- [ ] Drag-and-drop object placement in storage grid
-- [ ] View object at position (click to navigate)
-- [ ] Storage position validation (detect conflicts/duplicates)
-- [ ] Multiple storage property groups per object
-- [ ] Box management within storage units
-- [ ] User assignment to storage positions
-- [ ] Print storage labels
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

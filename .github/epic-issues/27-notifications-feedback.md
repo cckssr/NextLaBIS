@@ -32,16 +32,6 @@ Implement a unified notification and feedback system including toast notificatio
 - Notification history / inbox
 - Email notifications
 
-## Feature Breakdown
-
-- [ ] Toast notifications (success, error, warning, info)
-- [ ] Auto-dismiss or persistent notifications
-- [ ] Loading spinners for async operations
-- [ ] Progress bars for file uploads/downloads
-- [ ] Blocking overlay during critical operations
-- [ ] Error messages with details/stack traces
-- [ ] Operation success confirmation
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

@@ -27,12 +27,6 @@ Implement tracking of modifications by object kind (entity type) to support cach
 - Real-time change notification (WebSocket push)
 - Cross-tab synchronisation
 
-## Feature Breakdown
-
-- [ ] Track modifications by object kind (entity type)
-- [ ] Last modification timestamp per kind
-- [ ] Use for cache invalidation / incremental loading
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

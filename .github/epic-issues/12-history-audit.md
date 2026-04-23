@@ -31,34 +31,6 @@ Provide comprehensive audit trail and history views for all entities, including 
 
 - Compliance reporting / export of audit trails
 
-## Feature Breakdown
-
-### 12.1 Entity History
-
-- [ ] View change history for any entity
-- [ ] Property change history (old value -> new value)
-- [ ] Relationship change history (parents, children, container)
-- [ ] Space/project/collection assignment history
-- [ ] User attribution for each change
-- [ ] Timestamp for each change
-- [ ] Version comparison
-
-### 12.2 Deletion History
-
-- [ ] View log of all deletion events
-- [ ] Filter by entity type, date range, user
-- [ ] Grid display with entity type, code, deletion date, user, reason
-
-### 12.3 Freezing History
-
-- [ ] View log of all freezing events
-- [ ] Grid display with entity type, code, freeze date, user
-
-### 12.4 Event Log
-
-- [ ] Search events (deletion, movement, etc.)
-- [ ] Event details (entity, type, timestamp, user, reason)
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

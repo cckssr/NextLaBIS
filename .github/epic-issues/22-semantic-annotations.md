@@ -30,16 +30,6 @@ Implement semantic annotation capabilities on entity types and property assignme
 - Ontology browser / lookup service
 - Automated annotation suggestions
 
-## Feature Breakdown
-
-- [ ] Add semantic annotations to entity types
-- [ ] Add semantic annotations to property assignments
-- [ ] Ontology predicate and descriptor fields
-- [ ] Annotation management interface (add, edit, delete)
-- [ ] Display annotations on type definitions
-- [ ] Display annotations on entity forms
-- [ ] Schema.org integration support
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

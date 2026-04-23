@@ -31,39 +31,6 @@ Build a reusable, configurable data grid component used across the entire applic
 - Inline editing within grids (handled by entity forms)
 - Virtual scrolling for 10k+ rows (performance optimisation)
 
-## Feature Breakdown
-
-- [ ] Display entities in sortable data grids
-- [ ] Column management:
-  - [ ] Show/hide columns
-  - [ ] Reorder columns
-  - [ ] Resize columns
-  - [ ] Save column preferences per user
-- [ ] Filtering:
-  - [ ] Filter by column values
-  - [ ] Multi-criteria filtering
-  - [ ] Global filter across all visible columns
-  - [ ] Save filter preferences
-- [ ] Sorting:
-  - [ ] Sort by any column
-  - [ ] Multi-column sorting
-  - [ ] Ascending/descending toggle
-- [ ] Selection:
-  - [ ] Single row selection
-  - [ ] Multi-row selection (checkboxes)
-  - [ ] Select all
-  - [ ] Bulk operations on selected rows
-- [ ] Pagination:
-  - [ ] Configurable page size
-  - [ ] Page navigation
-  - [ ] Total count display
-- [ ] Export grid data:
-  - [ ] Export to CSV
-  - [ ] Export to TSV
-  - [ ] Export filtered/sorted data
-  - [ ] Export all columns or visible only
-- [ ] Grid settings persistence (per user, per entity type)
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

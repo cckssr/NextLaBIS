@@ -31,38 +31,6 @@ Provide global and advanced search capabilities so users can find any entity acr
 - Elasticsearch/Lucene indexing configuration (infrastructure)
 - AI-powered semantic search (§31 AI Assistant)
 
-## Feature Breakdown
-
-### 8.1 Global Search
-
-- [ ] Global search bar (search across all entity types)
-- [ ] Full-text search across all indexed entities
-- [ ] Search result grouping by entity type
-- [ ] Navigate to search results
-- [ ] Search suggestions / autocomplete
-
-### 8.2 Advanced Search
-
-- [ ] Search by entity type (space, project, collection, object, dataset)
-- [ ] Search by code / permId / identifier
-- [ ] Search by property values (any property, specific property)
-- [ ] Search by string, numeric (comparison operators), boolean, date (range), controlled vocabulary, object reference properties
-- [ ] Search by registration/modification date range
-- [ ] Search by registrator/modifier
-- [ ] Search by parent/child relationships
-- [ ] Search by container/component relationships
-- [ ] Search by collection/project/space
-- [ ] Search by tag
-- [ ] Combine criteria with AND/OR operators
-- [ ] Negate criteria (NOT)
-- [ ] Saved searches
-- [ ] Search history
-
-### 8.3 Search Domain Services
-
-- [ ] Execute search domain services (external search integrations)
-- [ ] Display search domain results
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

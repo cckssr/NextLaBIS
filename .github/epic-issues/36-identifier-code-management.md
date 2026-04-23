@@ -29,14 +29,6 @@ Implement identifier and code management including auto-generation of permanent 
 - Custom identifier format configuration
 - Identifier migration tools
 
-## Feature Breakdown
-
-- [ ] Auto-generate permanent IDs (permId)
-- [ ] Auto-generate entity codes (with prefix)
-- [ ] Hierarchical identifier display (/SPACE/PROJECT/SAMPLE)
-- [ ] Copy identifier/permId to clipboard
-- [ ] Navigate by identifier
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

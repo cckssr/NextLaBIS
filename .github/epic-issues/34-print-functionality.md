@@ -29,14 +29,6 @@ Implement print functionality for entity details, object lists, storage labels, 
 - PDF generation for offline sharing (partially covered by §10 Export)
 - Custom print templates
 
-## Feature Breakdown
-
-- [ ] Print entity details
-- [ ] Print object lists
-- [ ] Print storage labels
-- [ ] Print barcodes/QR codes
-- [ ] Print-friendly formatting
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

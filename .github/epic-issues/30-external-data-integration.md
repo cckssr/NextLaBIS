@@ -29,29 +29,6 @@ Implement support for external data repositories, git-backed dataset management,
 - Custom external repository connectors
 - Multi-DOI management
 
-## Feature Breakdown
-
-### 30.1 External Data Repositories
-
-- [ ] Link datasets to external locations
-- [ ] External DMS management
-- [ ] Content copy tracking
-
-### 30.2 Git Integration (obis CLI support)
-
-- [ ] Git-backed dataset management
-- [ ] Git-annex large file support
-- [ ] Repository initialization and configuration
-- [ ] Dataset cloning and syncing
-
-### 30.3 Research Collection / Publication
-
-- [ ] Research collection management
-- [ ] Submission type configuration
-- [ ] Retention period settings
-- [ ] Zenodo publication integration
-- [ ] DOI assignment support
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

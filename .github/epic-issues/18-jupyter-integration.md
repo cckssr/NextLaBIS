@@ -32,17 +32,6 @@ Integrate Jupyter notebooks into the openBIS UI, allowing users to launch, creat
 - JupyterHub multi-user server management
 - Custom Jupyter kernel management
 
-## Feature Breakdown
-
-- [ ] Launch Jupyter notebooks from openBIS
-- [ ] Template-based notebook creation
-- [ ] Copy existing notebooks
-- [ ] Inject parameters/variables into notebooks
-- [ ] Link notebooks to datasets
-- [ ] Embedded Jupyter notebook viewer
-- [ ] Jupyter session management
-- [ ] Token-based authentication to Jupyter server
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

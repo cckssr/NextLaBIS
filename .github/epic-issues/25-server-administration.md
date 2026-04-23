@@ -30,30 +30,6 @@ Provide server administration interfaces for viewing server information, managin
 - Server configuration editing (infrastructure concern)
 - Log file viewing
 
-## Feature Breakdown
-
-### 25.1 Server Information
-
-- [ ] Display server version and configuration
-- [ ] Display public server information (pre-login)
-- [ ] View data store information
-- [ ] Active users report
-  - [ ] Generate active user count
-  - [ ] Send report via email
-
-### 25.2 External Data Management Systems
-
-- [ ] List external DMS
-- [ ] Create external DMS reference
-- [ ] Edit external DMS
-- [ ] Delete external DMS
-
-### 25.3 Data Store Management
-
-- [ ] List data stores
-- [ ] View data store details
-- [ ] Command queue monitoring
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

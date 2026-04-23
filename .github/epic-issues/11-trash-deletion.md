@@ -32,18 +32,6 @@ Implement a trashcan view for soft-deleted entities with restore, permanent dele
 
 - Automatic trash cleanup (scheduled purge)
 
-## Feature Breakdown
-
-- [ ] View trashcan (all soft-deleted entities)
-- [ ] Display deletion details (entity type, code, date, user, reason)
-- [ ] Restore (revert) single deleted entity
-- [ ] Permanently delete single entity
-- [ ] Permanently delete with dependent entities (cascade)
-- [ ] Empty entire trashcan
-- [ ] Confirm permanent deletion with safety dialog
-- [ ] Search/filter within trash
-- [ ] Deletion reason input on delete
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

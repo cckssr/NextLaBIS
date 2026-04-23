@@ -28,17 +28,6 @@ Implement archive and unarchive workflows for datasets, including request submis
 - Archive storage backend configuration (infrastructure)
 - Automatic archiving policies
 
-## Feature Breakdown
-
-- [ ] Archive helper workflow
-- [ ] Submit archive requests
-- [ ] Track archive status
-- [ ] Unarchive helper workflow
-- [ ] Submit unarchive requests
-- [ ] Track unarchive progress
-- [ ] View archive/unarchive queue
-- [ ] Bulk archive/unarchive operations
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

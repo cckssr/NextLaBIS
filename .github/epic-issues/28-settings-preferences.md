@@ -27,30 +27,6 @@ Implement user preferences, instance-wide settings, and per-application settings
 - User preference import/export
 - Settings backup/restore
 
-## Feature Breakdown
-
-### 28.1 User Preferences
-
-- [ ] Display settings (grid preferences, column visibility)
-- [ ] Default search configuration
-- [ ] Rich text editor preferences
-- [ ] Spreadsheet widget settings
-- [ ] Notification preferences
-- [ ] Semantic annotation visibility toggle
-- [ ] Inventory space configuration
-
-### 28.2 Instance Settings
-
-- [ ] Application-wide display settings
-- [ ] Custom widget configuration
-- [ ] Group settings management
-- [ ] Space-specific settings
-- [ ] Feature flag configuration
-
-### 28.3 WebApp Settings
-
-- [ ] Per-application settings storage and retrieval
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

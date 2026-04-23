@@ -29,13 +29,6 @@ Integrate a contextual AI assistant into the openBIS UI that can help users with
 - Natural language query execution
 - Automated entity creation from natural language
 
-## Feature Breakdown
-
-- [ ] Contextual help assistant
-- [ ] Ask questions about UI features
-- [ ] Session-based conversations
-- [ ] Intelligent guidance
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed

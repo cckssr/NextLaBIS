@@ -31,33 +31,6 @@ Build a comprehensive form system supporting view/edit/create modes, auto-save, 
 - Multi-step wizard forms
 - Form analytics / completion tracking
 
-## Feature Breakdown
-
-### 26.1 Form Features
-
-- [ ] View mode (read-only display)
-- [ ] Edit mode (inline editing)
-- [ ] Create mode (new entity form)
-- [ ] Auto-save with dirty state detection
-- [ ] Form validation (real-time feedback)
-  - [ ] Required field validation
-  - [ ] Data type validation
-  - [ ] Custom validation rules (via plugins)
-  - [ ] Regex pattern validation
-  - [ ] Min/max value validation
-- [ ] Conflict detection (concurrent edits)
-- [ ] Conflict resolution dialog
-- [ ] Unsaved changes warning on navigation
-- [ ] Form reset/cancel
-
-### 26.2 Dialog System
-
-- [ ] Confirmation dialogs (delete, move, archive)
-- [ ] Input dialogs (move entity, set parameters)
-- [ ] Result dialogs (operation success/failure)
-- [ ] Error detail dialogs
-- [ ] File management dialogs (upload, download, conflict)
-
 ## Acceptance Criteria
 
 - [ ] All child feature issues closed
