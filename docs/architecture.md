@@ -240,12 +240,10 @@ export default async function DashboardPage() {
 Components developed with mock data remain **100% reusable**:
 
 1. **Shared Components** (`src/components/shared/`) are feature-agnostic
-
    - Directly reuse in dashboard, object views, forms
    - No mock data embedded
 
 2. **Masterdata Components** (`src/components/masterdata/`) are schema-driven
-
    - Input: `FormProps` interface (consistent across all property types)
    - Reuse in any form (object creation, editing, filtering)
 
