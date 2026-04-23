@@ -35,34 +35,30 @@ All labels follow a `namespace:value` pattern. **Every issue must have one label
 | `type:bug`      | `#D73A4A` red    | Defect or regression                    |
 | `type:docs`     | `#0075CA` blue   | Documentation-only change               |
 | `type:refactor` | `#E4E669` yellow | Code restructuring, no behaviour change |
+| `type:todo`     | `#55e9e6` cyan   | To-Do item from checklist or comments   |
 
 ### Phase
 
-| Label                 | Colour               | Use                          |
-| --------------------- | -------------------- | ---------------------------- |
-| `phase:0-foundations` | `#0E8A16` green      | Visual UI with mock data     |
-| `phase:1-api`         | `#5319E7` purple     | openBIS API integration      |
-| `phase:2-eln`         | `#B60205` dark red   | Advanced ELN / LIMS features |
-| `phase:backlog`       | `#C5DEF5` light blue | Not yet assigned to a phase  |
+| Label                  | Colour               | Use                          |
+| ---------------------- | -------------------- | ---------------------------- |
+| `phase:1-visual-first` | `#0E8A16` green      | Visual UI with mock data     |
+| `phase:2-api`          | `#5319E7` purple     | openBIS API integration      |
+| `phase:3-advanced`     | `#B60205` dark red   | Advanced ELN / LIMS features |
+| `phase:backlog`        | `#C5DEF5` light blue | Not yet assigned to a phase  |
 
 ### Domain (maps to checklist sections)
 
-| Label                  | Colour          | Checklist section(s)           |
-| ---------------------- | --------------- | ------------------------------ |
-| `domain:auth`          | `#F9D0C4` peach | §1 Authentication & Sessions   |
-| `domain:navigation`    | `#F9D0C4` peach | §2 Navigation & Layout         |
-| `domain:entities`      | `#F9D0C4` peach | §3 Core Entity CRUD            |
-| `domain:files`         | `#F9D0C4` peach | §4 File Management             |
-| `domain:properties`    | `#F9D0C4` peach | §5 Property System             |
-| `domain:types`         | `#F9D0C4` peach | §6 Type Management             |
-| `domain:users`         | `#F9D0C4` peach | §7 User & Access Management    |
-| `domain:search`        | `#F9D0C4` peach | §8 Search & Discovery          |
-| `domain:grids`         | `#F9D0C4` peach | §9 Data Grids & Tables         |
-| `domain:import-export` | `#F9D0C4` peach | §10 Import & Export            |
-| `domain:eln`           | `#F9D0C4` peach | §16 ELN-Specific Features      |
-| `domain:admin`         | `#F9D0C4` peach | §25 Server Administration      |
-| `domain:shell`         | `#F9D0C4` peach | App shell, nav, breadcrumbs    |
-| `domain:infra`         | `#F9D0C4` peach | CI/CD, tooling, infrastructure |
+| Label              | Colour          | Checklist section(s)           |
+| ------------------ | --------------- | ------------------------------ |
+| `domain:auth`      | `#F9D0C4` peach | §1 Authentication & Sessions   |
+| `domain:nav`       | `#F9D0C4` peach | §2 Navigation & Layout         |
+| `domain:entities`  | `#F9D0C4` peach | §3 Core Entity CRUD            |
+| `domain:datastore` | `#F9D0C4` peach | §4 File Management             |
+| `domain:props`     | `#F9D0C4` peach | §5 Property System             |
+| `domain:search`    | `#F9D0C4` peach | §8 Search & Discovery          |
+| `domain:exim`      | `#F9D0C4` peach | §10 Import & Export            |
+| `domain:admin`     | `#F9D0C4` peach | §25 Server Administration      |
+| `domain:infra`     | `#F9D0C4` peach | CI/CD, tooling, infrastructure |
 
 ### Priority
 
