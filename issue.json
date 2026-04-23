@@ -1,0 +1,3 @@
+{
+  "body": "## Summary\n\nIf enabled in OpenBIS, a non-user should be allowed to login without credentials.\n\n## Parent Epic\n\n#53 \n\n## Acceptance Criteria\n\n- [ ] Service-side check if anonymous loging is enabled\n- [ ] Additional login-page option\n- [ ] Normal user and rights management according to OpenBIS settings\n\n## Implementation Notes\n\n<!-- Outline approach, components to touch, or open questions. -->\n\n## Testing Strategy\n\n<!-- Describe how the change will be verified (unit tests, screenshots, etc.). -->\n"
+}
