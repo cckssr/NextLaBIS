@@ -40,7 +40,7 @@ export async function MetadataPanel({
   const gridSpan = { md: "auto", sm: 6, xs: 12 } as const;
 
   return (
-    <Grid mt="xs" gutter={0}>
+    <Grid mt="xs" gap={0}>
       <GridCol span={gridSpan}>
         <Tooltip label="Registrated by">
           <Group gap={0} align="left">

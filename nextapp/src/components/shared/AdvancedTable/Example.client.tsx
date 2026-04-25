@@ -1,21 +1,23 @@
 "use client";
 
 import { useMemo } from "react";
-import { type MRT_ColumnDef } from "mantine-react-table";
-import { Box, Menu } from "@mantine/core";
-import { IconUserCircle, IconSend } from "@tabler/icons-react";
 import AdvancedTable from "./Table.client";
 import { data } from "./makeData";
 
-export type Employee = {
-  firstName: string;
-  lastName: string;
+export type EmployeeTableRow = {
+  id: string;
+  name: string;
   email: string;
   jobTitle: string;
   salary: number;
   startDate: string;
-  signatureCatchPhrase: string;
-  avatar: string;
+  catchPhrase: string;
+};
+
+type EmployeeColumn = {
+  key: keyof EmployeeTableRow;
+  label: string;
+  minWidth: number;
 };
 
 /**
@@ -23,119 +25,39 @@ export type Employee = {
  * Shows how to use the table with custom columns and features
  */
 export default function EmployeeTableExample() {
-  const columns = useMemo<MRT_ColumnDef<Employee>[]>(
+  const tableData = useMemo<EmployeeTableRow[]>(
     () => [
-      {
-        id: "employee",
-        header: "Employee",
-        columns: [
-          {
-            accessorFn: (row) => `${row.firstName} ${row.lastName}`,
-            id: "name",
-            header: "Name",
-            size: 250,
-            filterVariant: "autocomplete",
-            Cell: ({ renderedCellValue }) => (
-              <Box
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "16px",
-                }}
-              >
-                <span>{renderedCellValue}</span>
-              </Box>
-            ),
-          },
-          {
-            accessorKey: "email",
-            enableClickToCopy: true,
-            header: "Email",
-            size: 300,
-          },
-        ],
-      },
-      {
-        id: "jobInfo",
-        header: "Job Info",
-        columns: [
-          {
-            accessorKey: "salary",
-            header: "Salary",
-            size: 200,
-            filterVariant: "range-slider",
-            mantineFilterRangeSliderProps: {
-              color: "indigo",
-              label: (value) =>
-                value?.toLocaleString?.("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0,
-                }),
-            },
-            Cell: ({ cell }) => (
-              <Box
-                style={(theme) => ({
-                  backgroundColor:
-                    cell.getValue<number>() < 50_000
-                      ? theme.colors.red[9]
-                      : cell.getValue<number>() >= 50_000 &&
-                          cell.getValue<number>() < 75_000
-                        ? theme.colors.yellow[9]
-                        : theme.colors.green[9],
-                  borderRadius: "4px",
-                  color: "#fff",
-                  maxWidth: "9ch",
-                  padding: "4px",
-                })}
-              >
-                {cell.getValue<number>()?.toLocaleString?.("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0,
-                })}
-              </Box>
-            ),
-          },
-          {
-            accessorKey: "jobTitle",
-            header: "Job Title",
-            filterVariant: "multi-select",
-            size: 350,
-          },
-          {
-            accessorFn: (row) => {
-              const sDay = new Date(row.startDate);
-              sDay.setHours(0, 0, 0, 0);
-              return sDay;
-            },
-            id: "startDate",
-            header: "Start Date",
-            filterVariant: "date-range",
-            sortingFn: "datetime",
-            enableColumnFilterModes: false,
-            Cell: ({ cell }) => cell.getValue<Date>()?.toLocaleDateString(),
-            Header: ({ column }) => <em>{column.columnDef.header}</em>,
-          },
-        ],
-      },
+      ...data.map((employee) => ({
+        id: employee.email,
+        name: `${employee.firstName} ${employee.lastName}`,
+        email: employee.email,
+        jobTitle: employee.jobTitle,
+        salary: employee.salary,
+        startDate: new Date(employee.startDate).toLocaleDateString(),
+        catchPhrase: employee.signatureCatchPhrase,
+      })),
+    ],
+    [],
+  );
+
+  const columns = useMemo<EmployeeColumn[]>(
+    () => [
+      { key: "name", label: "Name", minWidth: 220 },
+      { key: "email", label: "Email", minWidth: 260 },
+      { key: "jobTitle", label: "Job Title", minWidth: 240 },
+      { key: "salary", label: "Salary", minWidth: 130 },
+      { key: "startDate", label: "Start Date", minWidth: 130 },
+      { key: "catchPhrase", label: "Catch Phrase", minWidth: 260 },
     ],
     [],
   );
 
   return (
-    <AdvancedTable<Employee>
-      data={data}
+    <AdvancedTable<EmployeeTableRow>
+      data={tableData}
       columns={columns}
       searchPlaceholder="Search Employees"
-      onRowAction={() => (
-        <>
-          <Menu.Item leftSection={<IconUserCircle />}>View Profile</Menu.Item>
-          <Menu.Item leftSection={<IconSend />}>Send Email</Menu.Item>
-        </>
-      )}
+      rowKey="id"
     />
   );
 }

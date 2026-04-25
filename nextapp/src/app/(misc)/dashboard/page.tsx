@@ -60,7 +60,7 @@ export default function DashboardPage() {
     <Stack>
       <Header />
       <SearchCard />
-      <Grid mt="md" gutter="md">
+      <Grid mt="md" gap="md">
         {/* Spaces Card */}
         <GridCol span={8}>
           <SpacesOverviewCard maxSpaceCount={4} spaces={MOCK_SPACES} />

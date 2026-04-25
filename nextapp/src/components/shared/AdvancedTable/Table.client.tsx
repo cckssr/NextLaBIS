@@ -1,12 +1,8 @@
 "use client";
 
-import { useMemo, ReactNode } from "react";
-import {
-  MantineReactTable,
-  useMantineReactTable,
-  type MRT_ColumnDef,
-  type MRT_TableState,
-} from "mantine-react-table";
+import { SortableTable, type ColumnDef } from "../SortableTable/Table.client";
+
+type PrimitiveValue = string | number | boolean;
 
 /**
  * Props for the AdvancedTable component
@@ -15,73 +11,39 @@ import {
  * @param data - Array of data records to display in the table
  * @param columns - Column definitions for the table
  * @param searchPlaceholder - Placeholder text for the global search input
- * @param onRowAction - Function to render row action menu items
- * @param enableFiltering - Enable column filtering (default: true)
- * @param enableColumnOrdering - Enable column ordering (default: true)
  */
-export interface AdvancedTableProps<T extends Record<string, unknown>> {
+export interface AdvancedTableProps<T extends Record<string, PrimitiveValue>> {
   data: T[];
-  columns: MRT_ColumnDef<T>[];
+  columns: Array<
+    ColumnDef & {
+      key: Extract<keyof T, string>;
+    }
+  >;
   searchPlaceholder?: string;
-  onRowAction?: () => ReactNode;
-  enableFiltering?: boolean;
-  enableColumnOrdering?: boolean;
-  enableRowSelection?: boolean;
-  enableRowActions?: boolean;
-  enableColumnPinning?: boolean;
-  initialState?: Partial<MRT_TableState<T>>;
+  rowKey?: Extract<keyof T, string>;
+  showSearch?: boolean;
 }
 
 /**
- * Generic, feature-rich table component built with MantineReactTable
- * Supports filtering, sorting, column ordering, row selection, row actions, and more
+ * Mantine 9 compatible AdvancedTable wrapper built on top of SortableTable.
+ * Provides sortable/searchable table behavior for the development demo page.
  */
-function AdvancedTable<T extends Record<string, unknown>>({
+function AdvancedTable<T extends Record<string, PrimitiveValue>>({
   data,
   columns,
   searchPlaceholder = "Search",
-  onRowAction,
-  enableFiltering = true,
-  enableColumnOrdering = true,
-  enableRowSelection = true,
-  enableRowActions = true,
-  enableColumnPinning = true,
+  rowKey,
+  showSearch = true,
 }: AdvancedTableProps<T>) {
-  const memoizedColumns = useMemo(() => columns, [columns]);
-  const memoizedData = useMemo(() => data, [data]);
-
-  const table = useMantineReactTable({
-    columns: memoizedColumns,
-    data: memoizedData,
-    enableColumnFilterModes: enableFiltering,
-    enableColumnOrdering,
-    enableFacetedValues: enableFiltering,
-    enableColumnPinning,
-    enableRowActions,
-    enableRowSelection,
-    initialState: {
-      showColumnFilters: enableFiltering,
-      showGlobalFilter: enableFiltering,
-      columnPinning: {
-        left: enableRowSelection ? ["mrt-row-expand", "mrt-row-select"] : [],
-        right: enableRowActions ? ["mrt-row-actions"] : [],
-      },
-    },
-    paginationDisplayMode: "pages",
-    positionToolbarAlertBanner: "bottom",
-    mantinePaginationProps: {
-      radius: "xl",
-      size: "lg",
-    },
-    mantineSearchTextInputProps: {
-      placeholder: searchPlaceholder,
-    },
-    ...(onRowAction && {
-      renderRowActionMenuItems: () => onRowAction(),
-    }),
-  });
-
-  return <MantineReactTable table={table} />;
+  return (
+    <SortableTable
+      data={data}
+      columns={columns}
+      searchPlaceholder={searchPlaceholder}
+      rowKey={rowKey}
+      showSearch={showSearch}
+    />
+  );
 }
 
 export default AdvancedTable;
