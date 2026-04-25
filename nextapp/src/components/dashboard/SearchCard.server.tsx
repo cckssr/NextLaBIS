@@ -19,7 +19,7 @@ export const SearchCard = () => (
     <Text c="dimmed">
       Search across all spaces, projects, collections, and objects.
     </Text>
-    <Grid mt="md" gutter="md">
+    <Grid mt="md" gap="md">
       <GridCol span={10}>
         <TextInput
           variant="filled"

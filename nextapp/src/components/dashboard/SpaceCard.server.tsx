@@ -53,7 +53,7 @@ export function SpaceCard({
   const gridSpan = { md: "content" as const, sm: 6, xs: 12 };
   return (
     <Link
-      href={`/spaces/${encodeURIComponent(code)}`}
+      href={`/space/${encodeURIComponent(code)}`}
       style={{ textDecoration: "none", display: "block" }}
     >
       <Card withBorder={true} p="lg" shadow="md" radius="lg">
@@ -71,7 +71,7 @@ export function SpaceCard({
         <Text c="dimmed" lineClamp={2}>
           {description}
         </Text>
-        <Grid mt="xs" gutter={0}>
+        <Grid mt="xs" gap={0}>
           <GridCol span={gridSpan}>
             <Group gap={0} align="left">
               <IconFlask size={16} stroke="dimmed" />

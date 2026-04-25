@@ -1,13 +1,7 @@
-import { mantineHtmlProps } from "@mantine/core";
-
-export default function RootLayout({
+export default function EntitiesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" {...mantineHtmlProps}>
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }

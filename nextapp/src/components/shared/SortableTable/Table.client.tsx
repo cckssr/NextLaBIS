@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import {
   IconChevronDown,
   IconChevronUp,
@@ -75,6 +75,7 @@ interface ThProps {
   children: React.ReactNode;
   reversed: boolean;
   sorted: boolean;
+  sortable: boolean;
   onSort: () => void;
   style?: React.CSSProperties;
 }
@@ -88,12 +89,23 @@ interface ThProps {
  * @param {ThProps} props - The component props
  * @returns {JSX.Element} A Mantine Table.Th element with sort controls
  */
-function Th({ children, reversed, sorted, onSort, style }: ThProps) {
+function Th({ children, reversed, sorted, sortable, onSort, style }: ThProps) {
   const Icon = sorted
     ? reversed
       ? IconChevronUp
       : IconChevronDown
     : IconSelector;
+
+  if (!sortable) {
+    return (
+      <Table.Th className={classes.th} style={style}>
+        <Text fw={500} fz="sm">
+          {children}
+        </Text>
+      </Table.Th>
+    );
+  }
+
   return (
     <Table.Th className={classes.th} style={style}>
       <UnstyledButton onClick={onSort} className={classes.control}>
@@ -156,6 +168,32 @@ function sortData<T extends Record<string, string | number | boolean>>(
   payload: { sortBy: string | null; reversed: boolean; search: string },
   columns: ColumnDef[],
 ): T[] {
+  const compareValues = (
+    a: string | number | boolean,
+    b: string | number | boolean,
+  ) => {
+    if (typeof a === "number" && typeof b === "number") {
+      return payload.reversed ? b - a : a - b;
+    }
+
+    if (typeof a === "boolean" && typeof b === "boolean") {
+      return payload.reversed ? Number(b) - Number(a) : Number(a) - Number(b);
+    }
+
+    const aValue = String(a);
+    const bValue = String(b);
+
+    return payload.reversed
+      ? bValue.localeCompare(aValue, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      : aValue.localeCompare(bValue, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        });
+  };
+
   const { sortBy } = payload;
 
   if (!sortBy) {
@@ -164,14 +202,9 @@ function sortData<T extends Record<string, string | number | boolean>>(
 
   return filterData(
     [...data].sort((a, b) => {
-      const aValue = String(a[sortBy] || "");
-      const bValue = String(b[sortBy] || "");
-
-      if (payload.reversed) {
-        return bValue.localeCompare(aValue);
-      }
-
-      return aValue.localeCompare(bValue);
+      const aValue = a[sortBy] ?? "";
+      const bValue = b[sortBy] ?? "";
+      return compareValues(aValue, bValue);
     }),
     payload.search,
     columns,
@@ -218,14 +251,15 @@ export function SortableTable<
   columns,
   searchPlaceholder = "Search by any field",
   emptyMessage = "Nothing found",
-  rowKey = Object.keys(data[0])?.[0] as keyof T,
+  rowKey,
   searchInput,
   showSearch = true,
   searchValue,
   ...tableProps
 }: SortableTableProps<T> & React.ComponentProps<typeof Table>) {
+  const isControlledSearch = searchValue !== undefined;
+  const resolvedRowKey = rowKey ?? (columns[0]?.key as keyof T | undefined);
   const [internalSearch, setInternalSearch] = useState("");
-  const [sortedData, setSortedData] = useState(data);
   const [sortBy, setSortBy] = useState<string | null>(null);
   const [reverseSortDirection, setReverseSortDirection] = useState(false);
 
@@ -233,46 +267,39 @@ export function SortableTable<
   const currentSearch =
     searchValue !== undefined ? searchValue : internalSearch;
 
+  const sortedData = useMemo(
+    () =>
+      sortData(
+        data,
+        {
+          sortBy,
+          reversed: reverseSortDirection,
+          search: currentSearch,
+        },
+        columns,
+      ),
+    [data, sortBy, reverseSortDirection, currentSearch, columns],
+  );
+
   const setSorting = (field: string) => {
     const reversed = field === sortBy ? !reverseSortDirection : false;
     setReverseSortDirection(reversed);
     setSortBy(field);
-    setSortedData(
-      sortData(
-        data,
-        { sortBy: field, reversed, search: currentSearch },
-        columns,
-      ),
-    );
   };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
-    setInternalSearch(value);
-    setSortedData(
-      sortData(
-        data,
-        { sortBy, reversed: reverseSortDirection, search: value },
-        columns,
-      ),
-    );
+    if (!isControlledSearch) {
+      setInternalSearch(value);
+    }
   };
 
-  // Update sorted data when searchValue prop changes
-  useEffect(() => {
-    if (searchValue !== undefined) {
-      setSortedData(
-        sortData(
-          data,
-          { sortBy, reversed: reverseSortDirection, search: searchValue },
-          columns,
-        ),
-      );
-    }
-  }, [searchValue, data, sortBy, reverseSortDirection, columns]);
-
   const rows = sortedData.map((row, index) => (
-    <Table.Tr key={String(row[rowKey] ?? index)}>
+    <Table.Tr
+      key={
+        resolvedRowKey ? String(row[resolvedRowKey] ?? index) : String(index)
+      }
+    >
       {columns.map((col) => (
         <Table.Td
           key={col.key}
@@ -296,8 +323,9 @@ export function SortableTable<
           placeholder={searchPlaceholder}
           mb="md"
           leftSection={<IconSearch size={16} stroke={1.5} />}
-          value={internalSearch}
+          value={currentSearch}
           onChange={handleSearchChange}
+          readOnly={isControlledSearch}
         />
       ) : null}
       <Table
@@ -306,13 +334,14 @@ export function SortableTable<
         layout="auto"
         {...tableProps}
       >
-        <Table.Tbody>
+        <Table.Thead>
           <Table.Tr>
             {columns.map((col) => (
               <Th
                 key={col.key}
                 sorted={sortBy === col.key}
                 reversed={reverseSortDirection}
+                sortable={col.sortable !== false}
                 onSort={() => setSorting(col.key)}
                 style={{
                   width: col.width,
@@ -323,7 +352,7 @@ export function SortableTable<
               </Th>
             ))}
           </Table.Tr>
-        </Table.Tbody>
+        </Table.Thead>
         <Table.Tbody>
           {rows.length > 0 ? (
             rows
