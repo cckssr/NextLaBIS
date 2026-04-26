@@ -1,6 +1,6 @@
 "use client";
 
-import { Text, Textarea, TypographyStylesProvider, Box } from "@mantine/core";
+import { Text, Textarea, Box } from "@mantine/core";
 import type { UseFormReturnType } from "@mantine/form";
 
 interface MultilineRendererProps {
@@ -72,12 +72,10 @@ export function MultilineRenderer({
           <Text size="sm" c="dimmed" mb={4}>
             {label}
           </Text>
-          <TypographyStylesProvider>
-            <Box
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(stringValue) }}
-              style={{ fontSize: "var(--mantine-font-size-sm)" }}
-            />
-          </TypographyStylesProvider>
+          <Box
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(stringValue) }}
+            style={{ fontSize: "var(--mantine-font-size-sm)" }}
+          />
         </div>
       );
     }

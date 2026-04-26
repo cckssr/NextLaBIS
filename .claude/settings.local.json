@@ -11,7 +11,8 @@
       "Read(//tmp/**)",
       "Bash(node -e \"const p = require\\('/Users/cedric.kessler/GIT/NextLaBIS/nextapp/node_modules/@mantine/core/package.json'\\); console.log\\(p.version\\)\")",
       "Bash(node -e \"const p = require\\('/Users/cedric.kessler/GIT/NextLaBIS/nextapp/node_modules/next/package.json'\\); console.log\\(p.version\\)\")",
-      "Bash(node -e \"const p = require\\('/Users/cedric.kessler/GIT/NextLaBIS/nextapp/node_modules/react/package.json'\\); console.log\\(p.version\\)\")"
+      "Bash(node -e \"const p = require\\('/Users/cedric.kessler/GIT/NextLaBIS/nextapp/node_modules/react/package.json'\\); console.log\\(p.version\\)\")",
+      "Bash(node -c src/lib/mocks/mockProjectsExtended.ts)"
     ]
   }
 }

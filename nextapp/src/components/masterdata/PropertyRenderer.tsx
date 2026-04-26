@@ -83,7 +83,7 @@ export function PropertyRenderer({
 
     case "XML":
     case "JSON":
-    case "SAMPLE":
+    case "OBJECT":
     case "MATERIAL":
     case "HYPERLINK":
     case "ARRAY_STRING":
