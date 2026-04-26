@@ -1,6 +1,5 @@
 import { ActivitiesOverviewCard } from "@/components/dashboard/ActivitiesOverviewCard.server";
 import { Header } from "@/components/dashboard/Header.server";
-import { SearchCard } from "@/components/dashboard/SearchCard.server";
 import { SpacesOverviewCard } from "@/components/dashboard/SpacesOverviewCard.server";
 import { Grid, GridCol, Stack } from "@mantine/core";
 import { SpaceDisplayData } from "@/types/openbis";
@@ -59,7 +58,6 @@ export default function DashboardPage() {
   return (
     <Stack>
       <Header />
-      <SearchCard />
       <Grid mt="md" gap="md">
         {/* Spaces Card */}
         <GridCol span={8}>
